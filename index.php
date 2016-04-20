@@ -258,7 +258,7 @@
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 $res = $mysqli->query("SELECT * FROM datos WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
-                                                $out.= '<tr>';
+                                                $out.='<tr>';
                                                 $out.='<th>';
                                                 $out.='ID';
                                                 $out.='</th>';
@@ -271,7 +271,7 @@
                                                 $out.='<th>';
                                                 $out.='Descripción';
                                                 $out.='</th>';
-                                                $out.='<th>';
+                                                $out.='<th>'; 
                                                 $out.='Precio';
                                                 $out.='</th>';
                                                 $out.= '<th>';
@@ -279,19 +279,24 @@
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 while($row = $res->fetch_row()){
-                                                    $id=$row[0];
-                                                    $out.='<tr data-id="'.$id.'">';
-                                                    if($id%2){
-                                                        $out.='<td class="success">';
-                                                    }else{
-                                                        $out.='<td class="danger">';
-                                                    }
-                                                    $out.=$id;
-                                                    $out.='</td>';
+                                                    $out.='<tr>';
+                                                    $out.='<td>';
+                                                    $out.=$row[0];
+                                                    $out.='</td>'; 
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
-                                                    $out.='<td>';
+                                                    switch ($row[2]) {
+                                                        case "Alta":
+                                                            $out.='<td align="center" class="danger">';
+                                                            break;
+                                                        case "Media":
+                                                            $out.='<td align="center" class="warning">';
+                                                            break;
+                                                        case "Baja":
+                                                            $out.='<td align="center" class="success">';
+                                                            break;
+                                                    }
                                                     $out.=$row[2];
                                                     $out.='</td>';
                                                     $out.='<td>';
