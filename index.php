@@ -266,31 +266,40 @@
                                                 $out.='Título';
                                                 $out.='</th>';
                                                 $out.='<th>';
+                                                $out.='Prioridad';
+                                                $out.='</th>';
+                                                $out.='<th>';
                                                 $out.='Descripción';
                                                 $out.='</th>';
                                                 $out.='<th>';
+                                                $out.='Precio';
+                                                $out.='</th>';
+                                                $out.= '<th>';
                                                 $out.='Acción';
                                                 $out.='</th>';
-                                                $out.= '</tr>';
+                                                $out.='<th>';
                                                 while($row = $res->fetch_row()){
                                                     $id=$row[0];
                                                     $out.='<tr data-id="'.$id.'">';
                                                     if($id%2){
                                                         $out.='<td class="success">';
                                                     }else{
-                                                        $out.='<td class="warning">';
+                                                        $out.='<td class="danger">';
                                                     }
                                                     $out.=$id;
                                                     $out.='</td>';
-
-
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
                                                     $out.='<td>';
                                                     $out.=$row[2];
                                                     $out.='</td>';
-
+                                                    $out.='<td>';
+                                                    $out.=$row[3];
+                                                    $out.='</td>';
+                                                    $out.='<td>';
+                                                    $out.=$row[4];
+                                                    $out.='</td>';   
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
