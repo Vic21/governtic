@@ -114,6 +114,11 @@
                         </i><span class="menu-title">Propuestas</span></a>
                            
                         </li>
+                            <li><a href="#"><i class="fa fa-sitemap fa-fw">
+                            <div class="icon-bg bg-dark"></div>
+                        </i><span class="menu-title">Objetivos</span></a>
+                          
+                        </li>
                         <li><a href="#"><i class="fa fa-send-o fa-fw">
                             <div class="icon-bg bg-green"></div>
                         </i><span class="menu-title">Proyectos</span></a>
