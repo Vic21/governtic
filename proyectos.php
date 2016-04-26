@@ -111,7 +111,7 @@
                         </i><span class="menu-title">Principal</span></a>
 
                         </li>
-                        <li class="active"><a href="#"><i class="fa fa-desktop fa-fw">
+                        <li><a href="#"><i class="fa fa-desktop fa-fw">
                             <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Propuestas</span></a>
                            
@@ -121,7 +121,7 @@
                         </i><span class="menu-title">Objetivos</span></a>
                           
                         </li>
-                        <li><a href="#"><i class="fa fa-send-o fa-fw">
+                        <li class="active"><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
                             <div class="icon-bg bg-green"></div>
                         </i><span class="menu-title">Proyectos</span></a>
                            
@@ -259,59 +259,100 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Panel de alertas</div>
+                                            <div class="caption">Proyectos Actuales</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                $res = $mysqli->query("SELECT * FROM datos WHERE TRUE;");
+                                                $mysqli = mysqli_connect("localhost","root","", "test");
+                                                $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
+
                                                 $out.='<tr>';
+
                                                 $out.='<th>';
                                                 $out.='ID';
                                                 $out.='</th>';
+
                                                 $out.='<th>';
-                                                $out.='Título';
+                                                $out.='Nombre';
                                                 $out.='</th>';
+
                                                 $out.='<th>';
                                                 $out.='Prioridad';
                                                 $out.='</th>';
+
                                                 $out.='<th>';
                                                 $out.='Descripción';
                                                 $out.='</th>';
-                                                $out.='<th>'; 
-                                                $out.='Precio';
-                                                $out.='</th>';
-                                                $out.= '<th>';
-                                                $out.='Acción';
-                                                $out.='</th>';
+
                                                 $out.='<th>';
+                                                $out.='Fecha de Inicio';
+                                                $out.='</th>';
+
+                                                $out.='<th>'; 
+                                                $out.='Coste Inicial';
+                                                $out.='</th>';
+
+                                                $out.= '<th>';
+                                                $out.='Métrica';
+                                                $out.='</th>';
+
+                                                $out.= '<th>';
+                                                $out.='Alineamiento';
+                                                $out.='</th>';
+
                                                 while($row = $res->fetch_row()){
                                                     $out.='<tr>';
+
                                                     $out.='<td>';
                                                     $out.=$row[0];
                                                     $out.='</td>'; 
+
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
+
                                                     switch ($row[2]) {
-                                                        case "Alta":
+                                                        case "alta":
                                                             $out.='<td align="center" class="danger">';
                                                             break;
-                                                        case "Media":
+                                                        case "media":
                                                             $out.='<td align="center" class="warning">';
                                                             break;
-                                                        case "Baja":
+                                                        case "baja":
                                                             $out.='<td align="center" class="success">';
                                                             break;
                                                     }
-                                                    $out.=$row[2];
                                                     $out.='</td>';
+
                                                     $out.='<td>';
                                                     $out.=$row[3];
                                                     $out.='</td>';
+
                                                     $out.='<td>';
                                                     $out.=$row[4];
-                                                    $out.='</td>';   
+                                                    $out.='</td>'; 
+
+                                                    $out.='<td>';
+                                                    $out.=$row[5];
+                                                    $out.='€';
+                                                    $out.='</td>'; 
+
+                                                    $out.='<td>';
+                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM metricas WHERE id = $row[6];");
+                                                    $filaNomMetrica = $nombreMetrica->fetch_row();
+                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                    $out.=$filaNomMetrica[0];
+                                                    $out.='</a>';
+                                                    $out.='</td>'; 
+
+                                                    $out.='<td>';
+                                                    $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[7];");
+                                                    $filaNomObj = $alineamientoObjetivo->fetch_row();
+                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                    $out.=$filaNomObj[0];
+                                                    $out.='</a>';
+                                                    $out.='</td>'; 
+
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">

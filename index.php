@@ -119,7 +119,7 @@
                         </i><span class="menu-title">Objetivos</span></a>
                           
                         </li>
-                        <li><a href="#"><i class="fa fa-send-o fa-fw">
+                        <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
                             <div class="icon-bg bg-green"></div>
                         </i><span class="menu-title">Proyectos</span></a>
                            
@@ -260,7 +260,7 @@
                                             <div class="caption">Panel de alertas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                $mysqli = mysqli_connect("localhost","root","", "test");
                                                 $res = $mysqli->query("SELECT * FROM datos WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
                                                 $out.='<tr>';

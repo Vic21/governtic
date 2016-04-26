@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2016 a las 18:35:42
+-- Tiempo de generación: 26-04-2016 a las 17:23:14
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -108,7 +108,7 @@ CREATE TABLE `metricas` (
 INSERT INTO `metricas` (`id`, `nombre`, `umbralBajo`, `umbralmedio`, `umbralalto`, `descripcion`, `idProyecto`) VALUES
 (1, 'Tirados por totales', 5, 10, 15, 'Numero de articulos tirados entre totales', 1),
 (2, 'Controlados vs No controlados', 5, 10, 15, '(Articulostirados totales controlados/totales controlados) y (Articulostirados totales no controlados/totales no controlados)', 1),
-(3, 'Coste proyecyo', 2, 10, 20, 'Coste proyecto(mes) incluyendo gastos de amortización y mantenimiento/ventas (€)', 2),
+(3, 'Coste proyecto', 2, 10, 20, 'Coste proyecto(mes) incluyendo gastos de amortización y mantenimiento/ventas (€)', 2),
 (4, 'Incremento ventas', 5, 2, 1, 'Incremento ventas online entre meses por numero de usuarios', 2),
 (5, 'Incremento importes totales', 5, 2, 1, 'Aumentos entre meses por importes a nivel global (compania)', 3),
 (6, 'aumento por tienda', 5, 2, 1, 'Aumento entre meses por tienda', 3),
@@ -175,9 +175,10 @@ INSERT INTO `principios` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `proyectos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
+  `prioridad` varchar(5) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `fechaInicio` date NOT NULL,
-  `costeInicial` int(11) NOT NULL,
+  `costeInicial` decimal(11,0) NOT NULL,
   `idMetrica` int(11) NOT NULL,
   `alineadoObj` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -186,11 +187,11 @@ CREATE TABLE `proyectos` (
 -- Volcado de datos para la tabla `proyectos`
 --
 
-INSERT INTO `proyectos` (`id`, `nombre`, `descripcion`, `fechaInicio`, `costeInicial`, `idMetrica`, `alineadoObj`) VALUES
-(1, 'Tienda on-line', 'Las unidades de TIC proponen el proyecto denominado “Tienda on-line” para que los clientes puedan realizar las compras desde casa y no perder oferta de servicio frente a la competencia.', '2015-07-01', 10000, 0, 0),
-(2, 'Competencia', 'Las unidades de TIC proponen realizar un proyecto denominado “Competencia” para conocer de todos  los  artículos, los  precios  que ofrece la misma, y así proporcionar a la alta dirección una herramienta util para fijar los precios de la organización.', '2014-11-01', 7500, 0, 0),
-(3, 'Caducidad', 'Las unidades de negocio proponen el proyecto “Caducidad” para conocer la fecha de caducidad  de  todos  los  productos  perecederos  y  así  evitar  los  altos  costes  que  supone eliminar estos productos', '2015-02-01', 5000, 0, 0),
-(4, 'Distribuidor', 'Las unidades de negocio proponen el proyecto “Distribuidor” para conocer los precios de los distribuidores de mercancias entre almacen y tienda y seleccionar el más adecuado.', '2015-01-01', 8000, 0, 0);
+INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion`, `fechaInicio`, `costeInicial`, `idMetrica`, `alineadoObj`) VALUES
+(1, 'Tienda on-line', 'alta', 'Las unidades de TIC proponen el proyecto denominado “Tienda on-line” para que los clientes puedan realizar las compras desde casa y no perder oferta de servicio frente a la competencia.', '2015-07-01', '10000', 1, 1),
+(2, 'Competencia', 'media', 'Las unidades de TIC proponen realizar un proyecto denominado “Competencia” para conocer de todos  los  artículos, los  precios  que ofrece la misma, y así proporcionar a la alta dirección una herramienta util para fijar los precios de la organización.', '2014-11-01', '7500', 2, 2),
+(3, 'Caducidad', 'baja', 'Las unidades de negocio proponen el proyecto “Caducidad” para conocer la fecha de caducidad  de  todos  los  productos  perecederos  y  así  evitar  los  altos  costes  que  supone eliminar estos productos', '2015-02-01', '5000', 3, 3),
+(4, 'Distribuidor', 'media', 'Las unidades de negocio proponen el proyecto “Distribuidor” para conocer los precios de los distribuidores de mercancias entre almacen y tienda y seleccionar el más adecuado.', '2015-01-01', '8000', 4, 9);
 
 -- --------------------------------------------------------
 
