@@ -100,7 +100,10 @@
                 <!--BEGIN SIDEBAR MENU-->
                 <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                     data-position="right" class="navbar-default navbar-static-side">
-                                <div class="sidebar-collapse menu-scroll">
+                <div class="sidebar-collapse menu-scroll">
+                    <ul id="side-menu" class="nav">
+                        
+                 <div class="sidebar-collapse menu-scroll">
                     <ul id="side-menu" class="nav">
                         
                          <div class="clearfix"></div>
@@ -113,12 +116,12 @@
                         </i><span class="menu-title">Propuestas</span></a>
                            
                         </li>
-                            <li><a href="objetivos.php"><i class="fa fa-sitemap fa-fw">
+                            <li class="active"><a href="objetivos.php"><i class="fa fa-sitemap fa-fw">
                             <div class="icon-bg bg-dark"></div>
                         </i><span class="menu-title">Objetivos</span></a>
                           
                         </li>
-                        <li class="active"><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
+                        <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
                             <div class="icon-bg bg-green"></div>
                         </i><span class="menu-title">Proyectos</span></a>
                            
@@ -213,12 +216,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Proyectos</div>
+                            <div class="page-title">Objetivos</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="hidden"><a href="#">Proyectos</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="active">Proyectos</li>
+                            <li class="hidden"><a href="#">Objetivos</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li class="active">Objetivos</li>
                         </ol>
                         <div class="clearfix">
                         </div>
@@ -235,11 +238,11 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Proyectos Actuales</div>
+                                            <div class="caption">Objetivos</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
                                                 $mysqli = mysqli_connect("localhost","root","", "test");
-                                                $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
+                                                $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
 
                                                 $out.='<tr>';
@@ -252,28 +255,12 @@
                                                 $out.='Nombre';
                                                 $out.='</th>';
 
-                                                $out.='<th>';
-                                                $out.='Prioridad';
-                                                $out.='</th>';
-
-                                                $out.='<th>';
+                                                $out.='<th>'; 
                                                 $out.='Descripción';
                                                 $out.='</th>';
 
-                                                $out.='<th>';
-                                                $out.='Fecha de Inicio';
-                                                $out.='</th>';
-
-                                                $out.='<th>'; 
-                                                $out.='Coste Inicial';
-                                                $out.='</th>';
-
                                                 $out.= '<th>';
-                                                $out.='Métrica';
-                                                $out.='</th>';
-
-                                                $out.= '<th>';
-                                                $out.='Alineamiento';
+                                                $out.='Principio';
                                                 $out.='</th>';
 
                                                 while($row = $res->fetch_row()){
@@ -287,45 +274,15 @@
                                                     $out.=$row[1];
                                                     $out.='</td>';
 
-                                                    switch ($row[2]) {
-                                                        case "alta":
-                                                            $out.='<td align="center" class="danger">';
-                                                            break;
-                                                        case "media":
-                                                            $out.='<td align="center" class="warning">';
-                                                            break;
-                                                        case "baja":
-                                                            $out.='<td align="center" class="success">';
-                                                            break;
-                                                    }
+                                                    $out.='<td>';
+                                                    $out.=$row[2];
                                                     $out.='</td>';
 
                                                     $out.='<td>';
-                                                    $out.=$row[3];
-                                                    $out.='</td>';
-
-                                                    $out.='<td>';
-                                                    $out.=$row[4];
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.=$row[5];
-                                                    $out.='€';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM metricas WHERE id = $row[6];");
+                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM principios WHERE id = $row[3];");
                                                     $filaNomMetrica = $nombreMetrica->fetch_row();
                                                     $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
                                                     $out.=$filaNomMetrica[0];
-                                                    $out.='</a>';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[7];");
-                                                    $filaNomObj = $alineamientoObjetivo->fetch_row();
-                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                    $out.=$filaNomObj[0];
                                                     $out.='</a>';
                                                     $out.='</td>'; 
 

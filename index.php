@@ -8,8 +8,7 @@
     <html lang="en">
     <head>
         <title>Govern de les TIC</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="images/icons/favicon.ico">
         <link rel="apple-touch-icon" href="images/icons/favicon.png">
@@ -57,8 +56,6 @@
                     
                     <div class="news-update-box hidden-xs"><span class="text-uppercase mrm pull-left text-white">News:</span>
                         <ul id="news-update" class="ticker list-unstyled">
-                            <li>Welcome to KAdmin - Responsive Multi-Style Admin Template</li>
-                            <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.</li>
                         </ul>
                     </div>
                  
@@ -106,15 +103,16 @@
                     <ul id="side-menu" class="nav">
                         
                          <div class="clearfix"></div>
-                        <li class="active"><a href="index.html"><i class="fa fa-tachometer fa-fw">
+                        <li class="active"><a href="index.php"><i class="fa fa-tachometer fa-fw">
                             <div class="icon-bg bg-orange"></div>
                         </i><span class="menu-title">Principal</span></a></li>
-                        <li><a href="#"><i class="fa fa-desktop fa-fw">
+
+                        <li><a href="propuestas.php"><i class="fa fa-desktop fa-fw">
                             <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Propuestas</span></a>
                            
                         </li>
-                            <li><a href="#"><i class="fa fa-sitemap fa-fw">
+                            <li><a href="objetivos.php"><i class="fa fa-sitemap fa-fw">
                             <div class="icon-bg bg-dark"></div>
                         </i><span class="menu-title">Objetivos</span></a>
                           
@@ -124,50 +122,29 @@
                         </i><span class="menu-title">Proyectos</span></a>
                            
                         </li>
-                        <li><a href="#"><i class="fa fa-edit fa-fw">
+                        <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
                             <div class="icon-bg bg-violet"></div>
                         </i><span class="menu-title">Métricas</span></a>
                           
                         </li>
-                        <li><a href="#"><i class="fa fa-th-list fa-fw">
+                        <li><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
                             <div class="icon-bg bg-blue"></div>
                         </i><span class="menu-title">Objetivos Estratégicos</span></a>
                               
                         </li>
-                        <li><a href="#"><i class="fa fa-database fa-fw">
+                        <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
                             <div class="icon-bg bg-red"></div>
                         </i><span class="menu-title">Evaluaciones</span></a>
                           
                         </li>
-                        <li><a href="#"><i class="fa fa-file-o fa-fw">
+                        <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
                             <div class="icon-bg bg-yellow"></div>
                         </i><span class="menu-title">Gestión Económica</span></a>
                            
                        </li>
-                        <li><a href="#"><i class="fa fa-bar-chart-o fa-fw">
+                        <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
                             <div class="icon-bg bg-orange"></div>
                         </i><span class="menu-title">Estadísticas</span></a>
-                           
-                       <!--  </li>
-                        <li><a href="Dropdown.html"><i class="fa fa-sitemap fa-fw">
-                            <div class="icon-bg bg-dark"></div>
-                        </i><span class="menu-title">Opcion X</span></a>
-                          
-                        </li>
-                        <li><a href="Email.html"><i class="fa fa-envelope-o">
-                            <div class="icon-bg bg-primary"></div>
-                        </i><span class="menu-title">Opcion X</span></a>
-                          
-                        </li>
-                        <li><a href="Charts.html"><i class="fa fa-bar-chart-o fa-fw">
-                            <div class="icon-bg bg-orange"></div>
-                        </i><span class="menu-title">Opcion X</span></a>
-                           
-                        </li>
-                        <li><a href="Animation.html"><i class="fa fa-slack fa-fw">
-                            <div class="icon-bg bg-green"></div>
-                        </i><span class="menu-title">Opcion X</span></a></li>
-                        </ul> -->
                 </div>
             </nav>
                 <!--END SIDEBAR MENU-->
@@ -344,7 +321,7 @@
                     <!--BEGIN FOOTER-->
                     <div id="footer">
                         <div class="copyright">
-                            <a href="http://themifycloud.com">2016 Govern de les TIC - Jose Ramón Santoyo - Miguel Angel - Vicente García</a></div>
+                            <a href="http://themifycloud.com">2016 Govern de les TIC - Jose Ramón Santoyo - Miguel Ángel Martín - Vicente García</a></div>
                     </div>
                     <!--END FOOTER-->
                 </div>
