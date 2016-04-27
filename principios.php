@@ -100,7 +100,10 @@
                 <!--BEGIN SIDEBAR MENU-->
                 <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                     data-position="right" class="navbar-default navbar-static-side">
-                                <div class="sidebar-collapse menu-scroll">
+                <div class="sidebar-collapse menu-scroll">
+                    <ul id="side-menu" class="nav">
+                        
+                 <div class="sidebar-collapse menu-scroll">
                     <ul id="side-menu" class="nav">
                         
                          <div class="clearfix"></div>
@@ -113,7 +116,7 @@
                         </i><span class="menu-title">Propuestas</span></a>
                            
                         </li>
-                            <li><a href="principios.php"><i class="fa fa-sitemap fa-fw">
+                            <li class="active"><a href="principios.php"><i class="fa fa-sitemap fa-fw">
                             <div class="icon-bg bg-dark"></div>
                         </i><span class="menu-title">Principios</span></a>
                           
@@ -123,7 +126,7 @@
                         </i><span class="menu-title">Proyectos</span></a>
                            
                         </li>
-                        <li class="active"><a href="metricas.php"><i class="fa fa-edit fa-fw">
+                        <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
                             <div class="icon-bg bg-violet"></div>
                         </i><span class="menu-title">Métricas</span></a>
                           
@@ -213,12 +216,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Métricas</div>
+                            <div class="page-title">Principios</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="hidden"><a href="#">Métricas</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="active">Métricas</li>
+                            <li class="hidden"><a href="#">Principios</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li class="active">Principios</li>
                         </ol>
                         <div class="clearfix">
                         </div>
@@ -235,11 +238,11 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Métricas</div>
+                                            <div class="caption">Principios</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
                                                 $mysqli = mysqli_connect("localhost","root","", "test");
-                                                $res = $mysqli->query("SELECT * FROM metricas WHERE TRUE;");
+                                                $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
 
                                                 $out.='<tr>';
@@ -252,24 +255,8 @@
                                                 $out.='Nombre';
                                                 $out.='</th>';
 
-                                                $out.='<th>';
-                                                $out.='Umbral Bajo';
-                                                $out.='</th>';
-
-                                                $out.='<th>';
-                                                $out.='Umbral Medio';
-                                                $out.='</th>';
-
-                                                $out.='<th>';
-                                                $out.='Umbral Alto';
-                                                $out.='</th>';
-
                                                 $out.='<th>'; 
                                                 $out.='Descripción';
-                                                $out.='</th>';
-
-                                                $out.= '<th>';
-                                                $out.='Proyecto al que se aplica';
                                                 $out.='</th>';
 
                                                 while($row = $res->fetch_row()){
@@ -285,55 +272,15 @@
 
                                                     $out.='<td>';
                                                     $out.=$row[2];
-                                                    $out.='%';
                                                     $out.='</td>';
 
-                                                    $out.='<td>';
-                                                    $out.=$row[3];
-                                                    $out.='%';
-                                                    $out.='</td>';
-
-                                                    $out.='<td>';
-                                                    $out.=$row[4];
-                                                    $out.='%';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.=$row[5];
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM proyectos WHERE id = $row[6];");
-                                                    $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                    $out.=$filaNomMetrica[0];
-                                                    $out.='</a>';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.='
-                                                    <div class="todo-actions pull-right clearfix">
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                            </i></a>
-                                                    </div>';
-                                                    $out.='</td>';
                                                     $out.='</tr>';
                                                     
                                                 }
                                                 $out.='</table>';
                                                 echo $out;
-
-                                                  // echo "<script>
-                                                  //   $(function() {
-                                                  //   $('#example').DataTable();
-                                                  //   } );
-                                                  // </script>"
                                                   
                                                 ?> 
-
-                                                
-
 
                                         </div>
                                     </div>

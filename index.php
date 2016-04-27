@@ -112,9 +112,9 @@
                         </i><span class="menu-title">Propuestas</span></a>
                            
                         </li>
-                            <li><a href="objetivos.php"><i class="fa fa-sitemap fa-fw">
+                            <li><a href="principios.php"><i class="fa fa-sitemap fa-fw">
                             <div class="icon-bg bg-dark"></div>
-                        </i><span class="menu-title">Objetivos</span></a>
+                        </i><span class="menu-title">Principios</span></a>
                           
                         </li>
                         <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
