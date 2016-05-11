@@ -241,7 +241,7 @@
                                             <div class="caption">Principios</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","", "test");
+                                                $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
 

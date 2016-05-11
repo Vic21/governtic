@@ -238,7 +238,7 @@
                                             <div class="caption">Panel de alertas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","", "test");
+                                                $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 $res = $mysqli->query("SELECT * FROM datos WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
                                                 $out.='<tr>';
