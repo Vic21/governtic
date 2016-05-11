@@ -8,8 +8,7 @@
     <html lang="en">
     <head>
         <title>Govern de les TIC</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="images/icons/favicon.ico">
         <link rel="apple-touch-icon" href="images/icons/favicon.png">
@@ -28,6 +27,7 @@
         <link type="text/css" rel="stylesheet" href="styles/zabuto_calendar.min.css">
         <link type="text/css" rel="stylesheet" href="styles/pace.css">
         <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
+
     </head>
     <body>
         <div>
@@ -100,11 +100,11 @@
                 <!--BEGIN SIDEBAR MENU-->
                 <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                     data-position="right" class="navbar-default navbar-static-side">
-                                <div class="sidebar-collapse menu-scroll">
+                <div class="sidebar-collapse menu-scroll">
                     <ul id="side-menu" class="nav">
                         
                          <div class="clearfix"></div>
-                        <li><a href="index.php"><i class="fa fa-tachometer fa-fw">
+                        <li class="active"><a href="index.php"><i class="fa fa-tachometer fa-fw">
                             <div class="icon-bg bg-orange"></div>
                         </i><span class="menu-title">Principal</span></a></li>
 
@@ -123,7 +123,7 @@
                         </i><span class="menu-title">Proyectos</span></a>
                            
                         </li>
-                        <li class="active"><a href="metricas.php"><i class="fa fa-edit fa-fw">
+                        <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
                             <div class="icon-bg bg-violet"></div>
                         </i><span class="menu-title">Métricas</span></a>
                           
@@ -213,12 +213,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Métricas</div>
+                            <div class="page-title">Principal</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="hidden"><a href="#">Métricas</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="active">Métricas</li>
+                            <li class="hidden"><a href="#">Principal</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li class="active">Principal</li>
                         </ol>
                         <div class="clearfix">
                         </div>
@@ -235,81 +235,50 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Métricas</div>
+                                            <div class="caption">Panel de alertas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
                                                 $mysqli = mysqli_connect("localhost","root","", "test");
-                                                $res = $mysqli->query("SELECT * FROM metricas WHERE TRUE;");
+                                                $res = $mysqli->query("SELECT * FROM propuestas WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered">';
-
                                                 $out.='<tr>';
-
                                                 $out.='<th>';
                                                 $out.='ID';
                                                 $out.='</th>';
-
                                                 $out.='<th>';
-                                                $out.='Nombre';
+                                                $out.='Título';
                                                 $out.='</th>';
-
                                                 $out.='<th>';
-                                                $out.='Umbral Bajo';
+                                                $out.='Fecha de Alta';
                                                 $out.='</th>';
-
                                                 $out.='<th>';
-                                                $out.='Umbral Medio';
+                                                $out.='Capital Inicial';
                                                 $out.='</th>';
-
-                                                $out.='<th>';
-                                                $out.='Umbral Alto';
-                                                $out.='</th>';
-
                                                 $out.='<th>'; 
-                                                $out.='Descripción';
+                                                $out.='Capital Asignado';
                                                 $out.='</th>';
-
                                                 $out.= '<th>';
-                                                $out.='Proyecto al que se aplica';
+                                                $out.='Estado';
                                                 $out.='</th>';
-
+                                                $out.='<th>';
                                                 while($row = $res->fetch_row()){
                                                     $out.='<tr>';
-
                                                     $out.='<td>';
                                                     $out.=$row[0];
                                                     $out.='</td>'; 
-
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
-
-                                                    $out.='<td>';
                                                     $out.=$row[2];
-                                                    $out.='%';
                                                     $out.='</td>';
-
                                                     $out.='<td>';
                                                     $out.=$row[3];
-                                                    $out.='%';
                                                     $out.='</td>';
-
                                                     $out.='<td>';
                                                     $out.=$row[4];
-                                                    $out.='%';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
+                                                    $out.='</td>';                                                       $out.='<td>';
                                                     $out.=$row[5];
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM proyectos WHERE id = $row[6];");
-                                                    $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                    $out.=$filaNomMetrica[0];
-                                                    $out.='</a>';
-                                                    $out.='</td>'; 
-
+                                                    $out.='</td>';  
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
@@ -355,7 +324,7 @@
 
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-
+        <script src="script/jquery.tablesorter.js"></script> 
         <script src="script/jquery-1.10.2.min.js"></script>
         <script src="script/jquery-migrate-1.2.1.min.js"></script>
         <script src="script/jquery-ui.js"></script>
