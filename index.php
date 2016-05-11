@@ -262,7 +262,7 @@
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 while($row = $res->fetch_row()){
-                                                    $out.='<tr>';
+                                                    $out.='<tr  data-price="'.$row[4].'">';
                                                     $out.='<td>';
                                                     $out.=$row[0];
                                                     $out.='</td>'; 
@@ -285,13 +285,13 @@
                                                     $out.='<td>';
                                                     $out.=$row[3];
                                                     $out.='</td>';
-                                                    $out.='<td>';
+                                                    $out.='<td class="price">';
                                                     $out.=$row[4];
                                                     $out.='</td>';   
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
-                                                        <button onclick="myFunction()">Modificar presupuesto</button><p id="demo"></p>
+                                                        <button onclick="myFunction(this)">Modificar presupuesto</button><p id="demo"></p>
 
                                                         <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
                                                         <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
@@ -313,12 +313,19 @@
                                                 ?> 
 
                                                   <script>
-                                                    function myFunction() {
-                                                    var person = prompt("Introduce el nuevo presupuesto", "30.000€");
+                                                    function myFunction(element) {
+                                                        var price = $(element).parents("tr").attr("data-price");
+                                            
+                                                    var newPrice = prompt("Introduce el nuevo presupuesto", price);
     
-                                                    if (person != null) {
-                                                        document.getElementById("demo").innerHTML = "Tu presupuesto nuevo es " + person + "! ";
+                                                    if (newPrice != null) {
+                                                        //document.getElementById("demo").innerHTML = "Tu presupuesto nuevo es " + person + "! ";
+                                                        $(element).parents("tr").attr("data-price", newPrice);
+                                                        $(element).parents("tr").find("td.price").text(newPrice);
                                                         }
+
+
+
                                                     }
                                                 </script>
 
