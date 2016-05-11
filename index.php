@@ -291,11 +291,13 @@
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
+                                                        <button onclick="myFunction()">Modificar presupuesto</button><p id="demo"></p>
+
                                                         <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                            </i></a>
+                                                        <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
+                                                        </i></a>
                                                     </div>';
-                                                    $out.='</td>';
+                                                    //$out.='</td>';
                                                     $out.='</tr>';
                                                     
                                                 }
@@ -310,7 +312,15 @@
                                                   
                                                 ?> 
 
-                                                
+                                                  <script>
+                                                    function myFunction() {
+                                                    var person = prompt("Introduce el nuevo presupuesto", "30.000€");
+    
+                                                    if (person != null) {
+                                                        document.getElementById("demo").innerHTML = "Tu presupuesto nuevo es " + person + "! ";
+                                                        }
+                                                    }
+                                                </script>
 
 
                                         </div>
