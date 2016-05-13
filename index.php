@@ -228,10 +228,7 @@
                     <div class="page-content">
                         <div id="tab-general">
                             <div id="sum_box" class="row mbl">
-
-
-                        
-
+                                
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">

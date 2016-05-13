@@ -240,29 +240,50 @@
                                         <div class="portlet-header">
                                             <div class="caption">Estadísticas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
-                                            <canvas id="myChart" width="400" height="400"></canvas>
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3]
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-</script>
+                                                                                        <?php
+                                                $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                $res = $mysqli->query("SELECT * FROM estadisticascaducidad WHERE TRUE;");
+                                                 $fecha = array();
+                                                 $totales = array();
+                                                 $controlados = array();
+                                                 $controladosTirados = array();   
+                                                 while($row = $res->fetch_row()){
+                                                    array_push($fecha, $row[0]);
+                                                    array_push($totales, $row[1]);
+                                                    array_push($controlados, $row[3]);
+                                                    array_push($controladosTirados, $row[2]);    
+                                                 }
+                                                ?>
+                                            <canvas id="myChart"></canvas>
+                                                <script>
+                                                var ctx = document.getElementById("myChart");
+                                                var porc
+                                                var myChart = new Chart(ctx, {
+                                                    type: 'bar',
+                                                    data: {
+                                                        labels: <?php echo json_encode($fecha); ?>,
+                                                        datasets: [{
+                                                            label: 'Total',
+                                                            data: <?php echo json_encode($totales); ?>
+                                                        },{
+                                                            label: 'Controlados',
+                                                            data: <?php echo json_encode($controlados); ?>
+                                                        },{
+                                                            label: 'Tirados',
+                                                            data: <?php echo json_encode($controladosTirados); ?>
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                    beginAtZero:true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                });
+                                                </script>
                                         </div>
                                     </div>
                                 </div>
