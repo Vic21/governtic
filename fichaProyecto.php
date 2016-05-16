@@ -1,7 +1,9 @@
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+$idProyecto = $_GET['project-id'];
+echo $idProyecto;
 ?>
 
 <!DOCTYPE html>
@@ -235,123 +237,37 @@ error_reporting(E_ALL);
                                                         <div class="col-lg-12">
                                                             <div class="portlet box">
                                                                 <div class="portlet-header">
-                                                                    <div class="caption">Proyectos Actuales</div>
                                                                     <div style="overflow: hidden;" class="portlet-body">
+
+                                                                        
+
+
+                                                                    
                                                                         <?php
                                                                         $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                                        $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
-                                                                        $out ='<table id="example" class="table table-striped table-bordered">';
+                                                                        $res = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
-                                                                        $out.='<tr>';
 
-                                                                        $out.='<th>';
-                                                                        $out.='ID';
-                                                                        $out.='</th>';
+                                                                          while($row = $res->fetch_row()){
 
-                                                                        $out.='<th>';
-                                                                        $out.='Nombre';
-                                                                        $out.='</th>';
-
-                                                                        $out.='<th>';
-                                                                        $out.='Prioridad';
-                                                                        $out.='</th>';
-
-                                                                        $out.='<th>';
-                                                                        $out.='Descripción';
-                                                                        $out.='</th>';
-
-                                                                        $out.='<th>';
-                                                                        $out.='Fecha de Inicio';
-                                                                        $out.='</th>';
-
-                                                                        $out.='<th>'; 
-                                                                        $out.='Coste Inicial';
-                                                                        $out.='</th>';
-
-                                                                        $out.= '<th>';
-                                                                        $out.='Métrica';
-                                                                        $out.='</th>';
-
-                                                                        $out.= '<th>';
-                                                                        $out.='Alineamiento';
-                                                                        $out.='</th>';
-
-                                                                        while($row = $res->fetch_row()){
-                                                                            $out.='<tr>';
-
-                                                                            $out.='<td>';
-                                                                            $out.=$row[0];
-                                                                            $out.='</td>'; 
-
-                                                                            $out.='<td>';
-                                                                            $out.='<a href="fichaProyecto.php?project-id='.$row[0].'">';
-                                                                            $out.=$row[1];
-                                                                            $out.='</a>';
-                                                                            $out.='</td>';
-
-                                                                            switch ($row[2]) {
-                                                                                case "alta":
-                                                                                $out.='<td align="center" class="danger">';
-                                                                                break;
-                                                                                case "media":
-                                                                                $out.='<td align="center" class="warning">';
-                                                                                break;
-                                                                                case "baja":
-                                                                                $out.='<td align="center" class="success">';
-                                                                                break;
-                                                                            }
-                                                                            $out.='</td>';
-
-                                                                            $out.='<td>';
-                                                                            $out.=$row[3];
-                                                                            $out.='</td>';
-
-                                                                            $out.='<td>';
-                                                                            $out.=$row[4];
-                                                                            $out.='</td>'; 
-
-                                                                            $out.='<td>';
-                                                                            $out.=$row[5];
-                                                                            $out.='€';
-                                                                            $out.='</td>'; 
-
-                                                                            $out.='<td>';
-                                                                            $nombreMetrica = $mysqli->query("SELECT nombre FROM metricas WHERE id = $row[6];");
-                                                                            $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                                            $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                                            $out.=$filaNomMetrica[0];
-                                                                            $out.='</a>';
-                                                                            $out.='</td>'; 
-
-                                                                            $out.='<td>';
-                                                                            $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[7];");
-                                                                            $filaNomObj = $alineamientoObjetivo->fetch_row();
-                                                                            $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                                            $out.=$filaNomObj[0];
-                                                                            $out.='</a>';
-                                                                            $out.='</td>'; 
-
-                                                                            $out.='<td>';
-                                                                            $out.='
-                                                                            <div class="todo-actions pull-right clearfix">
-                                                                            <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                                            </i></a>
-                                                                            </div>';
-                                                                            $out.='</td>';
-                                                                            $out.='</tr>';
                                                                             
-                                                                        }
-                                                                        $out.='</table>';
-                                                                        echo $out;
+                                                                            
+                                                                            $out.='<h1>';
+                                                                            $out.=$row[1];
+                                                                            $out.='</h1>';
+                                                                            }
 
-                                              // echo "<script>
-                                              //   $(function() {
-                                              //   $('#example').DataTable();
-                                              //   } );
-                                              // </script>"
-                                                                        
-                                                                        ?> 
+
+
+
+                                                                            // $out.='<h1>';
+                                                                            // // $row = $res->fetch_row()
+                                                                            // // $out.=row[1];
+                                                                            // $out.='</h1>';     
+                                                                            echo $out;
+
+
+                                                                        ?>
 
                                                                         
 
