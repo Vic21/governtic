@@ -268,9 +268,9 @@ echo $idProyecto;
                                                                                 break;
                                                                             }
                                                                     $out.='</div>';
-                                                                    $out.='<div class="col-md-6">';
-                                                                    $out.='<b>Nombre del proyecto:</b> ';
-                                                                    $out.=$row[1];
+                                                                    $out.='<div class="col-md-12">';
+                                                                    $out.='<b>Descripción del proyecto:</b> ';
+                                                                    $out.=$row[3];
                                                                     $out.='</div>';
 
 
