@@ -284,7 +284,9 @@ error_reporting(E_ALL);
                                                                             $out.='</td>'; 
 
                                                                             $out.='<td>';
+                                                                            $out.='<a href="fitxaProjecte.php?project-id='.$row[0].'">';
                                                                             $out.=$row[1];
+                                                                            $out.='</a>';
                                                                             $out.='</td>';
 
                                                                             switch ($row[2]) {
