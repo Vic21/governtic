@@ -331,14 +331,14 @@ error_reporting(E_ALL);
                                                                             $out.='</a>';
                                                                             $out.='</td>'; 
 
-                                                                            $out.='<td>';
-                                                                            $out.='
-                                                                            <div class="todo-actions pull-right clearfix">
-                                                                            <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                                            </i></a>
-                                                                            </div>';
-                                                                            $out.='</td>';
+                                                                            // $out.='<td>';
+                                                                            // $out.='
+                                                                            // <div class="todo-actions pull-right clearfix">
+                                                                            // <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
+                                                                            // <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
+                                                                            // </i></a>
+                                                                            // </div>';
+                                                                            // $out.='</td>';
                                                                             $out.='</tr>';
                                                                             
                                                                         }

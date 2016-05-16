@@ -156,9 +156,26 @@ echo $idProyecto;
                                         <div id="page-wrapper">
                                             <!--BEGIN TITLE & BREADCRUMB PAGE-->
                                             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
-                                                <div class="page-header pull-left">
-                                                    <div class="page-title">Proyectos</div>
-                                                </div>
+                                             <?php
+                                                                  $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                  $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
+
+
+                                                                  while($row1 = $resp->fetch_row()){
+
+                                                                $out1.='<div class="page-header pull-left">';
+                                                                $out1.='<div class="page-title">';
+                                                                $out1.='Proyecto ';
+                                                                $out1.=$row1[1];
+                                                                $out1.='</div>';
+                                                                $out1.='</div>';
+
+                                                                  }
+
+                                                                  echo $out1;
+
+                                            ?>
+                                                
                                                 <ol class="breadcrumb page-breadcrumb pull-right">
                                                     <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                                                     <li class="hidden"><a href="#">Proyectos</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -241,7 +258,7 @@ echo $idProyecto;
                                                                     $out.='<div>';
                                                                     $out.='<div class="panel panel-grey">';
                                                                     $out.='<div class="panel-heading">';
-                                                                    $out.=$row[1];
+                                                                    $out.='Caracteristicas';
                                                                     $out.='</div>';
 
 
@@ -273,6 +290,29 @@ echo $idProyecto;
                                                                     $out.=$row[3];
                                                                     $out.='</div>';
 
+                                                                    $out.='<div class="col-md-6">';
+                                                                    $out.='<b>Fecha del proyecto: </b> ';
+                                                                    $out.=$row[4];
+                                                                    $out.='</div>';
+
+                                                                    $out.='<div class="col-md-12">';
+                                                                    $out.='<b>Coste inicial: </b> ';
+                                                                    $out.=$row[5];
+                                                                    $out.='€';
+                                                                    $out.='</div><br/>';
+
+                                                                    $out.='<br/>';
+                                                                    $out.='<br/>';
+                                                                    $out.='<br/>';
+                                                                    $out.='<br/>';
+                                                                    $out.='<br/>';
+
+                                                                    //$out.='<div class="form-actions text-right pal">';
+                                                                    $out.='<div class="text-right pal">';
+                                                                    $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>&nbsp&nbsp';
+                                                                    $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>&nbsp&nbsp';
+                                                                    $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
+                                                                    $out.='</div>';
 
 
 
@@ -302,7 +342,7 @@ echo $idProyecto;
 
                                                                     $out.='<div class="col-lg-12">';
                                                                     $out.='<div>';
-                                                                    $out.='<div class="panel panel-violet">';
+                                                                    $out.='<div class="panel panel-grey">';
                                                                     $out.='<div class="panel-heading">';
                                                                     $out.='Estadísticas';
                                                                     $out.='</div>';
