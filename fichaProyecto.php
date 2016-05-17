@@ -119,7 +119,7 @@ echo $idProyecto;
         },
         yAxis: {
             title: {
-                text: 'Total percent market share'
+                text: 'Total de usuarios'
             }
 
         },
@@ -145,31 +145,51 @@ echo $idProyecto;
             name: 'Brands',
             colorByPoint: true,
             data: [{
-                name: 'Microsoft Internet Explorer',
+                name: 'Enero',
                 y: 56.33,
                 drilldown: 'Microsoft Internet Explorer'
             }, {
-                name: 'Chrome',
+                name: 'Febrero',
                 y: 24.03,
                 drilldown: 'Chrome'
             }, {
-                name: 'Firefox',
+                name: 'Marzo',
                 y: 10.38,
                 drilldown: 'Firefox'
             }, {
-                name: 'Safari',
+                name: 'Abril',
                 y: 4.77,
                 drilldown: 'Safari'
             }, {
-                name: 'Opera',
+                name: 'Mayo',
                 y: 0.91,
                 drilldown: 'Opera'
             }, {
-                name: 'Proprietary or Undetectable',
+                name: 'Junio',
                 y: 0.2,
-                drilldown: null
+                drilldown: 'Opera'
             }, {
-                name: 'Opera',
+                name: 'Julio',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Agosto',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Septiembre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Octubre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Noviembre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Diciembre',
                 y: 0.91,
                 drilldown: 'Opera'
             }]
@@ -389,7 +409,7 @@ echo $idProyecto;
         },
         yAxis: {
             title: {
-                text: 'Total percent market share'
+                text: 'Total de ventas'
             }
 
         },
@@ -415,29 +435,53 @@ echo $idProyecto;
             name: 'Brands',
             colorByPoint: true,
             data: [{
-                name: 'Microsoft Internet Explorer',
+                name: 'Enero',
                 y: 56.33,
                 drilldown: 'Microsoft Internet Explorer'
             }, {
-                name: 'Chrome',
+                name: 'Febrero',
                 y: 24.03,
                 drilldown: 'Chrome'
             }, {
-                name: 'Firefox',
+                name: 'Marzo',
                 y: 10.38,
                 drilldown: 'Firefox'
             }, {
-                name: 'Safari',
+                name: 'Abril',
                 y: 4.77,
                 drilldown: 'Safari'
             }, {
-                name: 'Opera',
+                name: 'Mayo',
                 y: 0.91,
                 drilldown: 'Opera'
             }, {
-                name: 'Proprietary or Undetectable',
+                name: 'Junio',
                 y: 0.2,
-                drilldown: null
+                drilldown: 'Opera'
+            }, {
+                name: 'Julio',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Agosto',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Septiembre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Octubre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Noviembre',
+                y: 0.91,
+                drilldown: 'Opera'
+            }, {
+                name: 'Diciembre',
+                y: 0.91,
+                drilldown: 'Opera'
             }]
         }],
         drilldown: {
