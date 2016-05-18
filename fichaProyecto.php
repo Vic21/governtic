@@ -955,6 +955,11 @@ echo $idProyecto;
                                                                     $out.='€';
                                                                     $out.='</div><br/>';
 
+                                                                    $out.='<div class="col-md-12">';
+                                                                    $out.='<b>Estado: </b> ';
+                                                                    $out.=$row[2];
+                                                                    $out.='</div><br/>';
+
                                                                     $out.='<br/>';
                                                                     $out.='<br/>';
                                                                     $out.='<br/>';
@@ -963,7 +968,7 @@ echo $idProyecto;
 
                                                                     //$out.='<div class="form-actions text-right pal">';
                                                                     $out.='<div class="text-right pal">';
-                                                                    $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>&nbsp&nbsp';
+                                                                    //$out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>&nbsp&nbsp';
                                                                     $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>&nbsp&nbsp';
                                                                     $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
                                                                     $out.='</div>';
