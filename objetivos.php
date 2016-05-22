@@ -126,29 +126,18 @@
                         </i><span class="menu-title">Proyectos</span></a>
                            
                         </li>
-                        <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
-                            <div class="icon-bg bg-violet"></div>
-                        </i><span class="menu-title">Métricas</span></a>
-                          
-                        </li>
+
                         <li class="active"><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
                             <div class="icon-bg bg-blue"></div>
                         </i><span class="menu-title">Objetivos Estratégicos</span></a>
                               
                         </li>
-                        <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
-                            <div class="icon-bg bg-red"></div>
-                        </i><span class="menu-title">Evaluaciones</span></a>
-                          
-                        </li>
+                        
                         <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
                             <div class="icon-bg bg-yellow"></div>
                         </i><span class="menu-title">Gestión Económica</span></a>
                            
                        </li>
-                        <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
-                            <div class="icon-bg bg-orange"></div>
-                        </i><span class="menu-title">Estadísticas</span></a>
                 </div>
             </nav>
                 <!--END SIDEBAR MENU-->
@@ -298,6 +287,7 @@
                                                     
                                                 }
                                                 $out.='</table>';
+
                                                 echo $out;
 
                                                   // echo "<script>
@@ -307,10 +297,60 @@
                                                   // </script>"
                                                   
                                                 ?> 
+                                                   <form class="form-horizontal" method="POST">
+                                                    <fieldset>
 
-                                                
+                                                    <!-- Form Name -->
+                                                    <legend>Añadir Objetivo</legend>
 
+                                                    <!-- Text input-->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+                                                      <div class="col-md-4">
+                                                      <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="">
+                                                        
+                                                      </div>
+                                                    </div>
 
+                                                    <!-- Textarea -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="taDesc">Descripción</label>
+                                                      <div class="col-md-4">                     
+                                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción"></textarea>
+                                                      </div>
+                                                    </div>
+
+                                                    <!-- Select Basic -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="selectbasic">Principio</label>
+                                                      <div class="col-md-4">
+                                                        <select id="selectbasic" name="principio" class="form-control">
+                                                          <?php
+                                                                    $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
+                                                                    while($row = $res->fetch_row()){
+                                                                       $out.='<option value="';
+                                                                       $out.=$row[0]; 
+                                                                       $out.='">'; 
+                                                                       $out.=$row[1];   
+                                                                       $out.='</option>';  
+                                                                    }
+                                                                    echo $out;
+                                                                    ?> 
+                                                        </select>
+                                                      </div>
+                                                    </div>
+
+                                                    <!-- Button -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="botonAñadir"></label>
+                                                      <div class="col-md-4">
+                                                        <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Añadir</button>
+                                                      </div>
+                                                    </div>
+
+                                                    </fieldset>
+                                                    </form>
                                         </div>
                                     </div>
                                 </div>
@@ -328,7 +368,78 @@
             </div>
         </div>
 
+        <?php
+        if(isset($_POST['botonAñadir']))
+{
+    // checks and alerts
+    // ...
 
+// Actualizamos en funcion del id que recibimos
+
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $idPrincipio = $_POST['principio'];
+
+        $mysqli = mysqli_connect("localhost","root","root", "test");
+        $query = "INSERT INTO `objetivos` (`id`, `nombre`, `descripcion`, `idPrincipio`) VALUES (NULL, ";
+
+        $query .= "'";  
+        $query .= $nombre;
+        $query .= "'";  
+        $query .= ", "; 
+
+        $query .= "'";  
+        $query .= $descripcion;
+        $query .= "'";  
+        $query .= ", ";
+
+        $query .= "'";  
+        $query .= $idPrincipio;
+        $query .= "'";  
+        $query .= " )";
+
+if (mysqli_query($mysqli, $query)== FALSE)   {
+     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+}
+mysqli_close($mysqli);
+}
+?>
+     <?php
+ if(isset($_POST['botonAñadir']))
+{
+    // checks and alerts
+    // ...
+
+// Actualizamos en funcion del id que recibimos
+
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $idPrincipio = $_POST['principio'];
+
+        $mysqli = mysqli_connect("localhost","root","root", "test");
+        $query = "INSERT INTO `objetivos` (`id`, `nombre`, `descripcion`, `idPrincipio`) VALUES (NULL, ";
+
+        $query .= "'";  
+        $query .= $nombre;
+        $query .= "'";  
+        $query .= ", "; 
+
+        $query .= "'";  
+        $query .= $descripcion;
+        $query .= "'";  
+        $query .= ", ";
+
+        $query .= "'";  
+        $query .= $idPrincipio;
+        $query .= "'";  
+        $query .= " )";
+
+if (mysqli_query($mysqli, $query)== FALSE)   {
+     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+}
+mysqli_close($mysqli);
+}
+?>
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 

@@ -126,29 +126,17 @@
                         </i><span class="menu-title">Proyectos</span></a>
                            
                         </li>
-                        <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
-                            <div class="icon-bg bg-violet"></div>
-                        </i><span class="menu-title">Métricas</span></a>
-                          
-                        </li>
                         <li><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
                             <div class="icon-bg bg-blue"></div>
                         </i><span class="menu-title">Objetivos Estratégicos</span></a>
                               
-                        </li>
-                        <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
-                            <div class="icon-bg bg-red"></div>
-                        </i><span class="menu-title">Evaluaciones</span></a>
-                          
                         </li>
                         <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
                             <div class="icon-bg bg-yellow"></div>
                         </i><span class="menu-title">Gestión Económica</span></a>
                            
                        </li>
-                        <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
-                            <div class="icon-bg bg-orange"></div>
-                        </i><span class="menu-title">Estadísticas</span></a>
+
                 </div>
             </nav>
                 <!--END SIDEBAR MENU-->

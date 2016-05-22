@@ -126,10 +126,6 @@ error_reporting(E_ALL);
                                 <div class="icon-bg bg-yellow"></div>
                                 </i><span class="menu-title">Gestión Económica</span></a>
                             </li>
-                            <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
-                                <div class="icon-bg bg-orange"></div>
-                                </i><span class="menu-title">Estadísticas</span></a>
-                            </li>
                         </div>
                     </nav>
                     <!--END SIDEBAR MENU-->
