@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2016 a las 21:53:22
+-- Tiempo de generación: 25-05-2016 a las 18:13:35
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -67,24 +67,40 @@ CREATE TABLE `estadisticascaducidad` (
   `fecha` date NOT NULL,
   `totales` int(11) NOT NULL,
   `totalesTiradosControl` int(11) NOT NULL,
-  `totalesControl` int(11) NOT NULL
+  `totalesControl` int(11) NOT NULL,
+  `beneficios` int(11) NOT NULL,
+  `gastos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `estadisticascaducidad`
 --
 
-INSERT INTO `estadisticascaducidad` (`fecha`, `totales`, `totalesTiradosControl`, `totalesControl`) VALUES
-('2015-08-31', 50000, 20, 2000),
-('2015-09-30', 55000, 100, 4000),
-('2015-10-31', 55600, 200, 8000),
-('2015-11-30', 56000, 205, 10000),
-('2015-12-31', 60000, 150, 12000),
-('2016-01-31', 65000, 100, 15000),
-('2016-02-29', 70000, 150, 25000),
-('2016-03-31', 72000, 100, 30000),
-('2016-04-30', 75000, 50, 40000),
-('2016-05-31', 78000, 50, 50000);
+INSERT INTO `estadisticascaducidad` (`fecha`, `totales`, `totalesTiradosControl`, `totalesControl`, `beneficios`, `gastos`) VALUES
+('2015-08-31', 50000, 20, 2000, 0, 0),
+('2015-09-30', 55000, 100, 4000, 0, 0),
+('2015-10-31', 55600, 200, 8000, 0, 0),
+('2015-11-30', 56000, 205, 10000, 0, 0),
+('2015-12-31', 60000, 150, 12000, 0, 0),
+('2016-01-31', 65000, 100, 15000, 0, 0),
+('2016-02-29', 70000, 150, 25000, 0, 0),
+('2016-03-31', 72000, 100, 30000, 0, 0),
+('2016-04-30', 75000, 50, 40000, 0, 0),
+('2016-05-31', 78000, 50, 50000, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estadisticascompetencia`
+--
+
+CREATE TABLE `estadisticascompetencia` (
+  `fecha` date NOT NULL,
+  `clientestotales` int(11) NOT NULL,
+  `porcentajeClientesSatisfechos` int(11) NOT NULL,
+  `costes` decimal(10,0) NOT NULL,
+  `beneficios` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -95,21 +111,28 @@ INSERT INTO `estadisticascaducidad` (`fecha`, `totales`, `totalesTiradosControl`
 CREATE TABLE `estadisticastiendaonline` (
   `fecha` date NOT NULL,
   `usuarios` int(11) NOT NULL,
-  `numeroVentas` int(11) NOT NULL
+  `numeroVentas` int(11) NOT NULL,
+  `beneficios` int(11) NOT NULL,
+  `gastos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `estadisticastiendas`
+-- Volcado de datos para la tabla `estadisticastiendaonline`
 --
 
-CREATE TABLE `estadisticastiendas` (
-  `idtienda` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  `costes` decimal(10,0) NOT NULL,
-  `beneficios` decimal(10,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `estadisticastiendaonline` (`fecha`, `usuarios`, `numeroVentas`, `beneficios`, `gastos`) VALUES
+('2015-05-31', 378, 72421, 0, 0),
+('2015-06-30', 355, 70100, 0, 0),
+('2015-07-31', 407, 74821, 0, 0),
+('2015-08-31', 462, 79826, 0, 0),
+('2015-09-30', 493, 81390, 0, 0),
+('2015-10-31', 479, 79951, 0, 0),
+('2015-11-30', 575, 89551, 0, 0),
+('2015-12-31', 654, 95874, 0, 0),
+('2016-01-31', 678, 98301, 0, 0),
+('2016-02-29', 666, 97151, 0, 0),
+('2016-03-31', 710, 101121, 0, 0),
+('2016-04-30', 763, 105896, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -118,6 +141,23 @@ CREATE TABLE `estadisticastiendas` (
 --
 
 CREATE TABLE `evaluacioncaducidad` (
+  `id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `responsabilidad` int(11) NOT NULL,
+  `estrategia` int(11) NOT NULL,
+  `adquisicion` int(11) NOT NULL,
+  `rendimiento` int(11) NOT NULL,
+  `conformidad` int(11) NOT NULL,
+  `conductaHumana` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `evaluacioncompetencia`
+--
+
+CREATE TABLE `evaluacioncompetencia` (
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `responsabilidad` int(11) NOT NULL,
@@ -145,6 +185,15 @@ CREATE TABLE `evaluaciontiendaonline` (
   `conductaHumana` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `evaluaciontiendaonline`
+--
+
+INSERT INTO `evaluaciontiendaonline` (`id`, `fecha`, `responsabilidad`, `estrategia`, `adquisicion`, `rendimiento`, `conformidad`, `conductaHumana`) VALUES
+(1, '2016-01-31', 7, 8, 7, 8, 8, 9),
+(2, '2016-02-29', 8, 9, 7, 9, 9, 8),
+(3, '2016-03-31', 5, 4, 3, 3, 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -165,13 +214,12 @@ CREATE TABLE `metricas` (
 --
 
 INSERT INTO `metricas` (`id`, `nombre`, `umbralBajo`, `umbralalto`, `descripcion`, `idProyecto`) VALUES
-(1, 'Tirados por totales', 5, 15, 'Numero de articulos tirados entre totales', 1),
-(2, 'Controlados vs No controlados', 5, 15, '(Articulostirados totales controlados/totales controlados) y (Articulostirados totales no controlados/totales no controlados)', 1),
-(3, 'Coste proyecto', 2, 20, 'Coste proyecto(mes) incluyendo gastos de amortización y mantenimiento/ventas (€)', 2),
-(4, 'Incremento ventas', 5, 1, 'Incremento ventas online entre meses por numero de usuarios', 2),
-(5, 'Incremento importes totales', 5, 1, 'Aumentos entre meses por importes a nivel global (compania)', 3),
-(6, 'aumento por tienda', 5, 1, 'Aumento entre meses por tienda', 3),
-(7, 'Incremento ventas por zonas', 2, 0, 'Comparativa de desempeno entre tiendas por zonas (ventas)', 3);
+(1, 'Artículos tirados entre Totales', 5, 15, 'Numero de articulos tirados entre totales', 3),
+(2, 'Porcentaje tirados controlados vs no controlados', 5, 15, '(Articulostirados totales controlados/totales controlados) y (Articulostirados totales no controlados/totales no controlados)', 3),
+(3, 'Incremento Ventas al mes', 5, 10, 'Porcentaje de incremento de ventas', 2),
+(4, 'Encuestas sobre precios favorables', 80, 90, 'Porcentaje de encuestas favorables', 2),
+(5, 'Incremento compras web', 2, 5, 'Incremento compras pagina web', 1),
+(6, 'Encuestas online favorables', 80, 90, 'Encuestas tienda online favorables por mes', 1);
 
 -- --------------------------------------------------------
 
@@ -201,7 +249,9 @@ INSERT INTO `objetivos` (`id`, `nombre`, `descripcion`, `idPrincipio`) VALUES
 (8, 'Trabajador satisfecho', 'Procurar  la  formación  y  satisfacción  de  nuestros  trabajadores/as,  aplicando  cursos  de formación, gratificando y reconociendo la responsabilidad y posibilitando su crecimiento profesional', 3),
 (9, 'Implicación del trabajador en la empresa', 'Bonificaciones  a  los  trabajadores  en  forma  de  (viajes,  regalos,  descuentos  en  nuestros productos) para fomentar su integridad y responsabilidad con la organización', 3),
 (10, 'Exclusividad', 'Máximos acuerdos de exclusividad con los proveedores para conseguir buenos precios, donde se consideren beneficiado', 4),
-(11, 'Eficiencia de suministro', 'Acuerdos  con los  proveedores  para conseguir la máxima  eficiencia en  el suministro de mercancías  (puntualidad,  integridad),  mediante  la  evolución  y  desarrollo  constante  en este proceso', 4);
+(11, 'Eficiencia de suministro', 'Acuerdos  con los  proveedores  para conseguir la máxima  eficiencia en  el suministro de mercancías  (puntualidad,  integridad),  mediante  la  evolución  y  desarrollo  constante  en este proceso', 4),
+(14, 'onsdivohn', 'azckinasnc', 2),
+(35, 'Objetivo nuevo', 'sad', 1);
 
 -- --------------------------------------------------------
 
@@ -250,24 +300,27 @@ CREATE TABLE `propuestas` (
 CREATE TABLE `proyectos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `prioridad` varchar(5) NOT NULL,
+  `prioridad` enum('alta','media','baja') NOT NULL,
   `descripcion` varchar(500) NOT NULL,
   `fechaInicio` date NOT NULL,
   `costeInicial` decimal(11,0) NOT NULL,
+  `presupuestoasignado` int(11) NOT NULL,
   `idMetrica1` int(11) NOT NULL,
   `idMetrica2` int(11) NOT NULL,
-  `alineadoObj` int(11) NOT NULL
+  `alineadoObj` int(11) NOT NULL,
+  `estado` enum('activo','pausado','cancelado','planificado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `proyectos`
 --
 
-INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion`, `fechaInicio`, `costeInicial`, `idMetrica1`, `idMetrica2`, `alineadoObj`) VALUES
-(1, 'Tienda on-line', 'alta', 'Las unidades de TIC proponen el proyecto denominado “Tienda on-line” para que los clientes puedan realizar las compras desde casa y no perder oferta de servicio frente a la competencia.', '2015-07-01', '10000', 1, 0, 1),
-(2, 'Competencia', 'media', 'Las unidades de TIC proponen realizar un proyecto denominado “Competencia” para conocer de todos  los  artículos, los  precios  que ofrece la misma, y así proporcionar a la alta dirección una herramienta util para fijar los precios de la organización.', '2014-11-01', '7500', 2, 0, 2),
-(3, 'Caducidad', 'baja', 'Las unidades de negocio proponen el proyecto “Caducidad” para conocer la fecha de caducidad  de  todos  los  productos  perecederos  y  así  evitar  los  altos  costes  que  supone eliminar estos productos', '2015-02-01', '5000', 3, 0, 3),
-(4, 'Distribuidor', 'media', 'Las unidades de negocio proponen el proyecto “Distribuidor” para conocer los precios de los distribuidores de mercancias entre almacen y tienda y seleccionar el más adecuado.', '2015-01-01', '8000', 4, 0, 9);
+INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion`, `fechaInicio`, `costeInicial`, `presupuestoasignado`, `idMetrica1`, `idMetrica2`, `alineadoObj`, `estado`) VALUES
+(1, 'Tienda on-line', 'alta', 'Las unidades de TIC proponen el proyecto denominado “Tienda on-line” para que los clientes puedan realizar las compras desde casa y no perder oferta de servicio frente a la competencia.', '2015-07-01', '10000', 0, 1, 0, 1, 'activo'),
+(2, 'Competencia', 'alta', 'Las unidades de TIC proponen realizar un proyecto denominado “Competencia” para conocer de todos  los  artículos, los  precios  que ofrece la misma, y así proporcionar a la alta dirección una herramienta util para fijar los precios de la organización.', '2014-11-01', '7500', 0, 2, 0, 2, 'activo'),
+(3, 'Caducidad', 'media', 'Las unidades de negocio proponen el proyecto “Caducidad” para conocer la fecha de caducidad  de  todos  los  productos  perecederos  y  así  evitar  los  altos  costes  que  supone eliminar estos productos', '2015-02-01', '5000', 0, 3, 0, 3, 'activo'),
+(4, 'Distribuidor', 'media', 'Las unidades de negocio proponen el proyecto “Distribuidor” para conocer los precios de los distribuidores de mercancias entre almacen y tienda y seleccionar el más adecuado.', '2016-10-01', '8000', 0, 4, 0, 9, 'planificado'),
+(5, 'prueba', 'alta', 'sfghjkl', '2016-05-19', '10000', 15000, 1, 1, 14, 'activo');
 
 -- --------------------------------------------------------
 
@@ -359,10 +412,10 @@ ALTER TABLE `estadisticascaducidad`
   ADD UNIQUE KEY `fecha` (`fecha`);
 
 --
--- Indices de la tabla `estadisticastiendas`
+-- Indices de la tabla `estadisticascompetencia`
 --
-ALTER TABLE `estadisticastiendas`
-  ADD PRIMARY KEY (`idtienda`);
+ALTER TABLE `estadisticascompetencia`
+  ADD PRIMARY KEY (`fecha`);
 
 --
 -- Indices de la tabla `metricas`
@@ -395,7 +448,9 @@ ALTER TABLE `propuestas`
 ALTER TABLE `proyectos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `alineadoObj` (`alineadoObj`),
-  ADD KEY `idMetrica2` (`idMetrica2`);
+  ADD KEY `idMetrica2` (`idMetrica2`),
+  ADD KEY `estado` (`estado`),
+  ADD KEY `alineadoObj_2` (`alineadoObj`);
 
 --
 -- Indices de la tabla `tiendas`
@@ -422,17 +477,17 @@ ALTER TABLE `datos`
 -- AUTO_INCREMENT de la tabla `metricas`
 --
 ALTER TABLE `metricas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `objetivos`
 --
 ALTER TABLE `objetivos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de la tabla `principios`
 --
 ALTER TABLE `principios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `propuestas`
 --
@@ -442,7 +497,7 @@ ALTER TABLE `propuestas`
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tiendas`
 --
