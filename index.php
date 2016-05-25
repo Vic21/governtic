@@ -138,7 +138,7 @@
                         </i><span class="menu-title">Evaluaciones</span></a> -->
                           
                         </li>
-                        <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
+                        <li><a href="geco.php"><i class="fa fa-file-o fa-fw">
                             <div class="icon-bg bg-yellow"></div>
                         </i><span class="menu-title">Gestión Económica</span></a>
                            
