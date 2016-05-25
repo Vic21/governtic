@@ -154,46 +154,54 @@
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
-                <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+                        <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                     data-position="right" class="navbar-default navbar-static-side">
                 <div class="sidebar-collapse menu-scroll">
                     <ul id="side-menu" class="nav">
                         
-                 <div class="sidebar-collapse menu-scroll">
-                    <ul id="side-menu" class="nav">
-                        
                          <div class="clearfix"></div>
-                        <li><a href="index.php"><i class="fa fa-tachometer fa-fw">
+                        <li class="active"><a href="index.php"><i class="fa fa-tachometer fa-fw">
                             <div class="icon-bg bg-orange"></div>
                         </i><span class="menu-title">Principal</span></a></li>
 
+
+                        <li><a href="principios.php"><i class="fa fa-sitemap fa-fw">
+                        <div class="icon-bg bg-dark"></div>
+                        </i><span class="menu-title">Principios</span></a>
+                        </li>
+                        
                         <li><a href="propuestas.php"><i class="fa fa-desktop fa-fw">
                             <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Propuestas</span></a>
-                           
-                        </li>
-                            <li><a href="principios.php"><i class="fa fa-sitemap fa-fw">
-                            <div class="icon-bg bg-dark"></div>
-                        </i><span class="menu-title">Principios</span></a>
-                          
-                        </li>
-                        <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
-                            <div class="icon-bg bg-green"></div>
-                        </i><span class="menu-title">Proyectos</span></a>
-                           
                         </li>
 
-                        <li class="active"><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
+                        <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
+                            <div class="icon-bg bg-green"></div>
+                        </i><span class="menu-title">Proyectos</span></a>       
+                        </li>
+                        <!--    <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
+                            <div class="icon-bg bg-violet"></div>
+                        </i><span class="menu-title">Métricas</span></a>
+                          
+                        </li> -->
+                        <li><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
                             <div class="icon-bg bg-blue"></div>
                         </i><span class="menu-title">Objetivos Estratégicos</span></a>
                               
                         </li>
-                        
+                       <!--    <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
+                            <div class="icon-bg bg-red"></div>
+                        </i><span class="menu-title">Evaluaciones</span></a> -->
+                          
+                        </li>
                         <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
                             <div class="icon-bg bg-yellow"></div>
                         </i><span class="menu-title">Gestión Económica</span></a>
                            
                        </li>
+                  <!--       <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i><span class="menu-title">Estadísticas</span></a> -->
                 </div>
             </nav>
                 <!--END SIDEBAR MENU-->
@@ -334,8 +342,7 @@
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
+                                                        <a href="#" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
                                                             </i></a>
                                                     </div>';
                                                     $out.='</td>';
