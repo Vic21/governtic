@@ -28,6 +28,20 @@
         <link type="text/css" rel="stylesheet" href="styles/pace.css">
         <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
 
+
+      <script src="script/jquery-1.10.2.min.js"></script>
+
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+      <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+
+
+
+
+
+
     </head>
     <body>
         <div>
@@ -232,9 +246,86 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Panel de alertas</div>
+                                            <div class="caption">Gestión económica</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                         
+                                                <?php
+                                                $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
+                                                 $nombre = array();
+                                                 $costeinicial = array();
+ 
+                                                 while($row = $res->fetch_row()){
+                                                    array_push($nombre, $row[1]);
+                                                    array_push($costeinicial, $row[5]);  
+                                                 }
+                                                ?>
+
+
+
+                                                <script type="text/javascript">
+                                                $(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Gasto total en proyectos'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: '<?php echo $nombre[0]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }, {
+                name: '<?php echo $nombre[1]; ?>',
+                y: <?php echo $costeinicial[1]; ?>,
+            }, {
+                name: '<?php echo $nombre[2]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }, {
+                name: '<?php echo $nombre[3]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }]
+        }]
+    });
+});
+
+
+
+                                                </script>
+
+
+
+
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -254,35 +345,33 @@
 
 
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-        <script src="script/jquery.tablesorter.js"></script> 
-        <script src="script/jquery-1.10.2.min.js"></script>
-        <script src="script/jquery-migrate-1.2.1.min.js"></script>
-        <script src="script/jquery-ui.js"></script>
-        <script src="script/bootstrap.min.js"></script>
-        <script src="script/bootstrap-hover-dropdown.js"></script>
-        <script src="script/html5shiv.js"></script>
-        <script src="script/respond.min.js"></script>
-        <script src="script/jquery.metisMenu.js"></script>
-        <script src="script/jquery.slimscroll.js"></script>
-        <script src="script/jquery.cookie.js"></script>
-        <script src="script/icheck.min.js"></script>
-        <script src="script/custom.min.js"></script>
-        <script src="script/jquery.news-ticker.js"></script>
-        <script src="script/jquery.menu.js"></script>
-        <script src="script/pace.min.js"></script>
-        <script src="script/holder.js"></script>
-        <script src="script/responsive-tabs.js"></script>
-        <script src="script/jquery.flot.js"></script>
-        <script src="script/jquery.flot.categories.js"></script>
-        <script src="script/jquery.flot.pie.js"></script>
-        <script src="script/jquery.flot.tooltip.js"></script>
-        <script src="script/jquery.flot.resize.js"></script>
-        <script src="script/jquery.flot.fillbetween.js"></script>
-        <script src="script/jquery.flot.stack.js"></script>
-        <script src="script/jquery.flot.spline.js"></script>
-        <script src="script/zabuto_calendar.min.js"></script>
-        <script src="script/index.js"></script>
+                                            <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+                                            <script src="script/jquery-migrate-1.2.1.min.js"></script>
+                                            <script src="script/jquery-ui.js"></script>
+                                            <script src="script/bootstrap.min.js"></script>
+                                            <script src="script/bootstrap-hover-dropdown.js"></script>
+                                            <script src="script/html5shiv.js"></script>
+                                            <script src="script/respond.min.js"></script>
+                                            <script src="script/jquery.metisMenu.js"></script>
+                                            <script src="script/jquery.slimscroll.js"></script>
+                                            <script src="script/jquery.cookie.js"></script>
+                                            <script src="script/icheck.min.js"></script>
+                                            <script src="script/custom.min.js"></script>
+                                            <script src="script/jquery.news-ticker.js"></script>
+                                            <script src="script/jquery.menu.js"></script>
+                                            <script src="script/pace.min.js"></script>
+                                            <script src="script/holder.js"></script>
+                                            <script src="script/responsive-tabs.js"></script>
+                                            <script src="script/jquery.flot.js"></script>
+                                            <script src="script/jquery.flot.categories.js"></script>
+                                            <script src="script/jquery.flot.pie.js"></script>
+                                            <script src="script/jquery.flot.tooltip.js"></script>
+                                            <script src="script/jquery.flot.resize.js"></script>
+                                            <script src="script/jquery.flot.fillbetween.js"></script>
+                                            <script src="script/jquery.flot.stack.js"></script>
+                                            <script src="script/jquery.flot.spline.js"></script>
+                                            <script src="script/zabuto_calendar.min.js"></script>
+                                            <script src="script/index.js"></script>
         <!--LOADING SCRIPTS FOR CHARTS-->
         <script src="script/highcharts.js"></script>
         <script src="script/data.js"></script>
