@@ -311,7 +311,7 @@ error_reporting(E_ALL);
                                                                             $out.='</td>'; 
 
                                                                             $out.='<td>';
-                                                                            $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[7];");
+                                                                            $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[9];");
                                                                             $filaNomObj = $alineamientoObjetivo->fetch_row();
                                                                             $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
                                                                             $out.=$filaNomObj[0];

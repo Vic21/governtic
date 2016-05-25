@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Registro eliminado.</title>
-<META name='robot' content='noindex, nofollow'>
-</head>
+     <?php
+ if(isset($_POST['item2']))
+{
 
-<body>
-
-<?php
+    // checks and alerts
+    // ...
 
 // Actualizamos en funcion del id que recibimos
 
-		$id = $_POST['id'];
+        $idPrincipio = $_POST['item2'];
+        $mysqli = mysqli_connect("localhost","root","root", "test");
+        $query = "DELETE FROM `principios` WHERE `principios`.`id`=".$idPrincipio;
 
- 		$mysqli = mysqli_connect("localhost","root","root", "test");
-		$query = "DELETE * FROM $principios where id = '$id'"; 
-		$result = mysql_query($query);   
-
-echo "
-<p>El principio ha sido eliminado con exito.</p>
-
-<p><a href='javascript:history.go(-1)'>VOLVER ATRÁS</a></p>
-";
-
+if (mysqli_query($mysqli, $query)== FALSE)   {
+     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+}
+mysqli_close($mysqli);
+}
+header('Location: principios.php');
+exit;
 ?>
-
-
-
-</body>
-
-</html> 

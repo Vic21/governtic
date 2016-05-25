@@ -334,9 +334,8 @@
                                                     $out.='<td>';
                                                     $out.='
                                                     <div class="todo-actions pull-right clearfix">
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
-                                                            </i></a>
+                                                        <a href="objetivos.php" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
+                                                        </i></a>
                                                     </div>';
                                                     $out.='</td>';
                                                     $out.='</tr>';
@@ -353,7 +352,7 @@
                                                   // </script>"
                                                   
                                                 ?> 
-                                                   <form class="form-horizontal" method="POST">
+                                                   <form class="form-horizontal" method="POST" action="insertarobjetivo.php">
                                                     <fieldset>
 
                                                     <!-- Form Name -->
@@ -424,110 +423,18 @@
             </div>
         </div>
 
-        <?php
-        if(isset($_POST['botonAñadir']))
-{
-    // checks and alerts
-    // ...
 
-// Actualizamos en funcion del id que recibimos
-
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $idPrincipio = $_POST['principio'];
-
-        $mysqli = mysqli_connect("localhost","root","root", "test");
-        $query = "INSERT INTO `objetivos` (`id`, `nombre`, `descripcion`, `idPrincipio`) VALUES (NULL, ";
-
-        $query .= "'";  
-        $query .= $nombre;
-        $query .= "'";  
-        $query .= ", "; 
-
-        $query .= "'";  
-        $query .= $descripcion;
-        $query .= "'";  
-        $query .= ", ";
-
-        $query .= "'";  
-        $query .= $idPrincipio;
-        $query .= "'";  
-        $query .= " )";
-
-if (mysqli_query($mysqli, $query)== FALSE)   {
-     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-}
-mysqli_close($mysqli);
-}
-?>
 
 <script>
     $(".todo-remove").click(function() {
     var item = $(this).closest("tr");         // Retrieves the text within <td>
     var item2 = item[0].childNodes[0].firstChild.data;
-    $.post("objetivos.php",{item2:item2});       // Outputs the answer
+    $.post("borrarobjetivo.php",{item2:item2});       // Outputs the answer
 });
 
 </script>
 
 
-     <?php
- if(isset($_POST['item2']))
-{
-
-    // checks and alerts
-    // ...
-
-// Actualizamos en funcion del id que recibimos
-
-        $idObjetivo = $_POST['item2'];
-echo "[".$idObjetivo."]";
-
-        $mysqli = mysqli_connect("localhost","root","root", "test");
-        $query = "DELETE FROM `objetivos` WHERE `objetivos`.`id`=".$idObjetivo;
-
-if (mysqli_query($mysqli, $query)== FALSE)   {
-     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-}
-mysqli_close($mysqli);
-}
-?>
-
-<!---------------------------------------------------------------------------------------->
-
-<script>
-    $(".todo-complete").click(function() {
-    var filaModificada = $(this).closest("tr");         // Retrieves the text within <td>
-    var filaModificada2 = filaModificada[0].childNodes[0];
-    $.post("objetivos.php",{filaModificada2});       // Outputs the answer
-});
-
-</script>
-
-
-     <?php
- if(isset($_POST['filaModificada2']))
-{
-
-    // checks and alerts
-    // ...
-
-// Actualizamos en funcion del id que recibimos
-
-        $valoresNuevos = $_POST['filaModificada2'];
-        $idObjetivo = $valoresNuevos[0];
-        $nombre = $valoresNuevos[1];
-        $descripcion = $valoresNuevos[2];
-        $idPrincipio = $valoresNuevos[3];
-        $mysqli = mysqli_connect("localhost","root","root", "test");
-        $query = "UPDATE `objetivos` SET `nombre` =".$nombre.", `descripcion` = ".$descripcion.", `idPrincipio` = ".$idPrincipio."  WHERE `objetivos`.`id` =".$idObjetivo;
-
-if (mysqli_query($mysqli, $query)== FALSE)   {
-     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-}
-mysqli_close($mysqli);
-}
-?>
 
     </body>
     </html>
