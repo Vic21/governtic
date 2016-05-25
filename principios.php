@@ -332,12 +332,7 @@
                                                 echo $out;
                                                   
                                                 ?> 
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                     <form class="form-horizontal" method="POST" action="insertarprincipio.php">
+ <form class="form-horizontal" method="POST" action="insertarprincipio.php">
                                                     <fieldset>
 
                                                     <!-- Form Name -->
@@ -370,7 +365,13 @@
                                                     </div>
 
                                                     </fieldset>
-                                                    </form>           
+                                                    </form>       
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+
+                    
                     <!--END CONTENT-->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
