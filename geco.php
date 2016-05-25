@@ -28,6 +28,20 @@
         <link type="text/css" rel="stylesheet" href="styles/pace.css">
         <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
 
+
+      <script src="script/jquery-1.10.2.min.js"></script>
+
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+      <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+
+
+
+
+
+
     </head>
     <body>
         <div>
@@ -98,7 +112,7 @@
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
-               <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+              <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
                     data-position="right" class="navbar-default navbar-static-side">
                 <div class="sidebar-collapse menu-scroll">
                     <ul id="side-menu" class="nav">
@@ -228,80 +242,88 @@
                     <div class="page-content">
                         <div id="tab-general">
                             <div id="sum_box" class="row mbl">
-
-
-                        
-
+                                
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Panel de alertas</div>
+                                            <div class="caption">Gestión económica</div>
                                         <div style="overflow: hidden;" class="portlet-body">
-                                            <?php
+                        
+                                                <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                $res = $mysqli->query("SELECT * FROM propuestas WHERE TRUE;");
-                                                $out ='<table id="example" class="table table-striped table-bordered">';
-                                                $out.='<tr>';
-                                                $out.='<th>';
-                                                $out.='ID';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Título';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Fecha de Alta';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Capital Inicial';
-                                                $out.='</th>';
-                                                $out.='<th>'; 
-                                                $out.='Capital Asignado';
-                                                $out.='</th>';
-                                                $out.= '<th>';
-                                                $out.='Estado';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                while($row = $res->fetch_row()){
-                                                    $out.='<tr>';
-                                                    $out.='<td>';
-                                                    $out.=$row[0];
-                                                    $out.='</td>'; 
-                                                    $out.='<td>';
-                                                    $out.=$row[1];
-                                                    $out.='</td>';
-                                                    $out.=$row[2];
-                                                    $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[3];
-                                                    $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[4];
-                                                    $out.='</td>';                                                       $out.='<td>';
-                                                    $out.=$row[5];
-                                                    $out.='</td>';  
-                                                    $out.='<td>';
-                                                    $out.='
-                                                    <div class="todo-actions pull-right clearfix">
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                            </i></a>
-                                                    </div>';
-                                                    $out.='</td>';
-                                                    $out.='</tr>';
-                                                    
-                                                }
-                                                $out.='</table>';
-                                                echo $out;
+                                                $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
+                                                 $nombre = array();
+                                                 $costeinicial = array();
+ 
+                                                 while($row = $res->fetch_row()){
+                                                    array_push($nombre, $row[1]);
+                                                    array_push($costeinicial, $row[5]);  
+                                                 }
+                                                ?>
 
-                                                  // echo "<script>
-                                                  //   $(function() {
-                                                  //   $('#example').DataTable();
-                                                  //   } );
-                                                  // </script>"
-                                                  
-                                                ?> 
 
-                                                
+
+                                                <script type="text/javascript">
+                                                $(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Gasto total en proyectos'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: '<?php echo $nombre[0]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }, {
+                name: '<?php echo $nombre[1]; ?>',
+                y: <?php echo $costeinicial[1]; ?>,
+            }, {
+                name: '<?php echo $nombre[2]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }, {
+                name: '<?php echo $nombre[3]; ?>',
+                y: <?php echo $costeinicial[0]; ?>
+            }]
+        }]
+    });
+});
+
+
+
+                                                </script>
+
+
+
+
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+
+
 
 
                                         </div>
@@ -323,35 +345,33 @@
 
 
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-        <script src="script/jquery.tablesorter.js"></script> 
-        <script src="script/jquery-1.10.2.min.js"></script>
-        <script src="script/jquery-migrate-1.2.1.min.js"></script>
-        <script src="script/jquery-ui.js"></script>
-        <script src="script/bootstrap.min.js"></script>
-        <script src="script/bootstrap-hover-dropdown.js"></script>
-        <script src="script/html5shiv.js"></script>
-        <script src="script/respond.min.js"></script>
-        <script src="script/jquery.metisMenu.js"></script>
-        <script src="script/jquery.slimscroll.js"></script>
-        <script src="script/jquery.cookie.js"></script>
-        <script src="script/icheck.min.js"></script>
-        <script src="script/custom.min.js"></script>
-        <script src="script/jquery.news-ticker.js"></script>
-        <script src="script/jquery.menu.js"></script>
-        <script src="script/pace.min.js"></script>
-        <script src="script/holder.js"></script>
-        <script src="script/responsive-tabs.js"></script>
-        <script src="script/jquery.flot.js"></script>
-        <script src="script/jquery.flot.categories.js"></script>
-        <script src="script/jquery.flot.pie.js"></script>
-        <script src="script/jquery.flot.tooltip.js"></script>
-        <script src="script/jquery.flot.resize.js"></script>
-        <script src="script/jquery.flot.fillbetween.js"></script>
-        <script src="script/jquery.flot.stack.js"></script>
-        <script src="script/jquery.flot.spline.js"></script>
-        <script src="script/zabuto_calendar.min.js"></script>
-        <script src="script/index.js"></script>
+                                            <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+                                            <script src="script/jquery-migrate-1.2.1.min.js"></script>
+                                            <script src="script/jquery-ui.js"></script>
+                                            <script src="script/bootstrap.min.js"></script>
+                                            <script src="script/bootstrap-hover-dropdown.js"></script>
+                                            <script src="script/html5shiv.js"></script>
+                                            <script src="script/respond.min.js"></script>
+                                            <script src="script/jquery.metisMenu.js"></script>
+                                            <script src="script/jquery.slimscroll.js"></script>
+                                            <script src="script/jquery.cookie.js"></script>
+                                            <script src="script/icheck.min.js"></script>
+                                            <script src="script/custom.min.js"></script>
+                                            <script src="script/jquery.news-ticker.js"></script>
+                                            <script src="script/jquery.menu.js"></script>
+                                            <script src="script/pace.min.js"></script>
+                                            <script src="script/holder.js"></script>
+                                            <script src="script/responsive-tabs.js"></script>
+                                            <script src="script/jquery.flot.js"></script>
+                                            <script src="script/jquery.flot.categories.js"></script>
+                                            <script src="script/jquery.flot.pie.js"></script>
+                                            <script src="script/jquery.flot.tooltip.js"></script>
+                                            <script src="script/jquery.flot.resize.js"></script>
+                                            <script src="script/jquery.flot.fillbetween.js"></script>
+                                            <script src="script/jquery.flot.stack.js"></script>
+                                            <script src="script/jquery.flot.spline.js"></script>
+                                            <script src="script/zabuto_calendar.min.js"></script>
+                                            <script src="script/index.js"></script>
         <!--LOADING SCRIPTS FOR CHARTS-->
         <script src="script/highcharts.js"></script>
         <script src="script/data.js"></script>
