@@ -388,7 +388,7 @@ echo $idProyecto;
 
 </script>
 
-
+                                            
 
 
 <script type="text/javascript">
@@ -999,111 +999,111 @@ echo $idProyecto;
 
 
 
-                                                                    $out.='<div class="col-lg-12">';
-                                                                    $out.='<div>';
-                                                                    $out.='<div class="panel panel-grey">';
-                                                                    $out.='<div class="panel-heading">';
-                                                                    $out.='Estadísticas';
-                                                                    $out.='</div>';
+                                                                    // $out.='<div class="col-lg-12">';
+                                                                    // $out.='<div>';
+                                                                    // $out.='<div class="panel panel-grey">';
+                                                                    // $out.='<div class="panel-heading">';
+                                                                    // $out.='Estadísticas';
+                                                                    // $out.='</div>';
 
-                                                                    $out.='<div class="form-body pal">';
+                                                                    // $out.='<div class="form-body pal">';
 
 
-                                                                    $out.='<div class="row">';                                                 
+                                                                    // $out.='<div class="row">';                                                 
 
-                                                                    $out.='<div class="col-md-12">';
-
-                                                                    
-                                                                    $out.='<div id="estadistica1" style="min-width: 310px; height: 400px; margin: 0 auto">';
-                                                                    $out.='</div>';
-
-                                                                   
-                                                                    $out.='</div>';
-
-                                                                    $out.='<div class="col-md-12">';
+                                                                    // $out.='<div class="col-md-12">';
 
                                                                     
-                                                                    $out.='<div id="estadistica2" style="min-width: 310px; height: 400px; margin: 0 auto">';
-                                                                    $out.='</div>';
+                                                                    // $out.='<div id="estadistica1" style="min-width: 310px; height: 400px; margin: 0 auto">';
+                                                                    // $out.='</div>';
 
                                                                    
-                                                                    $out.='</div>';
+                                                                    // $out.='</div>';
 
-                                                                    $out.='<div class="col-md-4">';
+                                                                    // $out.='<div class="col-md-12">';
+
+                                                                    
+                                                                    // $out.='<div id="estadistica2" style="min-width: 310px; height: 400px; margin: 0 auto">';
+                                                                    // $out.='</div>';
+
+                                                                   
+                                                                    // $out.='</div>';
+
+                                                                    // $out.='<div class="col-md-4">';
                                                                  
-                                                                    $out.='</div>';
+                                                                    // $out.='</div>';
                                                                     
-                                                                    $out.='<div class="col-md-6">';
+                                                                    // $out.='<div class="col-md-6">';
                                                                     
-                                                                    $out.='</div>';
-
-
-
-
-
-                                                                    $out.='</div>';
-
-
-
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    
-
-
-
-
-
-
-                                                                    $out.='<div class="col-lg-12">';
-                                                                    $out.='<div>';
-                                                                    $out.='<div class="panel panel-green">';
-                                                                    $out.='<div class="panel-heading">';
-                                                                    $out.='Evaluaciones';
-                                                                    $out.='</div>';
-
-                                                                    $out.='<div class="form-body pal">';
-
-
-                                                                    $out.='<div class="row">';                                                 
-
-                                                                    $out.='<div class="col-md-12">';
-
-                                                                    $out.='<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">';
-                                                                    $out.='</div>';
-                                                                   
-                                                                    $out.='</div>';
-
-                                                                    $out.='<div class="col-md-4">';
-                                                                 
-                                                                    $out.='</div>';
-                                                                    
-                                                                    $out.='<div class="col-md-6">';
-                                                                    
-                                                                    $out.='</div>';
-
-
-
-
-
-                                                                    $out.='</div>';
-                                                  
-                                                  
-
-                                                                    // $out.='<div class="form-actions text-right pal">';
-                                                                    // $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>';
-                                                                    // $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>';
-                                                                    // $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
                                                                     // $out.='</div>';
 
 
 
 
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
+
+                                                                    // $out.='</div>';
+
+
+
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
+                                                                    
+
+
+
+
+
+
+                                                                    // $out.='<div class="col-lg-12">';
+                                                                    // $out.='<div>';
+                                                                    // $out.='<div class="panel panel-green">';
+                                                                    // $out.='<div class="panel-heading">';
+                                                                    // $out.='Evaluaciones';
+                                                                    // $out.='</div>';
+
+                                                                    // $out.='<div class="form-body pal">';
+
+
+                                                                    // $out.='<div class="row">';                                                 
+
+                                                                    // $out.='<div class="col-md-12">';
+
+                                                                    // $out.='<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">';
+                                                                    // $out.='</div>';
+                                                                   
+                                                                    // $out.='</div>';
+
+                                                                    // $out.='<div class="col-md-4">';
+                                                                 
+                                                                    // $out.='</div>';
+                                                                    
+                                                                    // $out.='<div class="col-md-6">';
+                                                                    
+                                                                    // $out.='</div>';
+
+
+
+
+
+                                                                    // $out.='</div>';
+                                                  
+                                                  
+
+                                                                    // // $out.='<div class="form-actions text-right pal">';
+                                                                    // // $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>';
+                                                                    // // $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>';
+                                                                    // // $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
+                                                                    // // $out.='</div>';
+
+
+
+
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
+                                                                    // $out.='</div>';
                                                                 
 
 
@@ -1114,6 +1114,176 @@ echo $idProyecto;
 
 
                                                                 ?>
+
+
+
+
+                                                                    <div class="col-lg-12">
+                                                                    <div>
+                                                                    <div class="panel panel-green">
+                                                                    <div class="panel-heading">
+                                                                    Estadísticas
+                                                                    </div>
+
+
+                                                                    <div class="form-body pal">
+
+
+                                                                    <div class="row">                                                 
+
+                                                                    <div class="col-md-4">
+                                                                   
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+                                                                 
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                    
+                                                                    </div>
+
+
+
+
+
+                                                                    </div>
+                                                  
+
+                                                                    <!--<div class="form-actions text-right pal">
+                                                                    <button type="submit" class="btn btn-success">Aceptar proyecto</button>
+                                                                    <button type="submit" class="btn btn-primary">Modificar proyecto</button>
+                                                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                                                    </div> -->
+
+
+   <?php
+        $mysqli = mysqli_connect("localhost","root","root", "test");
+        $res = $mysqli->query("SELECT * FROM evaluaciones WHERE idProyecto=".$idProyecto.";");
+        $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
+
+
+        $fecha = array();
+        $responsabilidad = array();
+        $estrategia = array();
+        $adquision = array();
+        $rendimiento = array();
+        $conformidad = array();
+        $conductaHumana = array();
+        
+        $nombre = array();
+
+        while($row = $res->fetch_row()){
+        array_push($fecha, $row[1]);
+
+        array_push($responsabilidad, $row[2]);
+        array_push($estrategia, $row[3]);
+        array_push($adquision, $row[4]);
+        array_push($rendimiento, $row[5]);
+        array_push($conformidad, $row[6]);
+        array_push($conductaHumana, $row[7]);
+
+
+        }
+
+
+        while($row1 = $resp->fetch_row()){
+            array_push($nombre, $row1[1]);
+
+         }
+
+
+
+
+    ?>
+
+
+
+
+<script type="text/javascript">
+            
+            $(function () {
+            $('#container').highcharts({
+        title: {
+            text: 'Evaluaciones Totales',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '<?php echo $nombre[0];?>',
+            x: -20
+        },
+        xAxis: {
+            categories: ['<?php echo $fecha[0];?>', '<?php echo $fecha[1];?>', '<?php echo $fecha[2];?>']
+        },
+        yAxis: {
+            title: {
+                text: 'Puntuaciones'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'Puntos'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Responsabilidad',
+            data: [<?php echo $responsabilidad[0];?>, <?php echo $responsabilidad[1];?>, <?php echo $responsabilidad[2];?>]
+        }, {
+            name: 'Estrategia',
+            data: [<?php echo $estrategia[0];?>, <?php echo $estrategia[1];?>, <?php echo $estrategia[2];?>]
+        }, {
+            name: 'Adquisición',
+            data: [<?php echo $adquision[0];?>, <?php echo $adquision[1];?>, <?php echo $adquision[2];?>]
+        }, {
+            name: 'Rendimiento',
+            data: [<?php echo $rendimiento[0];?>, <?php echo $rendimiento[1];?>, <?php echo $rendimiento[2];?>]
+        }, {
+            name: 'Conformidad',
+            data: [<?php echo $conformidad[0];?>, <?php echo $conformidad[1];?>, <?php echo $conformidad[2];?>]
+        }, {
+            name: 'Conducta Humana',
+            data: [<?php echo $conductaHumana[0];?>, <?php echo $conductaHumana[1];?>, <?php echo $conductaHumana[2];?>]
+        }]
+    });
+});
+
+
+        </script>
+
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+
+
+
+
+
+
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                
+
+
+
+
+
+
+
+
+
+
+
 
 
 
