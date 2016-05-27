@@ -27,7 +27,62 @@
         <link type="text/css" rel="stylesheet" href="styles/zabuto_calendar.min.css">
         <link type="text/css" rel="stylesheet" href="styles/pace.css">
         <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+        <script src="script/jquery.tablesorter.js"></script> 
+        <script src="script/jquery-1.10.2.min.js"></script>
+        <script src="script/jquery-migrate-1.2.1.min.js"></script>
+        <script src="script/jquery-ui.js"></script>
+        <script src="script/bootstrap.min.js"></script>
+        <script src="script/bootstrap-hover-dropdown.js"></script>
+        <script src="script/html5shiv.js"></script>
+        <script src="script/respond.min.js"></script>
+        <script src="script/jquery.metisMenu.js"></script>
+        <script src="script/jquery.slimscroll.js"></script>
+        <script src="script/jquery.cookie.js"></script>
+        <script src="script/icheck.min.js"></script>
+        <script src="script/custom.min.js"></script>
+        <script src="script/jquery.news-ticker.js"></script>
+        <script src="script/jquery.menu.js"></script>
+        <script src="script/pace.min.js"></script>
+        <script src="script/holder.js"></script>
+        <script src="script/responsive-tabs.js"></script>
+        <script src="script/jquery.flot.js"></script>
+        <script src="script/jquery.flot.categories.js"></script>
+        <script src="script/jquery.flot.pie.js"></script>
+        <script src="script/jquery.flot.tooltip.js"></script>
+        <script src="script/jquery.flot.resize.js"></script>
+        <script src="script/jquery.flot.fillbetween.js"></script>
+        <script src="script/jquery.flot.stack.js"></script>
+        <script src="script/jquery.flot.spline.js"></script>
+        <script src="script/zabuto_calendar.min.js"></script>
+        <script src="script/index.js"></script>
+        <!--LOADING SCRIPTS FOR CHARTS-->
+        <script src="script/highcharts.js"></script>
+        <script src="script/data.js"></script>
+        <script src="script/drilldown.js"></script>
+        <script src="script/exporting.js"></script>
+        <script src="script/highcharts-more.js"></script>
+        <script src="script/charts-highchart-pie.js"></script>
+        <script src="script/charts-highchart-more.js"></script>
+        <!--CORE JAVASCRIPT-->
+        <script src="script/main.js"></script>
+        <script>        (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-145464-12', 'auto');
+            ga('send', 'pageview');
 
+
+    </script>
     </head>
     <body>
         <div>
@@ -252,6 +307,9 @@
                                                 $out.='Fecha de Alta';
                                                 $out.='</th>';
                                                 $out.='<th>';
+                                                $out.='Fecha de Baja';
+                                                $out.='</th>';
+                                                $out.='<th>';
                                                 $out.='Capital Inicial';
                                                 $out.='</th>';
                                                 $out.='<th>'; 
@@ -260,7 +318,6 @@
                                                 $out.= '<th>';
                                                 $out.='Estado';
                                                 $out.='</th>';
-                                                $out.='<th>';
                                                 while($row = $res->fetch_row()){
                                                     $out.='<tr>';
                                                     $out.='<td>';
@@ -269,24 +326,38 @@
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
+                                                    $out.='<td>';
                                                     $out.=$row[2];
                                                     $out.='</td>';
                                                     $out.='<td>';
                                                     $out.=$row[3];
                                                     $out.='</td>';
                                                     $out.='<td>';
-                                                    $out.=$row[4];
-                                                    $out.='</td>';                                                       $out.='<td>';
-                                                    $out.=$row[5];
-                                                    $out.='</td>';  
-                                                    $out.='<td>';
-                                                    $out.='
-                                                    <div class="todo-actions pull-right clearfix">
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                            <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                            </i></a>
-                                                    </div>';
+                                                    $out.=$row[4]."€";
                                                     $out.='</td>';
+                                                    $out.='<td>';                                                      
+                                                    $out.=$row[5]."€";
+                                                    $out.='</td>';
+                                                    $out.='<td>';                                                      
+                                                    $out.=$row[6];
+                                                    $out.='</td>';
+                                                    if ($row[6] !="rechazada"){
+                                                        $out.='<td>';
+                                                        $out.='
+                                                        <div class="todo-actions pull-right clearfix">
+                                                            <button onclick="modificarPresupuesto(this)">Asignar Presupuesto</button>
+                                                        </div>';
+                                                        $out.='</td>';
+                                                    }  
+                                                    if ($row[6] == "abierta"){
+                                                         $out.='<td>';
+                                                        $out.='
+                                                        <div class="todo-actions pull-right clearfix">
+                                                            <a href="propuestas.php" class="todo-remove"><i class="fa fa-trash-o">
+                                                                </i></a>
+                                                        </div>';
+                                                        $out.='</td>';
+                                                    }
                                                     $out.='</tr>';
                                                     
                                                 }
@@ -301,9 +372,41 @@
                                                   
                                                 ?> 
 
-                                                
+                                            <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
+                                                    <fieldset>
 
+                                                    <!-- Form Name -->
+                                                    <legend>Añadir Propuesta</legend>
 
+                                                    <!-- Text input-->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="nombre">Título</label>  
+                                                      <div class="col-md-4">
+                                                      <input id="titulo" name="titulo" type="text" placeholder="Nombre" class="form-control input-md" required="true">
+                                                        
+                                                      </div>
+                                                    </div>
+
+                                                    <!-- Textarea -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="taDesc">Capital Inicial</label>
+                                                      <div class="col-md-4">                     
+                                                        <input id="capitalInicial" min = "0" name="capitalInicial" type="number" placeholder="€" class="form-control input-md" required="true">
+                                                      </div>
+                                                    </div>
+
+                                                    </div>
+
+                                                    <!-- Button -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="botonAñadir"></label>
+                                                      <div class="col-md-4">
+                                                        <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Añadir</button>
+                                                      </div>
+                                                    </div>
+
+                                                    </fieldset>
+                                                    </form>  
                                         </div>
                                     </div>
                                 </div>
@@ -321,62 +424,25 @@
             </div>
         </div>
 
+<script>
+    $(".todo-remove").click(function() {
+    var item = $(this).closest("tr");         // Retrieves the text within <td>
+    var item2 = item[0].childNodes[0].firstChild.data;
+    $.post("borrarpropuesta.php",{item2:item2});       // Outputs the answer
+});
 
-        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-        <script src="script/jquery.tablesorter.js"></script> 
-        <script src="script/jquery-1.10.2.min.js"></script>
-        <script src="script/jquery-migrate-1.2.1.min.js"></script>
-        <script src="script/jquery-ui.js"></script>
-        <script src="script/bootstrap.min.js"></script>
-        <script src="script/bootstrap-hover-dropdown.js"></script>
-        <script src="script/html5shiv.js"></script>
-        <script src="script/respond.min.js"></script>
-        <script src="script/jquery.metisMenu.js"></script>
-        <script src="script/jquery.slimscroll.js"></script>
-        <script src="script/jquery.cookie.js"></script>
-        <script src="script/icheck.min.js"></script>
-        <script src="script/custom.min.js"></script>
-        <script src="script/jquery.news-ticker.js"></script>
-        <script src="script/jquery.menu.js"></script>
-        <script src="script/pace.min.js"></script>
-        <script src="script/holder.js"></script>
-        <script src="script/responsive-tabs.js"></script>
-        <script src="script/jquery.flot.js"></script>
-        <script src="script/jquery.flot.categories.js"></script>
-        <script src="script/jquery.flot.pie.js"></script>
-        <script src="script/jquery.flot.tooltip.js"></script>
-        <script src="script/jquery.flot.resize.js"></script>
-        <script src="script/jquery.flot.fillbetween.js"></script>
-        <script src="script/jquery.flot.stack.js"></script>
-        <script src="script/jquery.flot.spline.js"></script>
-        <script src="script/zabuto_calendar.min.js"></script>
-        <script src="script/index.js"></script>
-        <!--LOADING SCRIPTS FOR CHARTS-->
-        <script src="script/highcharts.js"></script>
-        <script src="script/data.js"></script>
-        <script src="script/drilldown.js"></script>
-        <script src="script/exporting.js"></script>
-        <script src="script/highcharts-more.js"></script>
-        <script src="script/charts-highchart-pie.js"></script>
-        <script src="script/charts-highchart-more.js"></script>
-        <!--CORE JAVASCRIPT-->
-        <script src="script/main.js"></script>
-        <script>        (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-145464-12', 'auto');
-            ga('send', 'pageview');
+</script>
+        <script>
+          function modificarPresupuesto(element) {
+                var price = $(element).parents("tr").attr("data-price");
+    
+            var newPrice = prompt("Introduce el nuevo presupuesto", price);
 
-
-    </script>
+            if (newPrice != null) {
+                $(element).parents("tr").attr("data-price", newPrice);
+                $.post("modificarPresupuesto.php",{newPrice:newPrice});
+                }
+            }
+        </script>
     </body>
     </html>
