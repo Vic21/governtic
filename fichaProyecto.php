@@ -43,71 +43,6 @@ echo $idProyecto;
 
 
 
-<script type="text/javascript">
-    $(function () {
-    // Create the chart
-    $('#estadistica1').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Usuarios por mes.'
-        },
-        subtitle: {
-            text: 'Poner subtítulo en caso de necesitarlo.'
-        },
-        xAxis: {
-            type: 'category'
-        },
-        yAxis: {
-            title: {
-                text: 'Total de usuarios'
-            }
-
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.1f}¡'
-                }
-            }
-        },
-
-        tooltip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> usuarios al mes<br/>'
-        },
-
-        series: [{
-            name: 'Totales',
-            colorByPoint: true,
-            data: [{
-                name: 'Enero',
-                y: 56.33, color: 'red',
-                drilldown: 'Microsoft Internet Explorer'
-            }, {
-                name: 'Febrero',
-                y: 24.03,
-                drilldown: 'Chrome',
-                color: 'green'
-            }, {
-                name: 'Marzo',
-                y: 10.38,
-                drilldown: 'Firefox',
-                color: 'yellow'
-      
-            }]
-        }]
-    });
-});
-
-
-</script>
 
 
 
@@ -627,7 +562,7 @@ echo $idProyecto;
                                                                     $out.='<div class="col-md-12">';
 
                                                                     
-                                                                    $out.='<div id="estadistica2" style="min-width: 310px; height: 400px; margin: 0 auto">';
+                                                                    $out.='<div id="estadistica24" style="min-width: 310px; height: 400px; margin: 0 auto">';
                                                                     $out.='</div>';
 
                                                                    
@@ -877,7 +812,177 @@ echo $idProyecto;
                                                                             type: 'column'
                                                                         },
                                                                         title: {
-                                                                            text: 'Usuarios por mes.'
+                                                                            text: 
+
+                                                                            <?php
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("'Usuarios por mes.'");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("'Precios controlados por mes.'");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("'Totales en kg de desperdicios por mes.'");
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            ?>
+
+                                                                        },
+                                                                        subtitle: {
+                                                                            text: 'Poner subtítulo en caso de necesitarlo.'
+                                                                        },
+                                                                        xAxis: {
+                                                                             categories: 
+
+                                                                             <?php 
+
+                                                                        $mysqli = mysqli_connect("localhost","root","root", "test");
+
+                                                                             switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticastiendaonline WHERE TRUE";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            $result = $mysqli->query($query);
+
+                                                                            /* array numérico */
+                                                                            $row = $result->fetch_array(MYSQLI_NUM);
+
+
+                                                                                $i=0;
+                                                                                if ($i == 0) {
+                                                                                $uno=printf ("['$fechaest[$i]', ");
+                                                                                $i++;
+                                                                                for ($i; $i <$row[0]-1; $i++) {
+
+                                                                                    printf ("'$fechaest[$i]', ");
+
+                                                                                }
+                                                                                printf ("'$fechaest[$i]']");
+
+                                                                            } elseif ($a == 1) {
+                                                                                echo "Error en variable i";
+                                                                            } else {
+                                                                                echo "Error";
+                                                                            }
+
+                                                                            /* liberar la serie de resultados */
+                                                                            $result->free();
+
+                                                                            /* cerrar la conexión */
+                                                                            $mysqli->close();
+
+                                                                            ?>
+
+
+
+
+                                                                        },
+                                                                        yAxis: {
+                                                                            title: {
+                                                                                text: 
+
+                                                                                  <?php
+                                                                             switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("'Total de usuarios.'");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("'Precios controlados.'");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("'Totales en kg.'");
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            ?>
+
+
+
+                                                                            }
+
+                                                                        },
+                                                                        legend: {
+                                                                            enabled: false
+                                                                        },
+                                                                        plotOptions: {
+                                                                            series: {
+                                                                                borderWidth: 0,
+                                                                                dataLabels: {
+                                                                                    enabled: true,
+                                                                                    format: '{point.y:.1f}'
+                                                                                }
+                                                                            }
+                                                                        },
+
+                                                                        tooltip: {
+                                                                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                                            pointFormat: '<span style="color:{}">Hay </span><b>{point.y:.2f}</b> usuarios al mes<br/>'
+                                                                        },
+
+                                                                        series: [{
+                                                                            name: 'Totales:',
+                                                                            colorByPoint: true,
+                                                                            data: [{
+                                                                                y: 56.33, 
+                                                                                color: 'red',
+                                                                            }, {
+                                                                                y: 24.03,
+                                                                                color: 'green'
+                                                                            }, {
+                                                                                y: 10.38,
+                                                                                color: 'yellow'
+                                                                            }, {
+                                                                                y: 10.38,
+                                                                                color: 'yellow'    
+                                                                      
+
+
+
+                                                                            }]
+                                                                        }]
+                                                                    });
+                                                                });
+
+
+                                                                </script>
+
+
+
+                                                                 <script type="text/javascript">
+                                                                    $(function () {
+                                                                    // Create the chart
+                                                                    $('#estadistica24').highcharts({
+                                                                        chart: {
+                                                                            type: 'column'
+                                                                        },
+                                                                        title: {
+                                                                            text: 
+
+                                                                            <?php
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("'Ventas por mes.'");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("'Ventas globales por mes.'");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("'Porcentaje de articulos controlados.'");
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            ?>
+
                                                                         },
                                                                         subtitle: {
                                                                             text: 'Poner subtítulo en caso de necesitarlo.'
@@ -979,13 +1084,6 @@ echo $idProyecto;
 
 
 
-
-
-
-
-
-
-
                                                                             }]
                                                                         }]
                                                                     });
@@ -993,7 +1091,6 @@ echo $idProyecto;
 
 
                                                                 </script>
-
 
 
 
