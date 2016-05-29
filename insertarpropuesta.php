@@ -4,39 +4,67 @@
 
 // Actualizamos en funcion del id que recibimos
 
-        $titulo = $_POST['titulo'];
-        $capitalInicial = $_POST['capitalInicial'];
+        $titulo = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $capitalInicial = $_POST['capital'];
+        $objetivo = $_POST['objetivo'];
+        $fecha = $_POST['fecha'];
+        $prioridad = $_POST['prioridad'];
 
         $mysqli = mysqli_connect("localhost","root","root", "test");
-        $query = "INSERT INTO `propuestas` (`id`, `titulo`, `fechaAlta`, `fechaBaja` , `capitalInicial` , `capitalAsignado` , `estado`) VALUES (NULL, ";
+        $query = "INSERT INTO `propuestas` (`id`, `titulo`, `prioridad`,`descripcion` , `fechaAlta`, `fechaBaja` , fechaAprobacion, `fechaInicio` , `capitalInicial` , `capitalAsignado` , `estado`) VALUES (NULL, ";
 
         $query .= "'";  
         $query .= $titulo;
-        $query .= "'";  
-        $query .= ", ";
+        $query .= "'"; 
+
+        $query .= " , ";
+
+        $query .= "'";
+        $query .= $prioridad;    
+        $query .= "'";
+
+
+        $query .= " , ";
 
         $query .= "'";  
-        $query .= "CURDATE()";
-        $query .= "'";  
-        $query .= ", ";
+        $query .= $descripcion;
+        $query .= "'";
+
+        $query .= " , ";
+        $query .= "CURDATE()";    
+        $query .= " , ";
 
         $query .= "'";  
         $query .= NULL;
+        $query .= "'"; 
+
+        $query .= " , ";
+
         $query .= "'";  
-        $query .= ", ";
+        $query .= NULL;
+        $query .= "'"; 
+
+        $query .= " , ";
+
+        $query .= "'";  
+        $query .= $fecha;
+        $query .= "'"; 
+
+        $query .= " , ";
 
         $query .= "'";  
         $query .= $capitalInicial;
         $query .= "'";  
-        $query .= ", ";
+
+        $query .= " , ";
+
+        $query .= "'0'";  
+
+        $query .= " , ";
 
         $query .= "'";  
-        $query .= "0";
-        $query .= "'";  
-        $query .= ", ";
-
-        $query .= "'";  
-        $query .= "abierta";
+        $query .= "pendiente";
         $query .= "'";  
         $query .= " )";
 
