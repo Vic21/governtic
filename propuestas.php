@@ -268,12 +268,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Principal</div>
+                            <div class="page-title">Propuestas</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="dashboard.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="hidden"><a href="#">Principal</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li class="active">Principal</li>
+                            <li class="hidden"><a href="#">Propuestas</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li class="active">Propuestas</li>
                         </ol>
                         <div class="clearfix">
                         </div>
@@ -290,7 +290,7 @@
                             <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Panel de alertas</div>
+                                            <div class="caption">Panel de Propuestas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
@@ -302,6 +302,12 @@
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='Título';
+                                                $out.='</th>';
+                                                $out.='<th>';
+                                                $out.='Prioridad';
+                                                $out.='</th>';
+                                                $out.='<th>';
+                                                $out.='Descripción';
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='Fecha de Alta';
@@ -326,35 +332,63 @@
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[2];
+
+                                                    switch ($row[2]) {
+                                                        case "alta":
+                                                            $out.='<td align="center" class="danger">';
+                                                            break;
+                                                        case "media":
+                                                            $out.='<td align="center" class="warning">';
+                                                            break;
+                                                        case "baja":
+                                                            $out.='<td align="center" class="success">';
+                                                            break;
+                                                    }
                                                     $out.='</td>';
+
                                                     $out.='<td>';
                                                     $out.=$row[3];
                                                     $out.='</td>';
                                                     $out.='<td>';
-                                                    $out.=$row[4]."€";
+                                                    $out.=$row[4];
+                                                    $out.='</td>';
+                                                    $out.='<td>';
+                                                    $out.=$row[5];
+                                                    $out.='</td>';
+                                                    $out.='<td>';
+                                                    $out.=$row[8]."€";
                                                     $out.='</td>';
                                                     $out.='<td>';                                                      
-                                                    $out.=$row[5]."€";
+                                                    $out.=$row[9]."€";
                                                     $out.='</td>';
-                                                    $out.='<td>';                                                      
-                                                    $out.=$row[6];
+                                                    
+                                                    switch ($row[11]) {
+                                                        case "rechazada":
+                                                            $out.='<td align="center"><i class="fa fa-times"></i>';
+                                                            break;
+                                                        case "aceptada":
+                                                            $out.='<td align="center"><i class="fa fa-check-circle-o"></i>';
+                                                            break;
+                                                        case "pendiente":
+                                                            $out.='<td align="center"><i class="fa fa-question"></i>';
+                                                            break;
+                                                    }
+
                                                     $out.='</td>';
-                                                    if ($row[6] !="rechazada"){
+                                                    if ($row[11] !="rechazada"){
                                                         $out.='<td>';
                                                         $out.='
                                                         <div class="todo-actions pull-right clearfix">
-                                                            <button onclick="modificarPresupuesto(this)">Asignar Presupuesto</button>
+                                                            <a onclick="modificarPresupuesto(this)" href="propuestas.php"><i class="fa fa-usd" aria-hidden="true"></i></a>   
                                                         </div>';
                                                         $out.='</td>';
                                                     }  
-                                                    if ($row[6] == "abierta"){
+                                                    if ($row[11] == "pendiente"){
                                                          $out.='<td>';
                                                         $out.='
                                                         <div class="todo-actions pull-right clearfix">
-                                                            <a href="propuestas.php" class="todo-remove"><i class="fa fa-trash-o">
-                                                                </i></a>
+                                                        <a href="propuestas.php" class="todo-complete"><i class="fa fa-check"></i></a>
+                                                        <a href="propuestas.php" class="todo-remove"><i class="fa fa-trash-o"></i></a>
                                                         </div>';
                                                         $out.='</td>';
                                                     }
@@ -364,15 +398,9 @@
                                                 $out.='</table>';
                                                 echo $out;
 
-                                                  // echo "<script>
-                                                  //   $(function() {
-                                                  //   $('#example').DataTable();
-                                                  //   } );
-                                                  // </script>"
-                                                  
                                                 ?> 
 
-                                            <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
+                                           <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
                                                     <fieldset>
 
                                                     <!-- Form Name -->
@@ -380,21 +408,63 @@
 
                                                     <!-- Text input-->
                                                     <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="nombre">Título</label>  
+                                                      <label class="col-md-4 control-label" for="nombre">Nombre</label>  
                                                       <div class="col-md-4">
-                                                      <input id="titulo" name="titulo" type="text" placeholder="Nombre" class="form-control input-md" required="true">
-                                                        
+                                                      <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="true">  
+                                                    </div>
+                                                    </div> 
+
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="capital">Capital Inicial</label>  
+                                                      <div class="col-md-4">
+                                                        <input id="capital" name="capital" type="number" min="1" placeholder="€" class="form-control input-md" required="true"> 
                                                       </div>
                                                     </div>
 
                                                     <!-- Textarea -->
                                                     <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="taDesc">Capital Inicial</label>
+                                                      <label class="col-md-4 control-label" for="taDesc">Descripción</label>
                                                       <div class="col-md-4">                     
-                                                        <input id="capitalInicial" min = "0" name="capitalInicial" type="number" placeholder="€" class="form-control input-md" required="true">
+                                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required="true"></textarea>
                                                       </div>
                                                     </div>
 
+                                                    <!-- Select Basic -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="selectbasic">Objetivo</label>
+                                                      <div class="col-md-4">
+                                                        <select id="selectbasic" name="prioridad" class="form-control">
+                                                          <?php
+                                                                    $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
+                                                                    while($row = $res->fetch_row()){
+                                                                       $out.='<option value="';
+                                                                       $out.=$row[0]; 
+                                                                       $out.='">'; 
+                                                                       $out.=$row[1];   
+                                                                       $out.='</option>';  
+                                                                    }
+                                                                    echo $out;
+                                                                    ?> 
+                                                        </select>
+                                                      </div>
+                                                    </div>
+                                                      <!-- Select Basic -->
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="selectbasic">Prioridad</label>
+                                                      <div class="col-md-4">
+                                                        <select onchange="this.className=this.options[this.selectedIndex].className" id="prioridad" name="prioridad" class="form-control btn-success">
+                                                          <option class = "form-control btn-success" value ="baja">Baja</option>
+                                                          <option class = "form-control btn-warning" value ="media">Media</option>
+                                                          <option class = "form-control btn-danger" value ="alta">Alta</option>
+                                                        </select>
+                                                      </div>
+                                                    </div>   
+                                                    <div class="form-group">
+                                                      <label class="col-md-4 control-label" for="taDesc">Fecha de Inicio</label>
+                                                      <div class="col-md-4">                     
+                                                        <input class="form-control" type ="date" id="fecha" name="fecha" required="true"></input>
+                                                      </div>
                                                     </div>
 
                                                     <!-- Button -->
@@ -406,7 +476,7 @@
                                                     </div>
 
                                                     </fieldset>
-                                                    </form>  
+                                                    </form>
                                         </div>
                                     </div>
                                 </div>
@@ -424,25 +494,51 @@
             </div>
         </div>
 
+
 <script>
     $(".todo-remove").click(function() {
     var item = $(this).closest("tr");         // Retrieves the text within <td>
     var item2 = item[0].childNodes[0].firstChild.data;
     $.post("borrarpropuesta.php",{item2:item2});       // Outputs the answer
 });
+</script>
 
+<script>
+    $(".todo-complete").click(function() {
+    var item = $(this).closest("tr");         // Retrieves the text within <td>
+    var item2 = item[0].childNodes[0].firstChild.data;
+    $.post("aceptarpropuesta.php",{item2:item2});       // Outputs the answer
+});
 </script>
         <script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+         if(dd<10){
+                dd='0'+dd
+            } 
+            if(mm<10){
+                mm='0'+mm
+            } 
+
+        today = yyyy+'-'+mm+'-'+dd;
+        document.getElementById("fecha").setAttribute("min", today);
+        </script>
+
+        <script>
           function modificarPresupuesto(element) {
-                var price = $(element).parents("tr").attr("data-price");
+            var price = $(element).parents("tr").attr("data-price");
     
             var newPrice = prompt("Introduce el nuevo presupuesto", price);
 
             if (newPrice != null) {
+                var idPropuesta = $(element).parents("tr");
+                idPropuesta = idPropuesta[0].childNodes[0].firstChild.data;
                 $(element).parents("tr").attr("data-price", newPrice);
-                $.post("modificarPresupuesto.php",{newPrice:newPrice});
-                }
+                $.post("modificarPresupuesto.php",{newPrice:newPrice , idPropuesta:idPropuesta});
             }
+        }
         </script>
     </body>
     </html>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2016 a las 18:13:35
+-- Tiempo de generación: 27-05-2016 a las 16:00:42
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -284,12 +284,23 @@ INSERT INTO `principios` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `propuestas` (
   `id` int(11) NOT NULL,
   `titulo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   `fechaAlta` date NOT NULL,
-  `fechaBaja` date NOT NULL,
+  `fechaBaja` date DEFAULT NULL,
+  `fechaAprobacion` date DEFAULT NULL,
   `capitalInicial` decimal(11,0) NOT NULL,
   `capitalAsignado` decimal(11,0) NOT NULL,
-  `estado` enum('abierta','cerrada') COLLATE utf8_unicode_ci NOT NULL
+  `estado` enum('pendiente','aceptada','rechazada') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `propuestas`
+--
+
+INSERT INTO `propuestas` (`id`, `titulo`, `descripcion`, `fechaAlta`, `fechaBaja`, `fechaAprobacion`, `capitalInicial`, `capitalAsignado`, `estado`) VALUES
+(1, 'asdddsgs', '', '2016-05-26', '2016-05-27', NULL, '10000', '300', 'rechazada'),
+(6, 'alfo', '', '0000-00-00', '2016-05-27', NULL, '3000000', '0', 'rechazada'),
+(7, 'dsg', '', '2016-05-27', '0000-00-00', NULL, '2', '0', 'pendiente');
 
 -- --------------------------------------------------------
 
@@ -487,12 +498,12 @@ ALTER TABLE `objetivos`
 -- AUTO_INCREMENT de la tabla `principios`
 --
 ALTER TABLE `principios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `propuestas`
 --
 ALTER TABLE `propuestas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
