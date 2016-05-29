@@ -3,7 +3,7 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 $idProyecto = $_GET['project-id'];
-//echo $idProyecto;
+echo $idProyecto;
 
 
 ?>
@@ -321,7 +321,27 @@ $idProyecto = $_GET['project-id'];
                                                                     $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
 
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $respu = "SELECT * FROM estadisticastiendaonline WHERE TRUE;";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $respu = "SELECT * FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $respu = "SELECT * FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                    }
+
+
+
+
+
+                                                                    $respu = $mysqli->query($respu);
+
+
                                                                     $fecha = array();
+                                                                    $fechaest = array();
                                                                     $responsabilidad = array();
                                                                     $estrategia = array();
                                                                     $adquision = array();
@@ -351,8 +371,17 @@ $idProyecto = $_GET['project-id'];
                                                                      }
 
 
+                                                                    while($row2 = $respu->fetch_row()){
+                                                                        array_push($fechaest, $row2[0]);
+
+                                                                     }
+
+
+
+
+
                                                                 /* cerrar la conexión */
-                                                                $mysqli->close();
+                                                                    $mysqli->close();
 
                                                                     ?>
 
@@ -587,7 +616,7 @@ $idProyecto = $_GET['project-id'];
                                                                     $out.='<div class="col-md-12">';
 
                                                                     
-                                                                    $out.='<div id="estadistica1" style="min-width: 310px; height: 400px; margin: 0 auto">';
+                                                                    $out.='<div id="estadistica23" style="min-width: 310px; height: 400px; margin: 0 auto">';
                                                                     $out.='</div>';
 
                                                                    
@@ -827,6 +856,159 @@ $idProyecto = $_GET['project-id'];
                                                                     </div>
                                                                     </div>
                                                                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                <script type="text/javascript">
+                                                                    $(function () {
+                                                                    // Create the chart
+                                                                    $('#estadistica23').highcharts({
+                                                                        chart: {
+                                                                            type: 'column'
+                                                                        },
+                                                                        title: {
+                                                                            text: 'Usuarios por mes.'
+                                                                        },
+                                                                        subtitle: {
+                                                                            text: 'Poner subtítulo en caso de necesitarlo.'
+                                                                        },
+                                                                        xAxis: {
+                                                                             categories: 
+
+                                                                             <?php 
+
+                                                                        $mysqli = mysqli_connect("localhost","root","root", "test");
+
+                                                                             switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticastiendaonline WHERE TRUE";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            $result = $mysqli->query($query);
+
+                                                                            /* array numérico */
+                                                                            $row = $result->fetch_array(MYSQLI_NUM);
+
+
+                                                                                $i=0;
+                                                                                if ($i == 0) {
+                                                                                $uno=printf ("['$fechaest[$i]', ");
+                                                                                $i++;
+                                                                                for ($i; $i <$row[0]-1; $i++) {
+
+                                                                                    printf ("'$fechaest[$i]', ");
+
+                                                                                }
+                                                                                printf ("'$fechaest[$i]']");
+
+                                                                            } elseif ($a == 1) {
+                                                                                echo "Error en variable i";
+                                                                            } else {
+                                                                                echo "Error";
+                                                                            }
+
+                                                                            /* liberar la serie de resultados */
+                                                                            $result->free();
+
+                                                                            /* cerrar la conexión */
+                                                                            $mysqli->close();
+
+                                                                            ?>
+
+
+
+
+                                                                        },
+                                                                        yAxis: {
+                                                                            title: {
+                                                                                text: 'Total de usuarios'
+                                                                            }
+
+                                                                        },
+                                                                        legend: {
+                                                                            enabled: false
+                                                                        },
+                                                                        plotOptions: {
+                                                                            series: {
+                                                                                borderWidth: 0,
+                                                                                dataLabels: {
+                                                                                    enabled: true,
+                                                                                    format: '{point.y:.1f}'
+                                                                                }
+                                                                            }
+                                                                        },
+
+                                                                        tooltip: {
+                                                                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                                            pointFormat: '<span style="color:{}">Hay </span><b>{point.y:.2f}</b> usuarios al mes<br/>'
+                                                                        },
+
+                                                                        series: [{
+                                                                            name: 'Totales:',
+                                                                            colorByPoint: true,
+                                                                            data: [{
+                                                                                y: 56.33, 
+                                                                                color: 'red',
+                                                                            }, {
+                                                                                y: 24.03,
+                                                                                color: 'green'
+                                                                            }, {
+                                                                                y: 10.38,
+                                                                                color: 'yellow'
+                                                                            }, {
+                                                                                y: 10.38,
+                                                                                color: 'yellow'    
+                                                                      
+
+
+
+
+
+
+
+
+
+
+                                                                            }]
+                                                                        }]
+                                                                    });
+                                                                });
+
+
+                                                                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
