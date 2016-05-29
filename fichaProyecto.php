@@ -626,62 +626,6 @@ echo $idProyecto;
                                                                     $out.='</div>';
                                                                     
 
-
-
-
-
-
-                                                                    $out.='<div class="col-lg-12">';
-                                                                    $out.='<div>';
-                                                                    $out.='<div class="panel panel-green">';
-                                                                    $out.='<div class="panel-heading">';
-                                                                    $out.='Evaluaciones';
-                                                                    $out.='</div>';
-
-                                                                    $out.='<div class="form-body pal">';
-
-
-                                                                    $out.='<div class="row">';                                                 
-
-                                                                    $out.='<div class="col-md-12">';
-
-                                                                    $out.='<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">';
-                                                                    $out.='</div>';
-                                                                   
-                                                                    $out.='</div>';
-
-                                                                    $out.='<div class="col-md-4">';
-                                                                 
-                                                                    $out.='</div>';
-                                                                    
-                                                                    $out.='<div class="col-md-6">';
-                                                                    
-                                                                    $out.='</div>';
-
-
-
-
-
-                                                                    $out.='</div>';
-                                                  
-                                                  
-
-                                                                    // $out.='<div class="form-actions text-right pal">';
-                                                                    // $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>';
-                                                                    // $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>';
-                                                                    // $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
-                                                                    // $out.='</div>';
-
-
-
-
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                    $out.='</div>';
-                                                                
-
-
                                                                 
                                                                 }
 
@@ -693,11 +637,215 @@ echo $idProyecto;
 
                                                   
 
-                                                                    <!--<div class="form-actions text-right pal">
-                                                                    <button type="submit" class="btn btn-success">Aceptar proyecto</button>
-                                                                    <button type="submit" class="btn btn-primary">Modificar proyecto</button>
-                                                                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                                                                    </div> -->
+                                                                    <div class="col-lg-12">
+                                                                    <div>
+                                                                    <div class="panel panel-green">
+                                                                    <div class="panel-heading">
+                                                                    Evaluaciones
+                                                                    </div>
+
+                                                                    <div class="form-body pal">
+
+
+                                                                    <div class="row">                                         
+
+                                                                    <div class="col-md-8">
+
+                                                                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+                                                                    </div>
+                                                                   
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+                                                                    <div id="añadir">
+
+                                                                     <form class="form-horizontal" method="POST" action="insertarprincipio.php">
+                                                                    <fieldset>
+
+                                                                    <!-- Form Name -->
+                                                                    <legend>Información sobre los umbrales</legend>
+
+                                                                    <!-- Text input-->
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+                                                                      <div class="col-md-4">
+                                                                      <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="true">
+                                                                       <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    <!-- Textarea -->
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="taDesc">Descripción</label>
+                                                                      <div class="col-md-4">                     
+                                                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required="true"></textarea>
+                                                                      </div>
+                                                                    </div>
+
+
+                                                                    <!-- Button -->
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="botonAñadir"></label>
+                                                                      <div class="col-md-4">
+                                                                        <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Añadir</button>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    </fieldset>
+                                                                    </form>   
+                                                                        
+                                                                    </div>
+                                                                    <div id="añadir">
+
+                                                                     <form class="form-horizontal" method="POST" action="insertarprincipio.php">
+                                                                    <fieldset>
+
+                                                                    <!-- Form Name -->
+                                                                    <legend>Añadir Evaluacion</legend>
+
+                                                                    <!-- Text input-->
+                                                                    <div class="form-group">
+                                                                    <form action="procResXSL.php">
+                                                                    <div>
+                                                                    <label class="col-md-2 control-label" for="taDesc">Responsabilidad: </label>
+                                                                        <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                        <!--  <label class="col-md-4 control-label" for="taDesc">Estratégia: </label>
+                                                                        <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+
+                                                                         <label class="col-md-6 control-label" for="taDesc">Adquisición: </label>
+                                                                        <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+
+                                                                         <label class="col-md-8 control-label" for="taDesc">Rendimiento: </label>
+                                                                        <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+
+                                                                         <label class="col-md-8 control-label" for="taDesc">Conducta Humana; </label>
+                                                                        <select name="poblacion" class="selectpicker" data-size="3" data-width="130px">
+                                                                            <option value="0">0</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                        </select>
+ -->
+
+
+
+
+
+
+
+
+                                                                        <input class="btn btn-action btn-lg" value="Evaluar" type="submit"/>
+                                                                
+
+
+
+                                                                    </form>
+
+                                                                    </div>
+
+
+
+
+
+
+
+
+                                                                    </div>
+
+                                                                    </div>
+                                                                    
+                                                                   
+
+
+
+                                                                    </div>
+                                                  
+                                                  
+
+                                                                    
+
+
+
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+
+
+
+
+
+
+
 
 
                                                                     <script type="text/javascript">
@@ -1039,29 +1187,12 @@ echo $idProyecto;
 
 
 
-                                                                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 
 
+                                                                    
 
-
-                                                                
-                                                                    </div>
-                                                                    </div>
-                                                                    </div>
-                                                                
-
-
-
-                                                                    <div></div>
-
-
-
-
-
-
-
-
+                                        
 
 
 
