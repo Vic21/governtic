@@ -696,10 +696,30 @@ echo $idProyecto;
 
 
                                                              
+                                                                     <div class="col-md-4">
 
+                                                                        <div class="alert alert-danger"><strong>La media es: !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>
+                                                                        <center><?php echo $fecha[0]; ?></center> 
 
+                                                                    </div>
 
                                                                     <div class="col-md-4">
+
+                                                                        <div class="alert alert-warning"><strong>La media es: !</strong><br><center> Está dentro del umbral estipulado.</center></br></div>
+                                                                        <center><?php echo $fecha[1]; ?></center> 
+
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+                                            
+                                                                        <div class="alert alert-success"><strong>La media es: !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>
+                                                                        <center><?php echo $fecha[2]; ?></center> 
+
+                                                                    </div>
+
+
+
+                                                                    <!-- <div class="col-md-4">
                                                                          <center><?php echo $fecha[0]; ?></center> 
                                                                       <canvas id="myCanvas" width="578" height="200"></canvas>
                                                                         <script>
@@ -708,7 +728,7 @@ echo $idProyecto;
 
                                                                           context.beginPath();
                                                                           context.rect(188, 50, 200, 100);
-                                                                          context.fillStyle = 'yellow';
+                                                                          context.fillStyle = 'red';
                                                                           context.fill();
                                                                           context.lineWidth = 7;
                                                                           context.strokeStyle = 'black';
@@ -748,14 +768,14 @@ echo $idProyecto;
 
                                                                           context2.beginPath();
                                                                           context2.rect(188, 50, 200, 100);
-                                                                          context2.fillStyle = 'yellow';
+                                                                          context2.fillStyle = 'green';
                                                                           context2.fill();
                                                                           context2.lineWidth = 7;
                                                                           context2.strokeStyle = 'black';
                                                                           context2.stroke();
                                                                         </script>
                                                                    
-                                                                    </div>
+                                                                    </div> -->
 
 
 
