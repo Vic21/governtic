@@ -6,6 +6,7 @@ $idProyecto = $_GET['project-id'];
 echo $idProyecto;
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -39,83 +40,6 @@ echo $idProyecto;
       <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
       <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-
-
-
-
-
-
-
-<script type="text/javascript">
-    $(function () {
-    // Create the chart
-    $('#estadistica2').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Total de ventas por mes.'
-        },
-        subtitle: {
-            text: 'Poner subtítulo en caso de necesitarlo.'
-        },
-        xAxis: {
-            type: 'category'
-        },
-        yAxis: {
-            title: {
-                text: 'Total de ventas'
-            }
-
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.1f}¡'
-                }
-            }
-        },
-
-        tooltip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> usuarios al mes<br/>'
-        },
-
-        series: [{
-            name: 'Totales',
-            colorByPoint: true,
-            data: [{
-                name: 'Enero',
-                y: 56.33, color: 'red',
-                drilldown: 'Microsoft Internet Explorer'
-            }, {
-                name: 'Febrero',
-                y: 24.03,
-                drilldown: 'Chrome',
-                color: 'green'
-            }, {
-                name: 'Marzo',
-                y: 10.38,
-                drilldown: 'Firefox',
-                color: 'yellow'
-      
-            }]
-        }]
-    });
-});
-
-
-</script>
-                                            
-
-
-
-
 
 
 
@@ -255,7 +179,7 @@ echo $idProyecto;
                                                                     $res = $mysqli->query("SELECT * FROM evaluaciones WHERE idProyecto=".$idProyecto.";");
                                                                     $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
-
+                                                                    //Carga la tabla necesária segun el proyecto
                                                                         switch ($idProyecto) {
                                                                                 case 1:
                                                                                     $respu = "SELECT * FROM estadisticastiendaonline WHERE TRUE;";
@@ -269,14 +193,22 @@ echo $idProyecto;
                                                                     }
 
 
-
-
-
                                                                     $respu = $mysqli->query($respu);
+
+                                                                    $umbrales = $mysqli->query("SELECT * FROM metricas WHERE idProyecto=".$idProyecto.";");
+
 
 
                                                                     $fecha = array();
                                                                     $fechaest = array();
+
+                                                                    $metrica1 = array();
+                                                                    $metrica2 = array();
+
+                                                                    $umbralOptimo = array();
+                                                                    $umbralMedio = array();
+
+
                                                                     $responsabilidad = array();
                                                                     $estrategia = array();
                                                                     $adquision = array();
@@ -308,6 +240,15 @@ echo $idProyecto;
 
                                                                     while($row2 = $respu->fetch_row()){
                                                                         array_push($fechaest, $row2[0]);
+                                                                        array_push($metrica1, $row2[1]);
+                                                                        array_push($metrica2, $row2[2]);
+
+                                                                     }
+
+
+                                                                    while($row3 = $umbrales->fetch_row()){
+                                                                        array_push($umbralOptimo, $row3[2]);
+                                                                        array_push($umbralMedio, $row3[3]);
 
                                                                      }
 
@@ -349,6 +290,43 @@ echo $idProyecto;
 
                                                                     <div class="col-md-4">
                                                                    
+                                                                   <?php
+
+
+                                                                    $cuenta = count($fechaest);
+                                                                    $contador=0;
+                                                                            
+                                                                        if ($contador==0) {
+                                                                            echo "y: $metrica1[$contador]";
+                                                                            if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                            $contador++;
+                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
+                                                                                     echo"},{ 
+                                                                                    y: $metrica1[$contador]";
+                                                                                    if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                                    
+                                                                                }
+                                                                        }elseif ($contador!=0) {
+                                                                            echo "diferente de 0";
+                                                                        }else {
+                                                                            echo "error";
+                                                                        }
+
+
+                                                                    ?>
+
                                                                     </div>
 
                                                                     <div class="col-md-4">
@@ -393,56 +371,6 @@ echo $idProyecto;
 
 
                                                                   while($row = $res->fetch_row()){
-
-                                                                    
-                                                                    // $out.='<div class="col-lg-12">';
-                                                                    // $out.='<div>';
-                                                                    // $out.='<div class="panel panel-red">';
-                                                                    // $out.='<div class="panel-heading">';
-                                                                    // $out.='Alertas';
-                                                                    // $out.='</div>';
-
-
-                                                                    // $out.='<div class="form-body pal">';
-
-
-                                                                    // $out.='<div class="row">';                                                 
-
-                                                                    // $out.='<div class="col-md-4">';
-                                                                   
-                                                                    // $out.='</div>';
-
-                                                                    // $out.='<div class="col-md-4">';
-                                                                 
-                                                                    // $out.='</div>';
-
-                                                                    // $out.='<div class="col-md-6">';
-                                                                    
-                                                                    // $out.='</div>';
-
-
-
-
-
-                                                                    // $out.='</div>';
-                                                  
-
-                                                                    // // $out.='<div class="form-actions text-right pal">';
-                                                                    // // $out.='<button type="submit" class="btn btn-success">Aceptar proyecto</button>';
-                                                                    // // $out.='<button type="submit" class="btn btn-primary">Modificar proyecto</button>';
-                                                                    // // $out.='<button type="submit" class="btn btn-danger">Cancelar proyecto</button>';
-                                                                    // // $out.='</div>';
-
-
-
-
-                                                                    // $out.='</div>';
-                                                                    // $out.='</div>';
-                                                                    // $out.='</div>';
-                                                                    // $out.='</div>';
-                                                                
-
-
 
 
                                                                     $out.='<div class="col-lg-12">';
@@ -860,7 +788,7 @@ echo $idProyecto;
 
                                                                                 $i=0;
                                                                                 if ($i == 0) {
-                                                                                $uno=printf ("['$fechaest[$i]', ");
+                                                                                    printf ("['$fechaest[$i]', ");
                                                                                 $i++;
                                                                                 for ($i; $i <$row[0]-1; $i++) {
 
@@ -933,18 +861,43 @@ echo $idProyecto;
                                                                             name: 'Totales:',
                                                                             colorByPoint: true,
                                                                             data: [{
-                                                                                y: 56.33, 
-                                                                                color: 'red',
-                                                                            }, {
-                                                                                y: 24.03,
-                                                                                color: 'green'
-                                                                            }, {
-                                                                                y: 10.38,
-                                                                                color: 'yellow'
-                                                                            }, {
-                                                                                y: 10.38,
-                                                                                color: 'yellow'    
-                                                                      
+                                                                                
+                                                                          <?php
+
+
+                                                                    $cuenta = count($fechaest);
+                                                                    $contador=0;
+                                                                            
+                                                                        if ($contador==0) {
+                                                                            echo "y: $metrica1[$contador]";
+                                                                            if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                            $contador++;
+                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
+                                                                                     echo"},{ 
+                                                                                    y: $metrica1[$contador]";
+                                                                                    if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                                    
+                                                                                }
+                                                                        }elseif ($contador!=0) {
+                                                                            echo "diferente de 0";
+                                                                        }else {
+                                                                            echo "error";
+                                                                        }
+
+
+                                                                    ?>
 
 
 
@@ -1014,7 +967,7 @@ echo $idProyecto;
 
                                                                                 $i=0;
                                                                                 if ($i == 0) {
-                                                                                $uno=printf ("['$fechaest[$i]', ");
+                                                                                    printf ("['$fechaest[$i]', ");
                                                                                 $i++;
                                                                                 for ($i; $i <$row[0]-1; $i++) {
 
@@ -1043,7 +996,25 @@ echo $idProyecto;
                                                                         },
                                                                         yAxis: {
                                                                             title: {
-                                                                                text: 'Total de usuarios'
+                                                                                text: 
+
+                                                                            <?php
+                                                                            switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("'Total de ventas.'");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("'Total ventas globales.'");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("'Porcentaje de articulos.'");
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            ?>
+
+
+
                                                                             }
 
                                                                         },
@@ -1068,21 +1039,45 @@ echo $idProyecto;
                                                                         series: [{
                                                                             name: 'Totales:',
                                                                             colorByPoint: true,
-                                                                            data: [{
-                                                                                y: 56.33, 
-                                                                                color: 'red',
-                                                                            }, {
-                                                                                y: 24.03,
-                                                                                color: 'green'
-                                                                            }, {
-                                                                                y: 10.38,
-                                                                                color: 'yellow'
-                                                                            }, {
-                                                                                y: 10.38,
-                                                                                color: 'yellow'    
-                                                                      
+                                                                            data: 
+                                                                                [{
+
+                                                                             <?php
 
 
+                                                                    $cuenta = count($fechaest);
+                                                                    $contador=0;
+                                                                            
+                                                                        if ($contador==0) {
+                                                                            echo "y: $metrica2[$contador]";
+                                                                            if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                            $contador++;
+                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
+                                                                                     echo"},{ 
+                                                                                    y: $metrica2[$contador]";
+                                                                                    if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                        echo ",color:'green'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                        echo ",color:'yellow'";
+                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                        echo ",color:'red'";
+                                                                                    }
+                                                                                    
+                                                                                }
+                                                                        }elseif ($contador!=0) {
+                                                                            echo "diferente de 0";
+                                                                        }else {
+                                                                            echo "error";
+                                                                        }
+
+
+                                                                    ?>
 
                                                                             }]
                                                                         }]
@@ -1091,19 +1086,6 @@ echo $idProyecto;
 
 
                                                                 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
