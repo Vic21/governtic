@@ -293,36 +293,14 @@ echo $idProyecto;
                                                                    <?php
 
 
-                                                                    $cuenta = count($fechaest);
-                                                                    $contador=0;
+                                                                    $cuenta = count($fecha);
+                                                                    printf($cuenta);
+                                                                    
+                                                                    $hola='hola';
+                                                                    $number=1;
+                                                                    echo 'hola',$number;
                                                                             
-                                                                        if ($contador==0) {
-                                                                            echo "y: $metrica1[$contador]";
-                                                                            if($metrica1[$contador]>=$umbralOptimo[0]){
-                                                                                        echo ",color:'green'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
-                                                                                        echo ",color:'yellow'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
-                                                                                        echo ",color:'red'";
-                                                                                    }
-                                                                            $contador++;
-                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
-                                                                                     echo"},{ 
-                                                                                    y: $metrica1[$contador]";
-                                                                                    if($metrica1[$contador]>=$umbralOptimo[0]){
-                                                                                        echo ",color:'green'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
-                                                                                        echo ",color:'yellow'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
-                                                                                        echo ",color:'red'";
-                                                                                    }
-                                                                                    
-                                                                                }
-                                                                        }elseif ($contador!=0) {
-                                                                            echo "diferente de 0";
-                                                                        }else {
-                                                                            echo "error";
-                                                                        }
+                                                                        
 
 
                                                                     ?>
@@ -702,6 +680,154 @@ echo $idProyecto;
 
                                                                     </div>
 
+
+                                                                    <!-- medias -->
+
+                                                                    <div class="col-md-8">
+
+                                                                    <div id="medias">
+
+                                                                        <div id="añadir">
+
+                                                                    
+
+                                                                    <!-- Form Name -->
+                                                                    <legend>Información sobre los umbrales de las medias de cada evaluacion</legend>
+
+
+                                                             
+
+
+
+                                                                    <div class="col-md-4">
+                                                                         <center><?php echo $fecha[0]; ?></center> 
+                                                                      <canvas id="myCanvas" width="578" height="200"></canvas>
+                                                                        <script>
+                                                                          var canvas = document.getElementById('myCanvas');
+                                                                          var context = canvas.getContext('2d');
+
+                                                                          context.beginPath();
+                                                                          context.rect(188, 50, 200, 100);
+                                                                          context.fillStyle = 'yellow';
+                                                                          context.fill();
+                                                                          context.lineWidth = 7;
+                                                                          context.strokeStyle = 'black';
+                                                                          context.stroke();
+                                                                        </script>
+                                                                   
+                                                                    </div>
+
+                                                                     <div class="col-md-4">
+                                                                        <center><?php echo $fecha[1]; ?></center>  
+                                                                     <canvas id="myCanvas2" width="578" height="200"></canvas>
+                                                                        <script>
+                                                                          var canvas2 = document.getElementById('myCanvas2');
+                                                                          var context1 = canvas2.getContext('2d');
+
+                                                                          context1.beginPath();
+                                                                          context1.rect(188, 50, 200, 100);
+                                                                          context1.fillStyle = 'yellow';
+                                                                          context1.font = "10px Comic Sans MS";
+                                                                          context1.textStyle = "red";
+                                                                          context1.textAlign = "center";
+                                                                          context1.fillText("Hello", canvas2.width/2, canvas2.height/2); 
+                                                                          context1.fill();
+                                                                          context1.lineWidth = 7;
+                                                                          context1.strokeStyle = 'black';
+                                                                          context1.stroke();
+                                                                        </script> 
+                                                                   
+                                                                    </div>
+
+                                                                     <div class="col-md-4">
+                                                                         <center><?php echo $fecha[2]; ?></center> 
+                                                                      <canvas id="myCanvas3" width="578" height="200"></canvas>
+                                                                        <script>
+                                                                          var canvas3 = document.getElementById('myCanvas3');
+                                                                          var context2 = canvas3.getContext('2d');
+
+                                                                          context2.beginPath();
+                                                                          context2.rect(188, 50, 200, 100);
+                                                                          context2.fillStyle = 'yellow';
+                                                                          context2.fill();
+                                                                          context2.lineWidth = 7;
+                                                                          context2.strokeStyle = 'black';
+                                                                          context2.stroke();
+                                                                        </script>
+                                                                   
+                                                                    </div>
+
+
+
+
+
+
+                                                                        
+                                                                    </div>
+
+
+                                                                    </div>
+                                                                   
+                                                                    </div>
+
+                                                                     <div class="col-md-4">
+
+                                                                    <div id="medias">
+
+                                                                        <div id="añadir">
+
+                                                                     <form class="form-horizontal" method="POST" action="insertarprincipio.php">
+                                                                    <fieldset>
+
+
+                                                                    <!-- Form Name -->
+                                                                    <legend>Modificar los umbrales</legend>
+
+                                                                   
+
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="nombre">Umbral óptimo: </label>  
+                                                                      <div class="col-md-4">
+                                                                      <input id="nombre" name="nombre" type="text" placeholder="" class="form-control input-md" required="true">
+                                                                      </div>
+                                                                    </div>
+
+                                                                    <!-- Textarea -->
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="taDesc">Umbral mediio: </label>
+                                                                      <div class="col-md-4">                     
+                                                                        <input class="form-control" id="descripcion" name="descripcion" placeholder="" required="true"></textarea>
+                                                                      </div>
+                                                                    </div>
+
+
+                                                                    <!-- Button -->
+                                                                    <div class="form-group">
+                                                                      <label class="col-md-4 control-label" for="botonAñadir"></label>
+                                                                      <div class="col-md-4">
+                                                                        <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Modificar</button>
+                                                                      </div>
+                                                                    </div>
+
+                                                                    </fieldset>
+                                                                    </form>   
+
+
+                                                                    </div>
+
+                                                                        
+                                                                    </div>
+
+
+                                                                    </div>
+                                                                   
+                                                                    </div>
+
+                                                                    <!-- medias -->
+
+
+
+
                                                                     </div>
                                                                     
                                                                    
@@ -719,12 +845,6 @@ echo $idProyecto;
                                                                     </div>
                                                                     </div>
                                                                     </div>
-
-
-
-
-
-
 
 
 
@@ -878,7 +998,7 @@ echo $idProyecto;
                                                                                         echo ",color:'red'";
                                                                                     }
                                                                             $contador++;
-                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
+                                                                            for ($contador; $contador <$cuenta; $contador++) {
                                                                                      echo"},{ 
                                                                                     y: $metrica1[$contador]";
                                                                                     if($metrica1[$contador]>=$umbralOptimo[0]){
@@ -1050,22 +1170,22 @@ echo $idProyecto;
                                                                             
                                                                         if ($contador==0) {
                                                                             echo "y: $metrica2[$contador]";
-                                                                            if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                            if($metrica2[$contador]>=$umbralOptimo[1]){
                                                                                         echo ",color:'green'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                    }elseif ($metrica2[$contador]<$umbralOptimo[1] && $metrica1[$contador]>=$umbralMedio[1] ) {
                                                                                         echo ",color:'yellow'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                    }elseif ($metrica2[$contador]<$umbralMedio[1]){
                                                                                         echo ",color:'red'";
                                                                                     }
                                                                             $contador++;
-                                                                            for ($contador; $contador <$cuenta-1; $contador++) {
+                                                                            for ($contador; $contador <$cuenta; $contador++) {
                                                                                      echo"},{ 
                                                                                     y: $metrica2[$contador]";
-                                                                                    if($metrica1[$contador]>=$umbralOptimo[0]){
+                                                                                    if($metrica2[$contador]>=$umbralOptimo[1]){
                                                                                         echo ",color:'green'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralOptimo[0] && $metrica1[$contador]>=$umbralMedio[0] ) {
+                                                                                    }elseif ($metrica2[$contador]<$umbralOptimo[1] && $metrica2[$contador]>=$umbralMedio[1] ) {
                                                                                         echo ",color:'yellow'";
-                                                                                    }elseif ($metrica1[$contador]<$umbralMedio[0]){
+                                                                                    }elseif ($metrica2[$contador]<$umbralMedio[1]){
                                                                                         echo ",color:'red'";
                                                                                     }
                                                                                     
