@@ -41,7 +41,44 @@ echo $idProyecto;
 
       <script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
+     <script type="text/javascript" src="script/canvasjs.min.js"></script>
 
+
+<script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      backgroundColor: "#F2DEDE",
+      title:{
+        text: "Usuarios por mes"    
+      },
+      axisY: {
+           gridColor: "black",
+        title: "Reserves(MMbbl)"
+      },
+      legend: {
+        verticalAlign: "bottom",
+        horizontalAlign: "center"
+      },
+      data: [
+
+      {        
+        color: "#B0D0B0",
+        type: "column",  
+        showInLegend: true, 
+        legendMarkerType: "none",
+        legendText: "MMbbl = one million barrels",
+        dataPoints: [      
+        { x: 10, y: 297571, label: "Venezuela"}
+        
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+  }
+  </script>
 
 
 </head>
@@ -288,31 +325,69 @@ echo $idProyecto;
 
                                                                     <div class="row">                                         
 
-                                                                    <div class="col-md-4">
-                                                                   
-                                                                   <?php
+                                                                     <div class="col-md-4">
 
-
-                                                                    $cuenta = count($fecha);
-                                                                    printf($cuenta);
-                                                                    
-                                                                    $hola='hola';
-                                                                    $number=1;
-                                                                    echo 'hola',$number;
+                                                                        <div class="alert alert-danger">
+                                                                        <strong>
+                                                                                
+                                                                           <!--  <?php
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("Usuarios por mes.");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("Precios controlados por mes.");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("Totales en kg de desperdicios por mes.");
+                                                                                    break;
+                                                                            }
                                                                             
-                                                                        
+                                                                            ?> -->
 
 
-                                                                    ?>
 
+                                                                        </strong>
+                                                                        <br><center><div id="chartContainer" style="height: 200px; width: 80%;"></center></br></div>
+<!--                                                                         <center><?php echo $fecha[0]; ?></center> 
+ -->
                                                                     </div>
 
                                                                     <div class="col-md-4">
-                                                                 
+
+                                                                        <div class="alert alert-warning">
+                                                                        <strong>
+                                                                            
+
+                                                                             <?php
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    printf("Ventas por mes.");
+                                                                                    break;
+                                                                                case 2:
+                                                                                    printf("Ventas globales por mes.");
+                                                                                    break;
+                                                                                case 3:
+                                                                                    printf("Porcentaje de articulos controlados.");
+                                                                                    break;
+                                                                            }
+                                                                            
+                                                                            ?>
+
+
+
+
+                                                                        </strong>
+                                                                        <br><center> Está dentro del umbral estipulado.</center></br></div>
+<!--                                                                         <center><?php echo $fecha[1]; ?></center> 
+ -->
                                                                     </div>
 
-                                                                    <div class="col-md-6">
-                                                                    
+                                                                    <div class="col-md-4">
+                                            
+                                                                        <div class="alert alert-success"><strong>Evaluaciones</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>
+<!--                                                                         <center><?php echo $fecha[2]; ?></center> 
+ -->
                                                                     </div>
 
 
