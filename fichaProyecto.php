@@ -69,7 +69,7 @@ echo $idProyecto;
         legendMarkerType: "none",
         legendText: "MMbbl = one million barrels",
         dataPoints: [      
-        { x: 10, y: 763.0, label: "Usuarios"}
+        { x: 10, y: -565, label: "Usuarios"}
         
         ]
       }
