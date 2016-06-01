@@ -54,7 +54,7 @@ echo $idProyecto;
       },
       axisY: {
            gridColor: "black",
-        title: "Reserves(MMbbl)"
+        title: "Total"
       },
       legend: {
         verticalAlign: "bottom",
@@ -69,7 +69,7 @@ echo $idProyecto;
         legendMarkerType: "none",
         legendText: "MMbbl = one million barrels",
         dataPoints: [      
-        { x: 10, y: 297571, label: "Venezuela"}
+        { x: 10, y: 763.0, label: "Usuarios"}
         
         ]
       }
@@ -348,9 +348,11 @@ echo $idProyecto;
 
 
                                                                         </strong>
-                                                                        <br><center><div id="chartContainer" style="height: 200px; width: 80%;"></center></br></div>
-<!--                                                                         <center><?php echo $fecha[0]; ?></center> 
- -->
+                                                                        <br><center><div id="chartContainer" style="height: 200px; width: 80%;"></center></br>
+                                                                        <center><b>Fecha: <?php echo $fecha[0]; ?></b></center>
+                                                                        </div>
+                                                                         
+
                                                                     </div>
 
                                                                     <div class="col-md-4">
