@@ -10,16 +10,17 @@
         $descripcion = $_POST['descripcion'];
 
         $mysqli = mysqli_connect("localhost","root","root", "test");
+        mysqli_set_charset($mysqli, "utf8");
         $query = "INSERT INTO `principios` (`id`, `nombre`, `descripcion`) VALUES (NULL, ";
 
-        $query .= "'";  
+        $query .= "'";
         $query .= $nombre;
-        $query .= "'";  
-        $query .= ", "; 
+        $query .= "'";
+        $query .= ", ";
 
-        $query .= "'";  
+        $query .= "'";
         $query .= $descripcion;
-        $query .= "'";    
+        $query .= "'";
         $query .= " )";
 
 if (mysqli_query($mysqli, $query)== FALSE)   {

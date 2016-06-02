@@ -276,6 +276,7 @@ echo $idProyecto;
                                             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                                              <?php
                                                                   $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                  mysqli_set_charset($mysqli, "utf8");
                                                                   $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
 
@@ -308,7 +309,7 @@ echo $idProyecto;
                                              <?php 
 
                                                                      $mysqli = mysqli_connect("localhost","root","root", "test");
-
+                                                                     mysqli_set_charset($mysqli, "utf8");
                                                                 /* verificar la conexión */
                                                                 if (mysqli_connect_errno()) {
                                                                     printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
@@ -425,6 +426,7 @@ echo $idProyecto;
 
                                                                  <?php
                                                                   $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                  mysqli_set_charset($mysqli, "utf8");
                                                                   $res = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
 
@@ -871,6 +873,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                mysqli_set_charset($mysqli, "utf8");
                                                                 $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                 $result = $mysqli->query($query);
 
@@ -933,6 +936,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 
@@ -975,6 +979,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 
@@ -1017,6 +1022,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 
@@ -1059,6 +1065,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 
@@ -1101,6 +1108,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 
@@ -1143,6 +1151,7 @@ echo $idProyecto;
                                                                     <?php 
 
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $query = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto."";
                                                                     $result = $mysqli->query($query);
 

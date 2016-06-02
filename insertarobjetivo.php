@@ -9,21 +9,22 @@
         $idPrincipio = $_POST['principio'];
 
         $mysqli = mysqli_connect("localhost","root","root", "test");
+        mysqli_set_charset($mysqli, "utf8");
         $query = "INSERT INTO `objetivos` (`id`, `nombre`, `descripcion`, `idPrincipio`) VALUES (NULL, ";
 
-        $query .= "'";  
+        $query .= "'";
         $query .= $nombre;
-        $query .= "'";  
-        $query .= ", "; 
-
-        $query .= "'";  
-        $query .= $descripcion;
-        $query .= "'";  
+        $query .= "'";
         $query .= ", ";
 
-        $query .= "'";  
+        $query .= "'";
+        $query .= $descripcion;
+        $query .= "'";
+        $query .= ", ";
+
+        $query .= "'";
         $query .= $idPrincipio;
-        $query .= "'";  
+        $query .= "'";
         $query .= " )";
 
 if (mysqli_query($mysqli, $query)== FALSE)   {
@@ -31,7 +32,7 @@ if (mysqli_query($mysqli, $query)== FALSE)   {
 }
 mysqli_close($mysqli);
 
-header('Location: objetivos.php'); 
+header('Location: objetivos.php');
   exit();
 
 ?>
