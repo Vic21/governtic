@@ -89,7 +89,7 @@
             <!--BEGIN THEME SETTING-->
             <div id="theme-setting">
                 <a href="#" data-toggle="dropdown" data-step="1" data-intro="&lt;b&gt;Many styles&lt;/b&gt; and &lt;b&gt;colors&lt;/b&gt; be created for you. Let choose one and enjoy it!"
-                    data-position="left" class="btn-theme-setting"><i class="fa fa-cog"></i></a>
+                   data-position="left" class="btn-theme-setting"><i class="fa fa-cog"></i></a>
                 <div class="content-theme-setting">
                     <select id="list-style" class="form-control">
                         <option value="style1">Flat Squared style</option>
@@ -105,27 +105,31 @@
             <!--BEGIN TOPBAR-->
             <div id="header-topbar-option-demo" class="page-header-topbar">
                 <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">MERCA-TIC</span><span style="display: none" class="logo-text-icon">µ</span></a></div>
-                <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
-                    
-                    <div class="news-update-box hidden-xs"><span class="text-uppercase mrm pull-left text-white">News:</span>
-                        <ul id="news-update" class="ticker list-unstyled">
-                        </ul>
+                    <div class="navbar-header">
+                        <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        <a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text">MERCA-TIC</span><span style="display: none" class="logo-text-icon">µ</span></a>
                     </div>
-                 
-                </div>
-            </nav>
+                    <div class="topbar-main">
+                        <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                        <div class="news-update-box hidden-xs">
+                            <span class="text-uppercase mrm pull-left text-white">News:</span>
+                            <ul id="news-update" class="ticker list-unstyled"></ul>
+                        </div>
+
+                    </div>
+                </nav>
                 <!--BEGIN MODAL CONFIG PORTLET-->
                 <div id="modal-config" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
-                                    &times;</button>
+                                    &times;
+                                </button>
                                 <h4 class="modal-title">
-                                    Modal title</h4>
+                                    Modal title
+                                </h4>
                             </div>
                             <div class="modal-body">
                                 <p>
@@ -137,13 +141,16 @@
                                     aliquam nisi, a mollis neque. Ut vel felis quis tellus hendrerit placerat. Vivamus
                                     vel nisl non magna feugiat dignissim sed ut nibh. Nulla elementum, est a pretium
                                     hendrerit, arcu risus luctus augue, mattis aliquet orci ligula eget massa. Sed ut
-                                    ultricies felis.</p>
+                                    ultricies felis.
+                                </p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" data-dismiss="modal" class="btn btn-default">
-                                    Close</button>
+                                    Close
+                                </button>
                                 <button type="button" class="btn btn-primary">
-                                    Save changes</button>
+                                    Save changes
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -153,113 +160,170 @@
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
-               <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
-                    data-position="right" class="navbar-default navbar-static-side">
-                <div class="sidebar-collapse menu-scroll">
-                    <ul id="side-menu" class="nav">
-                        
-                         <div class="clearfix"></div>
-                        <li class="active"><a href="index.php"><i class="fa fa-tachometer fa-fw">
-                            <div class="icon-bg bg-orange"></div>
-                        </i><span class="menu-title">Principal</span></a></li>
+                <nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;"
+                     data-position="right" class="navbar-default navbar-static-side">
+                    <div class="sidebar-collapse menu-scroll">
+                        <ul id="side-menu" class="nav">
+
+                            <div class="clearfix"></div>
+                            <li class="active">
+                                <a href="index.php">
+                                    <i class="fa fa-tachometer fa-fw">
+                                        <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Principal</span>
+                                </a>
+                            </li>
 
 
-                        <li><a href="principios.php"><i class="fa fa-sitemap fa-fw">
-                        <div class="icon-bg bg-dark"></div>
-                        </i><span class="menu-title">Principios</span></a>
-                        </li>
-                        
-                        <li><a href="propuestas.php"><i class="fa fa-desktop fa-fw">
-                            <div class="icon-bg bg-pink"></div>
-                        </i><span class="menu-title">Propuestas</span></a>
-                        </li>
+                            <li>
+                                <a href="principios.php">
+                                    <i class="fa fa-sitemap fa-fw">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Principios</span>
+                                </a>
+                            </li>
 
-                        <li><a href="proyectos.php"><i class="fa fa-send-o fa-fw">
-                            <div class="icon-bg bg-green"></div>
-                        </i><span class="menu-title">Proyectos</span></a>       
-                        </li>
-                        <!--    <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
+                            <li>
+                                <a href="propuestas.php">
+                                    <i class="fa fa-desktop fa-fw">
+                                        <div class="icon-bg bg-pink"></div>
+                                    </i><span class="menu-title">Propuestas</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="proyectos.php">
+                                    <i class="fa fa-send-o fa-fw">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Proyectos</span>
+                                </a>
+                            </li>
+                            <!--    <li><a href="metricas.php"><i class="fa fa-edit fa-fw">
                             <div class="icon-bg bg-violet"></div>
                         </i><span class="menu-title">Métricas</span></a>
-                          
+
                         </li> -->
-                        <li><a href="objetivos.php"><i class="fa fa-th-list fa-fw">
-                            <div class="icon-bg bg-blue"></div>
-                        </i><span class="menu-title">Objetivos Estratégicos</span></a>
-                              
-                        </li>
-                       <!--    <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
-                            <div class="icon-bg bg-red"></div>
-                        </i><span class="menu-title">Evaluaciones</span></a> -->
-                          
-                        </li>
-                        <li><a href="geco.php"><i class="fa fa-file-o fa-fw">
-                            <div class="icon-bg bg-yellow"></div>
-                        </i><span class="menu-title">Gestión Económica</span></a>
-                           
-                       </li>
-                  <!--       <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
-                            <div class="icon-bg bg-orange"></div>
-                        </i><span class="menu-title">Estadísticas</span></a> -->
-                </div>
-            </nav>
+                            <li>
+                                <a href="objetivos.php">
+                                    <i class="fa fa-th-list fa-fw">
+                                        <div class="icon-bg bg-blue"></div>
+                                    </i><span class="menu-title">Objetivos Estratégicos</span>
+                                </a>
+
+                            </li>
+                            <!--    <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
+                             <div class="icon-bg bg-red"></div>
+                         </i><span class="menu-title">Evaluaciones</span></a> -->
+                            </li>
+                            <li>
+                                <a href="geco.php">
+                                    <i class="fa fa-file-o fa-fw">
+                                        <div class="icon-bg bg-yellow"></div>
+                                    </i><span class="menu-title">Gestión Económica</span>
+                                </a>
+
+                            </li>
+                            <!--       <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
+                                  <div class="icon-bg bg-orange"></div>
+                              </i><span class="menu-title">Estadísticas</span></a> -->
+                    </div>
+                </nav>
                 <!--END SIDEBAR MENU-->
                 <!--BEGIN CHAT FORM-->
                 <div id="chat-form" class="fixed">
                     <div class="chat-inner">
                         <h2 class="chat-header">
-                            <a href="javascript:;" class="chat-form-close pull-right"><i class="glyphicon glyphicon-remove">
-                            </i></a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;<span class="badge badge-info">3</span></h2>
+                            <a href="javascript:;" class="chat-form-close pull-right">
+                                <i class="glyphicon glyphicon-remove">
+                                </i>
+                            </a><i class="fa fa-user"></i>&nbsp; Chat &nbsp;<span class="badge badge-info">3</span>
+                        </h2>
                         <div id="group-1" class="chat-group">
-                            <strong>Favorites</strong><a href="#"><span class="user-status is-online"></span> <small>
-                                Verna Morton</small> <span class="badge badge-info">2</span></a><a href="#"><span
-                                    class="user-status is-online"></span> <small>Delores Blake</small> <span class="badge badge-info is-hidden">
-                                        0</span></a><a href="#"><span class="user-status is-busy"></span> <small>Nathaniel Morris</small>
-                                            <span class="badge badge-info is-hidden">0</span></a><a href="#"><span class="user-status is-idle"></span>
-                                                <small>Boyd Bridges</small> <span class="badge badge-info is-hidden">0</span></a><a
-                                                    href="#"><span class="user-status is-offline"></span> <small>Meredith Houston</small>
-                                                    <span class="badge badge-info is-hidden">0</span></a></div>
+                            <strong>Favorites</strong><a href="#">
+                                <span class="user-status is-online"></span> <small>
+                                    Verna Morton
+                                </small> <span class="badge badge-info">2</span>
+                            </a><a href="#">
+                                <span class="user-status is-online"></span> <small>Delores Blake</small> <span class="badge badge-info is-hidden">
+                                    0
+                                </span>
+                            </a><a href="#">
+                                <span class="user-status is-busy"></span> <small>Nathaniel Morris</small>
+                                <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-idle"></span>
+                                <small>Boyd Bridges</small> <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-offline"></span> <small>Meredith Houston</small>
+                                <span class="badge badge-info is-hidden">0</span>
+                            </a>
+                        </div>
                         <div id="group-2" class="chat-group">
-                            <strong>Office</strong><a href="#"><span class="user-status is-busy"></span> <small>
-                                Ann Scott</small> <span class="badge badge-info is-hidden">0</span></a><a href="#"><span
-                                    class="user-status is-offline"></span> <small>Sherman Stokes</small> <span class="badge badge-info is-hidden">
-                                        0</span></a><a href="#"><span class="user-status is-offline"></span> <small>Florence
-                                            Pierce</small> <span class="badge badge-info">1</span></a></div>
+                            <strong>Office</strong><a href="#">
+                                <span class="user-status is-busy"></span> <small>
+                                    Ann Scott
+                                </small> <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-offline"></span> <small>Sherman Stokes</small> <span class="badge badge-info is-hidden">
+                                    0
+                                </span>
+                            </a><a href="#">
+                                <span class="user-status is-offline"></span> <small>
+                                    Florence
+                                    Pierce
+                                </small> <span class="badge badge-info">1</span>
+                            </a>
+                        </div>
                         <div id="group-3" class="chat-group">
-                            <strong>Friends</strong><a href="#"><span class="user-status is-online"></span> <small>
-                                Willard Mckenzie</small> <span class="badge badge-info is-hidden">0</span></a><a
-                                    href="#"><span class="user-status is-busy"></span> <small>Jenny Frazier</small>
-                                    <span class="badge badge-info is-hidden">0</span></a><a href="#"><span class="user-status is-offline"></span>
-                                        <small>Chris Stewart</small> <span class="badge badge-info is-hidden">0</span></a><a
-                                            href="#"><span class="user-status is-offline"></span> <small>Olivia Green</small>
-                                            <span class="badge badge-info is-hidden">0</span></a></div>
+                            <strong>Friends</strong><a href="#">
+                                <span class="user-status is-online"></span> <small>
+                                    Willard Mckenzie
+                                </small> <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-busy"></span> <small>Jenny Frazier</small>
+                                <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-offline"></span>
+                                <small>Chris Stewart</small> <span class="badge badge-info is-hidden">0</span>
+                            </a><a href="#">
+                                <span class="user-status is-offline"></span> <small>Olivia Green</small>
+                                <span class="badge badge-info is-hidden">0</span>
+                            </a>
+                        </div>
                     </div>
                     <div id="chat-box" style="top: 400px">
                         <div class="chat-box-header">
-                            <a href="#" class="chat-box-close pull-right"><i class="glyphicon glyphicon-remove">
-                            </i></a><span class="user-status is-online"></span><span class="display-name">Willard
-                                Mckenzie</span> <small>Online</small>
+                            <a href="#" class="chat-box-close pull-right">
+                                <i class="glyphicon glyphicon-remove">
+                                </i>
+                            </a><span class="user-status is-online"></span><span class="display-name">
+                                Willard
+                                Mckenzie
+                            </span> <small>Online</small>
                         </div>
                         <div class="chat-content">
                             <ul class="chat-box-body">
                                 <li>
                                     <p>
-                                        <img src="images/avatar/128.jpg" class="avt" /><span class="user">John Doe</span><span
-                                            class="time">09:33</span></p>
+                                        <img src="images/avatar/128.jpg" class="avt" /><span class="user">John Doe</span><span class="time">09:33</span>
+                                    </p>
                                     <p>
-                                        Hi Swlabs, we have some comments for you.</p>
+                                        Hi Swlabs, we have some comments for you.
+                                    </p>
                                 </li>
                                 <li class="odd">
                                     <p>
-                                        <img src="images/avatar/48.jpg" class="avt" /><span class="user">Swlabs</span><span
-                                            class="time">09:33</span></p>
+                                        <img src="images/avatar/48.jpg" class="avt" /><span class="user">Swlabs</span><span class="time">09:33</span>
+                                    </p>
                                     <p>
-                                        Hi, we're listening you...</p>
+                                        Hi, we're listening you...
+                                    </p>
                                 </li>
                             </ul>
                         </div>
                         <div class="chat-textarea">
-                            <input placeholder="Type your message" class="form-control" /></div>
+                            <input placeholder="Type your message" class="form-control" />
+                        </div>
                     </div>
                 </div>
                 <!--END CHAT FORM-->
@@ -285,24 +349,29 @@
                             <div id="sum_box" class="row mbl">
 
 
-                        
 
-                            <div class="col-lg-12">
+
+                                <div class="col-lg-12">
                                     <div class="portlet box">
                                         <div class="portlet-header">
-                                            <div class="caption">Panel de Propuestas</div>
-                                        <div style="overflow: hidden;" class="portlet-body">
-                                            <?php
+                                            <div class="caption">
+                                                Panel de Propuestas
+                                            </div>
+                                            <div style="overflow: hidden;" class="portlet-body">
+                                                <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 $res = $mysqli->query("SELECT * FROM propuestas WHERE TRUE;");
-                                                $out ='<table id="example" class="table table-striped table-bordered">';
+                                                $out ='<table id="example" class="table table-striped table-bordered text-center">';
                                                 $out.='<tr>';
+                                                $out.= '<th>';
+                                                $out.='Estado';
+                                                $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='ID';
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='Título';
-                                                $out.='</th>';
+                                                $out.='</th>';   
                                                 $out.='<th>';
                                                 $out.='Prioridad';
                                                 $out.='</th>';
@@ -318,21 +387,30 @@
                                                 $out.='<th>';
                                                 $out.='Capital Inicial';
                                                 $out.='</th>';
-                                                $out.='<th>'; 
+                                                $out.='<th>';
                                                 $out.='Capital Asignado';
-                                                $out.='</th>';
-                                                $out.= '<th>';
-                                                $out.='Estado';
                                                 $out.='</th>';
                                                 while($row = $res->fetch_row()){
                                                     $out.='<tr>';
+                                                    switch ($row[11]) {
+                                                        case "rechazada":
+                                                            $out.='<td align="center"><i class="fa fa-times"></i>';
+                                                            break;
+                                                        case "aceptada":
+                                                            $out.='<td align="center"><i class="fa fa-check-circle-o"></i>';
+                                                            break;
+                                                        case "pendiente":
+                                                            $out.='<td align="center"><i class="fa fa-question"></i>';
+                                                            break;
+                                                    }
+                                                    $out.='</td>';
                                                     $out.='<td>';
                                                     $out.=$row[0];
-                                                    $out.='</td>'; 
+                                                    $out.='</td>';
                                                     $out.='<td>';
                                                     $out.=$row[1];
                                                     $out.='</td>';
-
+                                                
                                                     switch ($row[2]) {
                                                         case "alta":
                                                             $out.='<td align="center" class="danger">';
@@ -345,7 +423,6 @@
                                                             break;
                                                     }
                                                     $out.='</td>';
-
                                                     $out.='<td>';
                                                     $out.=$row[3];
                                                     $out.='</td>';
@@ -358,187 +435,187 @@
                                                     $out.='<td>';
                                                     $out.=$row[8]."€";
                                                     $out.='</td>';
-                                                    $out.='<td>';                                                      
+                                                    $out.='<td>';
                                                     $out.=$row[9]."€";
                                                     $out.='</td>';
-                                                    
-                                                    switch ($row[11]) {
-                                                        case "rechazada":
-                                                            $out.='<td align="center"><i class="fa fa-times"></i>';
-                                                            break;
-                                                        case "aceptada":
-                                                            $out.='<td align="center"><i class="fa fa-check-circle-o"></i>';
-                                                            break;
-                                                        case "pendiente":
-                                                            $out.='<td align="center"><i class="fa fa-question"></i>';
-                                                            break;
-                                                    }
 
-                                                    $out.='</td>';
-                                                    if ($row[11] !="rechazada"){
+                                                    if(($row[11] !="rechazada" && $row[11] !="aceptada") || $row[11] == "pendiente") {
                                                         $out.='<td>';
-                                                        $out.='
-                                                        <div class="todo-actions pull-right clearfix">
-                                                            <a onclick="modificarPresupuesto(this)" href="propuestas.php"><i class="fa fa-usd" aria-hidden="true"></i></a>   
+                                                        if ($row[11] !="rechazada" && $row[11] !="aceptada"){
+                                                            $out.='
+                                                        <div class="todo-actions text-center clearfix">
+                                                            <a onclick="modificarPresupuesto(this)" href="propuestas.php"><i class="fa fa-eur"></i></a>
                                                         </div>';
-                                                        $out.='</td>';
-                                                    }  
-                                                    if ($row[11] == "pendiente"){
-                                                         $out.='<td>';
-                                                        $out.='
-                                                        <div class="todo-actions pull-right clearfix">
+                                                        }
+                                                        if ($row[11] == "pendiente"){
+                                                            $out.='
+                                                        <div class="todo-actions text-center clearfix">
                                                         <a href="propuestas.php" class="todo-complete"><i class="fa fa-check"></i></a>
                                                         <a href="propuestas.php" class="todo-remove"><i class="fa fa-trash-o"></i></a>
                                                         </div>';
+                                                        }
                                                         $out.='</td>';
                                                     }
                                                     $out.='</tr>';
-                                                    
                                                 }
+                                               
                                                 $out.='</table>';
                                                 echo $out;
-
-                                                ?> 
-
-                                           <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
+                                                ?>
+                                                <div>
+                                                    <caption class='text-center'>
+                                                        <i class='fa fa-check'> Aceptar propuesta&nbsp;</i>
+                                                        <i class='fa fa-trash-o'> Rechazar propuesta&nbsp;</i>
+                                                        <i class='fa fa-usd'> Asignar presupuesto&nbsp</i>
+                                                        <i class='fa fa-check-circle-o'> Aceptada&nbsp</i>
+                                                        <i class='fa fa-question'> Pendiente&nbsp</i>
+                                                        <i class='fa fa-times'> Rechazada&nbsp</i>
+                                                    </caption>
+                                                  
+                                                </div>
+                                                  <br/>
+                                                <div class="container-fluid">
+                                                <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
                                                     <fieldset>
 
-                                                    <!-- Form Name -->
-                                                    <legend>Añadir Propuesta</legend>
+                                                        <!-- Form Name -->
+                                                        <legend>Añadir Propuesta</legend>
 
-                                                    <!-- Text input-->
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="nombre">Nombre</label>  
-                                                      <div class="col-md-4">
-                                                      <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="true">  
-                                                    </div>
-                                                    </div> 
+                                                        <!-- Text input-->
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="nombre">Nombre</label>
+                                                            <div class="col-md-4">
+                                                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="true">
+                                                            </div>
+                                                        </div>
 
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="capital">Capital Inicial</label>  
-                                                      <div class="col-md-4">
-                                                        <input id="capital" name="capital" type="number" min="1" placeholder="€" class="form-control input-md" required="true"> 
-                                                      </div>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="capital">Capital Inicial</label>
+                                                            <div class="col-md-4">
+                                                                <input id="capital" name="capital" type="number" min="1" placeholder="€" class="form-control input-md" required="true">
+                                                            </div>
+                                                        </div>
 
-                                                    <!-- Textarea -->
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="taDesc">Descripción</label>
-                                                      <div class="col-md-4">                     
-                                                        <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required="true"></textarea>
-                                                      </div>
-                                                    </div>
+                                                        <!-- Textarea -->
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="taDesc">Descripción</label>
+                                                            <div class="col-md-4">
+                                                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required="true"></textarea>
+                                                            </div>
+                                                        </div>
 
-                                                    <!-- Select Basic -->
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="selectbasic">Objetivo</label>
-                                                      <div class="col-md-4">
-                                                        <select id="selectbasic" name="prioridad" class="form-control">
-                                                          <?php
+                                                        <!-- Select Basic -->
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="selectbasic">Objetivo</label>
+                                                            <div class="col-md-4">
+                                                                <select id="selectbasic" name="prioridad" class="form-control">
+                                                                    <?php
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
                                                                     $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
                                                                     while($row = $res->fetch_row()){
-                                                                       $out.='<option value="';
-                                                                       $out.=$row[0]; 
-                                                                       $out.='">'; 
-                                                                       $out.=$row[1];   
-                                                                       $out.='</option>';  
+                                                                        $out.='<option value="';
+                                                                        $out.=$row[0];
+                                                                        $out.='">';
+                                                                        $out.=$row[1];
+                                                                        $out.='</option>';
                                                                     }
                                                                     echo $out;
-                                                                    ?> 
-                                                        </select>
-                                                      </div>
-                                                    </div>
-                                                      <!-- Select Basic -->
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="selectbasic">Prioridad</label>
-                                                      <div class="col-md-4">
-                                                        <select onchange="this.className=this.options[this.selectedIndex].className" id="prioridad" name="prioridad" class="form-control btn-success">
-                                                          <option class = "form-control btn-success" value ="baja">Baja</option>
-                                                          <option class = "form-control btn-warning" value ="media">Media</option>
-                                                          <option class = "form-control btn-danger" value ="alta">Alta</option>
-                                                        </select>
-                                                      </div>
-                                                    </div>   
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="taDesc">Fecha de Inicio</label>
-                                                      <div class="col-md-4">                     
-                                                        <input class="form-control" type ="date" id="fecha" name="fecha" required="true"></input>
-                                                      </div>
-                                                    </div>
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Select Basic -->
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="selectbasic">Prioridad</label>
+                                                            <div class="col-md-4">
+                                                                <select onchange="this.className=this.options[this.selectedIndex].className" id="prioridad" name="prioridad" class="form-control btn-success">
+                                                                    <option class="form-control btn btn-success" value="baja">Baja</option>
+                                                                    <option class="form-control btn btn-warning" value="media">Media</option>
+                                                                    <option class="form-control btn btn-danger" value="alta">Alta</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="taDesc">Fecha de Inicio</label>
+                                                            <div class="col-md-4">
+                                                                <input class="form-control" type="date" id="fecha" name="fecha" required></input>
+                                                            </div>
+                                                        </div>
 
-                                                    <!-- Button -->
-                                                    <div class="form-group">
-                                                      <label class="col-md-4 control-label" for="botonAñadir"></label>
-                                                      <div class="col-md-4">
-                                                        <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Añadir</button>
-                                                      </div>
-                                                    </div>
+                                                        <!-- Button -->
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="botonAñadir"></label>
+                                                            <div class="col-md-4">
+                                                                <button id="botonAñadir" name="botonAñadir" class="btn btn-success">Añadir</button>
+                                                            </div>
+                                                        </div>
 
                                                     </fieldset>
-                                                    </form>
+                                                </form>
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-
-                    <!--END CONTENT-->
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">
-                            <a href="http://themifycloud.com">2016 Govern de les TIC - Jose Ramón Santoyo - Miguel Ángel Martín - Vicente García</a></div>
+                                <!--END CONTENT-->
+                                <!--BEGIN FOOTER-->
+                                <div id="footer">
+                                    <div class="copyright">
+                                        <a href="http://themifycloud.com">2016 Govern de les TIC - Jose Ramón Santoyo - Miguel Ángel Martín - Vicente García</a>
+                                    </div>
+                                </div>
+                                <!--END FOOTER-->
+                            </div>
+                            <!--END PAGE WRAPPER-->
+                        </div>
                     </div>
-                    <!--END FOOTER-->
-                </div>
-                <!--END PAGE WRAPPER-->
-            </div>
-        </div>
 
 
-<script>
-    $(".todo-remove").click(function() {
-    var item = $(this).closest("tr");         // Retrieves the text within <td>
-    var item2 = item[0].childNodes[0].firstChild.data;
-    $.post("borrarpropuesta.php",{item2:item2});       // Outputs the answer
-});
-</script>
+                    <script>
+                        $(".todo-remove").click(function () {
+                            var item = $(this).closest("tr");         // Retrieves the text within <td>
+                            var item2 = item[0].childNodes[0].firstChild.data;
+                            $.post("borrarpropuesta.php", { item2: item2 });       // Outputs the answer
+                        });
+                    </script>
 
-<script>
-    $(".todo-complete").click(function() {
-    var item = $(this).closest("tr");         // Retrieves the text within <td>
-    var item2 = item[0].childNodes[0].firstChild.data;
-    $.post("aceptarpropuesta.php",{item2:item2});       // Outputs the answer
-});
-</script>
-        <script>
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-         if(dd<10){
-                dd='0'+dd
-            } 
-            if(mm<10){
-                mm='0'+mm
-            } 
+                    <script>
+                        $(".todo-complete").click(function () {
+                            var item = $(this).closest("tr");         // Retrieves the text within <td>
+                            var item2 = item[0].childNodes[0].firstChild.data;
+                            $.post("aceptarpropuesta.php", { item2: item2 });       // Outputs the answer
+                        });
+                    </script>
+                    <script>
+                        var today = new Date();
+                        var dd = today.getDate();
+                        var mm = today.getMonth() + 1; //January is 0!
+                        var yyyy = today.getFullYear();
+                        if (dd < 10) {
+                            dd = '0' + dd
+                        }
+                        if (mm < 10) {
+                            mm = '0' + mm
+                        }
 
-        today = yyyy+'-'+mm+'-'+dd;
-        document.getElementById("fecha").setAttribute("min", today);
-        </script>
+                        today = yyyy + '-' + mm + '-' + dd;
+                        document.getElementById("fecha").setAttribute("min", today);
+                    </script>
 
-        <script>
-          function modificarPresupuesto(element) {
-            var price = $(element).parents("tr").attr("data-price");
-    
-            var newPrice = prompt("Introduce el nuevo presupuesto", price);
+                    <script>
+                        function modificarPresupuesto(element) {
+                            var price = $(element).parents("tr").attr("data-price");
 
-            if (newPrice != null) {
-                var idPropuesta = $(element).parents("tr");
-                idPropuesta = idPropuesta[0].childNodes[0].firstChild.data;
-                $(element).parents("tr").attr("data-price", newPrice);
-                $.post("modificarPresupuesto.php",{newPrice:newPrice , idPropuesta:idPropuesta});
-            }
-        }
-        </script>
+                            var newPrice = prompt("Introduce el nuevo presupuesto", price);
+
+                            if (newPrice != null) {
+                                var idPropuesta = $(element).parents("tr");
+                                idPropuesta = idPropuesta[0].childNodes[0].firstChild.data;
+                                $(element).parents("tr").attr("data-price", newPrice);
+                                $.post("modificarPresupuesto.php", { newPrice: newPrice, idPropuesta: idPropuesta });
+                            }
+                        }
+                    </script>
     </body>
     </html>

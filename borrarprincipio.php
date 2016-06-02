@@ -1,21 +1,14 @@
-     <?php
- if(isset($_POST['item2']))
-{
-
-    // checks and alerts
-    // ...
-
-// Actualizamos en funcion del id que recibimos
-
-        $idPrincipio = $_POST['item2'];
-        $mysqli = mysqli_connect("localhost","root","root", "test");
-        $query = "DELETE FROM `principios` WHERE `principios`.`id`=".$idPrincipio;
-
-if (mysqli_query($mysqli, $query)== FALSE)   {
-     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+$idPrincipio = $_POST['item2'];
+$mysqli = mysqli_connect("localhost","root","root", "test");
+$numeroFilas = $mysqli->query("SELECT * FROM objetivos WHERE idPrincipio = ".$idPrincipio."");
+if ($numeroFilas->num_rows == 0){
+    $resDelete = $mysqli->query("DELETE FROM `principios` WHERE `principios`.`id`=".$idPrincipio."");
+}else{
+    echo -1;
 }
 mysqli_close($mysqli);
-}
-header('Location: principios.php');
-exit;
 ?>

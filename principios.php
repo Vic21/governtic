@@ -286,52 +286,52 @@
                                             <div class="caption">Principios</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
-                                                $out ='<table id="example" class="table table-striped table-bordered">';
+                                            $mysqli = mysqli_connect("localhost","root","root", "test");
+                                            $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
+                                            $out ='<table id="example" class="table table-striped table-bordered">';
 
+                                            $out.='<tr>';
+
+                                            $out.='<th>';
+                                            $out.='ID';
+                                            $out.='</th>';
+
+                                            $out.='<th>';
+                                            $out.='Nombre';
+                                            $out.='</th>';
+
+                                            $out.='<th>'; 
+                                            $out.='Descripción';
+                                            $out.='</th>';
+
+                                            while($row = $res->fetch_row()){
                                                 $out.='<tr>';
 
-                                                $out.='<th>';
-                                                $out.='ID';
-                                                $out.='</th>';
+                                                $out.='<td>';
+                                                $out.=$row[0];
+                                                $out.='</td>'; 
 
-                                                $out.='<th>';
-                                                $out.='Nombre';
-                                                $out.='</th>';
+                                                $out.='<td>';
+                                                $out.=$row[1];
+                                                $out.='</td>';
 
-                                                $out.='<th>'; 
-                                                $out.='Descripción';
-                                                $out.='</th>';
-
-                                                while($row = $res->fetch_row()){
-                                                    $out.='<tr>';
-
-                                                    $out.='<td>';
-                                                    $out.=$row[0];
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.=$row[1];
-                                                    $out.='</td>';
-
-                                                    $out.='<td>';
-                                                    $out.=$row[2];
-                                                    $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.='
+                                                $out.='<td>';
+                                                $out.=$row[2];
+                                                $out.='</td>';
+                                                $out.='<td>';
+                                                $out.='
                                                     <div class="todo-actions pull-right clearfix">
                                                         <a href="principios.php" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
                                                             </i></a>
                                                     </div>';
-                                                    $out.='</td>';
-                                                    $out.='</tr>';
-                                                   
-                                                }
-                                                $out.='</table>';
-                                                echo $out;
-                                                  
-                                                ?> 
+                                                $out.='</td>';
+                                                $out.='</tr>';
+                                                
+                                            }
+                                            $out.='</table>';
+                                            echo $out;
+                                            
+                                            ?> 
  <form class="form-horizontal" method="POST" action="insertarprincipio.php">
                                                     <fieldset>
 
@@ -390,7 +390,12 @@
     $(".todo-remove").click(function() {
     var item = $(this).closest("tr");         // Retrieves the text within <td>
     var item2 = item[0].childNodes[0].firstChild.data;
-    $.post("borrarprincipio.php",{item2:item2});       // Outputs the answer
+    $.post("borrarprincipio.php",{item2:item2}, function (data ,status) {
+        if (data == -1) {
+            window.alert("El objetivo no se puede borrar porque está asignado a un proyecto");   
+        }
+        window.location = "principios.php";
+    });      // Outputs the answer
 });
 
 </script>

@@ -1,25 +1,17 @@
-     <?php
-
-    // checks and alerts
-    // ...
-
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// checks and alerts
+// ...
 // Actualizamos en funcion del id que recibimos
-
-        $idObjetivo = $_POST['item2'];
-        $mysqli = mysqli_connect("localhost","root","root", "test");
-        $proyectos = "SELECT * FROM `proyectos` WHERE `proyectos`.`alineadoObj` = ".$idObjetivo;
-        $total = mysql_num_rows($proyectos);
-        error_log("Failed to connect to database! ".$total." ". $idObjetivo , 0);
-        if ($total==0){
-        	 $query = "DELETE FROM `objetivos` WHERE `objetivos`.`id`= ".$idObjetivo;
-        	}
-       
-        
-if (mysqli_query($mysqli, $query)== FALSE)   {
-     echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+$idObjetivo = $_POST['item2'];
+$mysqli = mysqli_connect("localhost","root","root", "test");
+$numeroFIlas = $mysqli->query("SELECT * FROM proyectos WHERE alineadoObj = ".$idObjetivo."");
+if ($numeroFIlas->num_rows == 0){
+    $resDelete = $mysqli->query("DELETE FROM `objetivos` WHERE `objetivos`.`id`= ".$idObjetivo."");
+}else{
+    echo -1;
 }
 mysqli_close($mysqli);
-}
-//header('Location: objetivos.php');
-//exit;
 ?>

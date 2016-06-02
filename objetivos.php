@@ -286,72 +286,73 @@
                                             <div class="caption">Objetivos</div>
                                         <div style="overflow: hidden;" class="portlet-body">
                                             <?php
-                                                $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
-                                                $out ='<table id="example" class="table table-striped table-bordered">';
+                                            $mysqli = mysqli_connect("localhost","root","root", "test");
+                                            mysqli_set_charset($mysqli, "utf8");
+                                            $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
+                                            $out ='<table id="example" class="table table-striped table-bordered">';
 
+                                            $out.='<tr>';
+
+                                            $out.='<th>';
+                                            $out.='ID';
+                                            $out.='</th>';
+
+                                            $out.='<th>';
+                                            $out.='Nombre';
+                                            $out.='</th>';
+
+                                            $out.='<th>'; 
+                                            $out.='Descripción';
+                                            $out.='</th>';
+
+                                            $out.= '<th>';
+                                            $out.='Principio';
+                                            $out.='</th>';
+                                            $indiceColumna = 0;    
+                                            while($row = $res->fetch_row()){
                                                 $out.='<tr>';
 
-                                                $out.='<th>';
-                                                $out.='ID';
-                                                $out.='</th>';
+                                                $out.='<td>';
+                                                $out.=$row[0];
+                                                $out.='</td>'; 
 
-                                                $out.='<th>';
-                                                $out.='Nombre';
-                                                $out.='</th>';
+                                                $out.='<td>';
+                                                $out.=$row[1];
+                                                $out.='</td>';
 
-                                                $out.='<th>'; 
-                                                $out.='Descripción';
-                                                $out.='</th>';
+                                                $out.='<td>';
+                                                $out.=$row[2];
+                                                $out.='</td>';
 
-                                                $out.= '<th>';
-                                                $out.='Principio';
-                                                $out.='</th>';
-                                                $indiceColumna = 0;    
-                                                while($row = $res->fetch_row()){
-                                                    $out.='<tr>';
+                                                $out.='<td>';
+                                                $nombreMetrica = $mysqli->query("SELECT nombre FROM principios WHERE id = $row[3];");
+                                                $filaNomMetrica = $nombreMetrica->fetch_row();
+                                                $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                $out.=$filaNomMetrica[0];
+                                                $out.='</a>';
+                                                $out.='</td>'; 
 
-                                                    $out.='<td>';
-                                                    $out.=$row[0];
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.=$row[1];
-                                                    $out.='</td>';
-
-                                                    $out.='<td>';
-                                                    $out.=$row[2];
-                                                    $out.='</td>';
-
-                                                    $out.='<td>';
-                                                    $nombreMetrica = $mysqli->query("SELECT nombre FROM principios WHERE id = $row[3];");
-                                                    $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                    $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                    $out.=$filaNomMetrica[0];
-                                                    $out.='</a>';
-                                                    $out.='</td>'; 
-
-                                                    $out.='<td>';
-                                                    $out.='
+                                                $out.='<td>';
+                                                $out.='
                                                     <div class="todo-actions pull-right clearfix">
                                                         <a href="objetivos.php" name="borrar" id = "'.$row[0].'"'.'class="todo-remove"><i class="fa fa-trash-o">
                                                         </i></a>
                                                     </div>';
-                                                    $out.='</td>';
-                                                    $out.='</tr>';
-                                                    $indiceColumna = $indiceColumna + 1;
-                                                }
-                                                $out.='</table>';
+                                                $out.='</td>';
+                                                $out.='</tr>';
+                                                $indiceColumna = $indiceColumna + 1;
+                                            }
+                                            $out.='</table>';
 
-                                                echo $out;
+                                            echo $out;
 
-                                                  // echo "<script>
-                                                  //   $(function() {
-                                                  //   $('#example').DataTable();
-                                                  //   } );
-                                                  // </script>"
-                                                  
-                                                ?> 
+                                            // echo "<script>
+                                            //   $(function() {
+                                            //   $('#example').DataTable();
+                                            //   } );
+                                            // </script>"
+                                            
+                                            ?> 
                                                    <form class="form-horizontal" method="POST" action="insertarobjetivo.php">
                                                     <fieldset>
 
@@ -381,17 +382,17 @@
                                                       <div class="col-md-4">
                                                         <select id="selectbasic" name="principio" class="form-control">
                                                           <?php
-                                                                    $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                                    $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
-                                                                    while($row = $res->fetch_row()){
-                                                                       $out.='<option value="';
-                                                                       $out.=$row[0]; 
-                                                                       $out.='">'; 
-                                                                       $out.=$row[1];   
-                                                                       $out.='</option>';  
-                                                                    }
-                                                                    echo $out;
-                                                                    ?> 
+                                                          $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                          $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
+                                                          while($row = $res->fetch_row()){
+                                                              $out.='<option value="';
+                                                              $out.=$row[0]; 
+                                                              $out.='">'; 
+                                                              $out.=$row[1];   
+                                                              $out.='</option>';  
+                                                          }
+                                                          echo $out;
+                                                          ?> 
                                                         </select>
                                                       </div>
                                                     </div>
@@ -414,6 +415,7 @@
                     <!--END CONTENT-->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
+				
                         <div class="copyright">
                             <a href="http://themifycloud.com">2016 Govern de les TIC - Jose Ramón Santoyo - Miguel Ángel Martín - Vicente García</a></div>
                     </div>
@@ -429,7 +431,12 @@
     $(".todo-remove").click(function() {
     var item = $(this).closest("tr");         // Retrieves the text within <td>
     var item2 = item[0].childNodes[0].firstChild.data;
-    $.post("borrarobjetivo.php",{item2:item2});       // Outputs the answer
+    $.post("borrarobjetivo.php", { item2: item2 }, function (data ,status) {
+        if (data == -1) {
+            window.alert("El objetivo no se puede borrar porque está asignado a un proyecto");    
+        }
+        window.location = "objetivos.php";
+    });       // Outputs the answer
 });
 
 </script>
