@@ -2,6 +2,7 @@
    <?php
 
         $mysqli = mysqli_connect("localhost","root","root", "test");
+        mysqli_set_charset($mysqli, "utf8");
         $queryEvaluaciones ="SELECT * FROM evaluaciones WHERE idProyecto=".$idProyecto." ";
         if(isset($_POST['date-start'])){
             $queryEvaluaciones .= "AND fecha >= ".$_POST['date-start']." ";
@@ -20,7 +21,7 @@
         $rendimiento = array();
         $conformidad = array();
         $conductaHumana = array();
-        
+
         $nombre = array();
 
         while($row = $res->fetch_row()){
@@ -46,4 +47,4 @@ json_encode($fecha)
 
 
 
-    ?>
+?>

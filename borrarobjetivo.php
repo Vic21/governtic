@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 // Actualizamos en funcion del id que recibimos
 $idObjetivo = $_POST['item2'];
 $mysqli = mysqli_connect("localhost","root","root", "test");
+mysqli_set_charset($mysqli, "utf8");
 $numeroFIlas = $mysqli->query("SELECT * FROM proyectos WHERE alineadoObj = ".$idObjetivo."");
 if ($numeroFIlas->num_rows == 0){
     $resDelete = $mysqli->query("DELETE FROM `objetivos` WHERE `objetivos`.`id`= ".$idObjetivo."");

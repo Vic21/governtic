@@ -27,10 +27,9 @@
         <link type="text/css" rel="stylesheet" href="styles/zabuto_calendar.min.css">
         <link type="text/css" rel="stylesheet" href="styles/pace.css">
         <link type="text/css" rel="stylesheet" href="styles/jquery.news-ticker.css">
-<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
-        <script src="script/jquery.tablesorter.js"></script> 
         <script src="script/jquery-1.10.2.min.js"></script>
+        
+
         <script src="script/jquery-migrate-1.2.1.min.js"></script>
         <script src="script/jquery-ui.js"></script>
         <script src="script/bootstrap.min.js"></script>
@@ -57,6 +56,9 @@
         <script src="script/jquery.flot.spline.js"></script>
         <script src="script/zabuto_calendar.min.js"></script>
         <script src="script/index.js"></script>
+        <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+        <script src="script/jquery.tablesorter.js"></script> 
         <!--LOADING SCRIPTS FOR CHARTS-->
         <script src="script/highcharts.js"></script>
         <script src="script/data.js"></script>
@@ -66,23 +68,6 @@
         <script src="script/charts-highchart-pie.js"></script>
         <script src="script/charts-highchart-more.js"></script>
         <!--CORE JAVASCRIPT-->
-        <script src="script/main.js"></script>
-        <script>        (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-            ga('create', 'UA-145464-12', 'auto');
-            ga('send', 'pageview');
-
-
-    </script>
     </head>
     <body>
         <div>
@@ -360,18 +345,20 @@
                                             <div style="overflow: hidden;" class="portlet-body">
                                                 <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                mysqli_set_charset($mysqli, "utf8");
                                                 $res = $mysqli->query("SELECT * FROM propuestas WHERE TRUE;");
                                                 $out ='<table id="example" class="table table-striped table-bordered text-center">';
                                                 $out.='<tr>';
-                                                $out.= '<th>';
-                                                $out.='Estado';
-                                                $out.='</th>';
+
                                                 $out.='<th>';
                                                 $out.='ID';
                                                 $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='Título';
-                                                $out.='</th>';   
+                                                $out.='</th>';
+                                                $out.= '<th>';
+                                                $out.='Estado';
+                                                $out.='</th>';
                                                 $out.='<th>';
                                                 $out.='Prioridad';
                                                 $out.='</th>';
@@ -392,6 +379,13 @@
                                                 $out.='</th>';
                                                 while($row = $res->fetch_row()){
                                                     $out.='<tr>';
+                                             
+                                                    $out.='<td>';
+                                                    $out.=$row[0];
+                                                    $out.='</td>';
+                                                    $out.='<td>';
+                                                    $out.=$row[1];
+                                                    $out.='</td>';
                                                     switch ($row[11]) {
                                                         case "rechazada":
                                                             $out.='<td align="center"><i class="fa fa-times"></i>';
@@ -404,13 +398,6 @@
                                                             break;
                                                     }
                                                     $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[0];
-                                                    $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[1];
-                                                    $out.='</td>';
-                                                
                                                     switch ($row[2]) {
                                                         case "alta":
                                                             $out.='<td align="center" class="danger">';
@@ -430,7 +417,9 @@
                                                     $out.=$row[4];
                                                     $out.='</td>';
                                                     $out.='<td>';
-                                                    $out.=$row[5];
+                                                    if ($row[5]!="0000-00-00"){
+                                                        $out.=$row[5];
+                                                    }  
                                                     $out.='</td>';
                                                     $out.='<td>';
                                                     $out.=$row[8]."€";
@@ -458,7 +447,7 @@
                                                     }
                                                     $out.='</tr>';
                                                 }
-                                               
+                                                
                                                 $out.='</table>';
                                                 echo $out;
                                                 ?>
@@ -475,6 +464,7 @@
                                                 </div>
                                                   <br/>
                                                 <div class="container-fluid">
+
                                                 <form class="form-horizontal" method="POST" action="insertarpropuesta.php">
                                                     <fieldset>
 
@@ -485,14 +475,14 @@
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="nombre">Nombre</label>
                                                             <div class="col-md-4">
-                                                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="true">
+                                                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required>
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="capital">Capital Inicial</label>
                                                             <div class="col-md-4">
-                                                                <input id="capital" name="capital" type="number" min="1" placeholder="€" class="form-control input-md" required="true">
+                                                                <input id="capital" name="capital" type="number" min="1" placeholder="€" class="form-control input-md" required>
                                                             </div>
                                                         </div>
 
@@ -500,7 +490,7 @@
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="taDesc">Descripción</label>
                                                             <div class="col-md-4">
-                                                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required="true"></textarea>
+                                                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
                                                             </div>
                                                         </div>
 
@@ -508,9 +498,10 @@
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="selectbasic">Objetivo</label>
                                                             <div class="col-md-4">
-                                                                <select id="selectbasic" name="prioridad" class="form-control">
+                                                                <select id="selectbasic" name="objetivo" class="form-control">
                                                                     <?php
                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                    mysqli_set_charset($mysqli, "utf8");
                                                                     $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE;");
                                                                     while($row = $res->fetch_row()){
                                                                         $out.='<option value="';
@@ -576,7 +567,9 @@
                         $(".todo-remove").click(function () {
                             var item = $(this).closest("tr");         // Retrieves the text within <td>
                             var item2 = item[0].childNodes[0].firstChild.data;
-                            $.post("borrarpropuesta.php", { item2: item2 });       // Outputs the answer
+                            $.post("borrarpropuesta.php", { item2: item2 }, function(data){
+                                var resultado = data;
+                            });      // Outputs the answer
                         });
                     </script>
 
@@ -584,9 +577,12 @@
                         $(".todo-complete").click(function () {
                             var item = $(this).closest("tr");         // Retrieves the text within <td>
                             var item2 = item[0].childNodes[0].firstChild.data;
-                            $.post("aceptarpropuesta.php", { item2: item2 });       // Outputs the answer
+                            $.post("aceptarpropuesta.php", { item2: item2 } , function(data){
+                                
+                            });       // Outputs the answer
                         });
                     </script>
+
                     <script>
                         var today = new Date();
                         var dd = today.getDate();
@@ -617,5 +613,6 @@
                             }
                         }
                     </script>
+
     </body>
     </html>

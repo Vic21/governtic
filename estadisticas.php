@@ -242,6 +242,7 @@
                                         <div style="overflow: hidden;" class="portlet-body">
                                                                                         <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                mysqli_set_charset($mysqli, "utf8");
                                                 $res = $mysqli->query("SELECT * FROM estadisticascaducidad WHERE TRUE;");
                                                  $fecha = array();
                                                  $totales = array();

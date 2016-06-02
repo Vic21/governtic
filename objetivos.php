@@ -327,7 +327,7 @@
                                                 $out.='<td>';
                                                 $nombreMetrica = $mysqli->query("SELECT nombre FROM principios WHERE id = $row[3];");
                                                 $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                $out.='<a href="principios.php" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
                                                 $out.=$filaNomMetrica[0];
                                                 $out.='</a>';
                                                 $out.='</td>'; 
@@ -383,6 +383,7 @@
                                                         <select id="selectbasic" name="principio" class="form-control">
                                                           <?php
                                                           $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                          mysqli_set_charset($mysqli, "utf8");
                                                           $res = $mysqli->query("SELECT * FROM principios WHERE TRUE;");
                                                           while($row = $res->fetch_row()){
                                                               $out.='<option value="';

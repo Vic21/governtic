@@ -239,6 +239,7 @@ error_reporting(E_ALL);
                                                                     <div style="overflow: hidden;" class="portlet-body">
                                                                         <?php
                                                                         $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                        mysqli_set_charset($mysqli, "utf8");
                                                                         $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
                                                                         $out ='<table id="example" class="table table-striped table-bordered">';
 
@@ -253,10 +254,6 @@ error_reporting(E_ALL);
                                                                         $out.='</th>';
 
                                                                         $out.='<th>';
-                                                                        $out.='Prioridad';
-                                                                        $out.='</th>';
-
-                                                                        $out.='<th>';
                                                                         $out.='Descripción';
                                                                         $out.='</th>';
 
@@ -265,11 +262,7 @@ error_reporting(E_ALL);
                                                                         $out.='</th>';
 
                                                                         $out.='<th>'; 
-                                                                        $out.='Coste Inicial';
-                                                                        $out.='</th>';
-
-                                                                        $out.= '<th>';
-                                                                        $out.='Métrica';
+                                                                        $out.='Coste Mes';
                                                                         $out.='</th>';
 
                                                                         $out.= '<th>';
@@ -291,14 +284,14 @@ error_reporting(E_ALL);
 
                                                                             switch ($row[2]) {
                                                                                 case "alta":
-                                                                                $out.='<td align="center" class="danger">';
-                                                                                break;
+                                                                                    $out.='<td align="center" class="danger">';
+                                                                                    break;
                                                                                 case "media":
-                                                                                $out.='<td align="center" class="warning">';
-                                                                                break;
+                                                                                    $out.='<td align="center" class="warning">';
+                                                                                    break;
                                                                                 case "baja":
-                                                                                $out.='<td align="center" class="success">';
-                                                                                break;
+                                                                                    $out.='<td align="center" class="success">';
+                                                                                    break;
                                                                             }
                                                                             $out.='</td>';
 
@@ -306,27 +299,27 @@ error_reporting(E_ALL);
                                                                             $out.=$row[3];
                                                                             $out.='</td>';
 
-                                                                            $out.='<td>';
-                                                                            $out.=$row[4];
-                                                                            $out.='</td>'; 
+                                                                            //$out.='<td>';
+                                                                            //$out.=$row[4];
+                                                                            //$out.='</td>'; 
 
                                                                             $out.='<td>';
                                                                             $out.=$row[5];
                                                                             $out.='€';
                                                                             $out.='</td>'; 
 
-                                                                            $out.='<td>';
-                                                                            $nombreMetrica = $mysqli->query("SELECT nombre FROM metricas WHERE id = $row[6];");
-                                                                            $filaNomMetrica = $nombreMetrica->fetch_row();
-                                                                            $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
-                                                                            $out.=$filaNomMetrica[0];
-                                                                            $out.='</a>';
-                                                                            $out.='</td>'; 
+                                                                            //$out.='<td>';
+                                                                            //$nombreMetrica = $mysqli->query("SELECT nombre FROM metricas WHERE id = $row[6];");
+                                                                            //$filaNomMetrica = $nombreMetrica->fetch_row();
+                                                                            //$out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                                            //$out.=$filaNomMetrica[0];
+                                                                            //$out.='</a>';
+                                                                            //$out.='</td>'; 
 
                                                                             $out.='<td>';
                                                                             $alineamientoObjetivo = $mysqli->query("SELECT nombre FROM objetivos WHERE id = $row[9];");
                                                                             $filaNomObj = $alineamientoObjetivo->fetch_row();
-                                                                            $out.='<a href="javascript:void(0)" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
+                                                                            $out.='<a href="objetivos.php" data-name="name" data-pk="0" data-value="Item 0" class="editable editable-click">';
                                                                             $out.=$filaNomObj[0];
                                                                             $out.='</a>';
                                                                             $out.='</td>'; 
@@ -345,11 +338,11 @@ error_reporting(E_ALL);
                                                                         $out.='</table>';
                                                                         echo $out;
 
-                                              // echo "<script>
-                                              //   $(function() {
-                                              //   $('#example').DataTable();
-                                              //   } );
-                                              // </script>"
+                                                                        // echo "<script>
+                                                                        //   $(function() {
+                                                                        //   $('#example').DataTable();
+                                                                        //   } );
+                                                                        // </script>"
                                                                         
                                                                         ?> 
 

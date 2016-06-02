@@ -251,73 +251,83 @@
                         
                                                 <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                $res = $mysqli->query("SELECT * FROM proyectos WHERE TRUE;");
-                                                 $nombre = array();
-                                                 $costeinicial = array();
- 
-                                                 while($row = $res->fetch_row()){
+                                                mysqli_set_charset($mysqli, "utf8");
+                                                $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE");
+                                                $nombre = array();
+                                                $arrayCostesObj = array();
+                                                
+                                                while($row = $res->fetch_row()){
+                                                    $costeObj = 0;
+                                                    $idObjetivo = $row[0];
                                                     array_push($nombre, $row[1]);
-                                                    array_push($costeinicial, $row[5]);  
-                                                 }
+
+                                                    $selectProyObj = "SELECT id FROM proyectos WHERE alineadoObj = ".$idObjetivo."";
+                                                    $resProyObj = $mysqli->query($selectProyObj);
+
+                                                    while($filaProyecto = $resProyObj->fetch_row()){
+                                                        $selectCoste = "SELECT * FROM economia WHERE idProyecto = ".$filaProyecto[0];
+                                                        $resCosteProy = $mysqli->query($selectCoste);
+                                                        $filaCostes = $resCosteProy->fetch_row();
+                                                        $costeObj = $costeObj + (int)$filaCostes[1]; 
+                                                    }
+                                                    array_push($arrayCostesObj,$costeObj);
+                                                    
+                                                }
+                                                $presupuestotic = $mysqli->query("SELECT * FROM presupuestotic WHERE TRUE");
+                                                $presTIC = $presupuestotic->fetch_row();
+                                                $intPresTIC = (int)$presTIC[0];
+                                                array_push($arrayCostesObj,$intPresTIC);
+                                                array_push($nombre,"Presupuesto TIC");
+                                                //$arrayCostesObj =  array_values($arrayCostesObj);
+                                                //$nombre = array_values($nombre);
                                                 ?>
 
 
 
-                                                <script type="text/javascript">
-                                                $(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Gasto total en proyectos'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: '<?php echo $nombre[0]; ?>',
-                y: <?php echo $costeinicial[0]; ?>
-            }, {
-                name: '<?php echo $nombre[1]; ?>',
-                y: <?php echo $costeinicial[1]; ?>,
-            }, {
-                name: '<?php echo $nombre[2]; ?>',
-                y: <?php echo $costeinicial[0]; ?>
-            }, {
-                name: '<?php echo $nombre[3]; ?>',
-                y: <?php echo $costeinicial[0]; ?>
-            }]
-        }]
-    });
-});
+                                            <script type="text/javascript">
+                                                    $(function () {
+                                                        $('#container').highcharts({
+                                                            chart: {
+                                                                type: 'column'
+                                                            },
+                                                            title: {
+                                                                text: 'Coste por Objetivo'
+                                                            },
+                                                            subtitle: {
+                                                                text: ''
+                                                            },
+                                                            xAxis: {
+                                                                categories: <?php echo json_encode($nombre) ?>,
+                                                                crosshair: true
+                                                            },
+                                                            yAxis: {
+                                                                min: 0,
+                                                                title: {
+                                                                    text: 'Coste Anual (€)'
+                                                                }
+                                                            },
+                                                            tooltip: {
+                                                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                                                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                                                    '<td style="padding:0"><b>{point.y:.0f} €</b></td></tr>',
+                                                                footerFormat: '</table>',
+                                                                shared: true,
+                                                                useHTML: true
+                                                            },
+                                                            plotOptions: {
+                                                                column: {
+                                                                    pointPadding: 0.2,
+                                                                    borderWidth: 0
+                                                                }
+                                                            },
+                                                            series: [{
+                                                                name: 'Coste anual' ,
+                                                                data: <?php echo json_encode($arrayCostesObj) ?>
 
-
-
-                                                </script>
-
-
-
-
+                                                            }]
+                                                        });
+                                                    });
+                                            </script>
                 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
 

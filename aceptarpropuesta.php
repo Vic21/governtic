@@ -14,81 +14,75 @@ if(isset($_POST['item2']))
 
 	$idPropuesta = $_POST['item2'];
 	$mysqli = mysqli_connect("localhost","root","root", "test");
-
-	$query = "UPDATE `propuestas` SET `estado` = 'aceptada' WHERE `propuestas`.`id` = ".$idPropuesta.";";
-	$query.= "SELECT * FROM `propuestas` WHERE `propuestas`.`id` = ".$idPropuesta.";";
-
-	//        INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion` , `fechaInicio` , `costeInicial` , `presupuestoAsignado` ,`idMetrica1`, `idMetrica2` , `alineadoObj` , `idObjetivo` , `estado`)
-	//        INSERT INTO "proyectos" ("column1", "column2", ...)
-	//SELECT "column3", "column4", ...
-	//FROM "table2"
-
-	if (mysqli_query($mysqli, $query)== FALSE)   {
-		echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
-	}
+    mysqli_set_charset($mysqli, "utf8");
+    $queryUpdate = "UPDATE `propuestas` SET `estado` = 'aceptada' WHERE `propuestas`.`id` = ".$idPropuesta."";
+    $resultadoUpdate = $mysqli->query($queryUpdate);
 
 	$querySelect = "SELECT * FROM `propuestas` WHERE `propuestas`.`id` = ".$idPropuesta;
 	$result = $mysqli->query($querySelect);
 
-	$res->$result->fetch_row();
+    $res = $result->fetch_row();
 
-	$nombre = $res[1];
-	$prioridad = $res[2];
-	$descripcion = $res[3];
-	$fecha = $res[7];
-	$capitalInicial = $res[9];
-	$objetivo = $res[10];
+    $nombre = $res[1];
+    $prioridad = $res[2];
+    $descripcion = $res[3];
+    $fecha = $res[7];
+    $capitalInicial = $res[9];
+    $objetivo = $res[10];
 
-	$queryInsert = "INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion` , `fechaInicio` , `costeInicial` , `presupuestoAsignado` ,`idMetrica1`, `idMetrica2` , `alineadoObj` , `idObjetivo` , `estado`) VALUES (NULL, ";
+    $queryInsert = "INSERT INTO `proyectos` (`id`, `nombre`, `prioridad`, `descripcion` , `fechaInicio` , `costeInicial` , `presupuestoAsignado` ,`idMetrica1`, `idMetrica2` , `alineadoObj` , `estado`) VALUES (NULL, ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $nombre;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $nombre;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $prioridad;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $prioridad;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $descripcion;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $descripcion;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $fecha;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $fecha;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $capitalInicial;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $capitalInicial;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'0'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'0'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'0'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'0'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'0'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'0'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= $objetivo;
-	$queryInsert .= "'";
-	$queryInsert .= ", ";
+    $queryInsert .= "'";
+    $queryInsert .= $objetivo;
+    $queryInsert .= "'";
+    $queryInsert .= ", ";
 
-	$queryInsert .= "'";
-	$queryInsert .= "activo";
-	$queryInsert .= "'";
-	$queryInsert .= " )";
+    $queryInsert .= "'";
+    $queryInsert .= "activo";
+    $queryInsert .= "'";
+    $queryInsert .= " )";
 
-	if (mysqli_query($mysqli, $queryInsert)== FALSE)   {
-		echo "Error: " . $queryInsert . "<br>" . mysqli_error($mysqli);
-	}
+	$resInsert = $mysqli->query($queryInsert);
+
+    echo $querySelect;
+    echo $queryInsert;
+
 	mysqli_close($mysqli);
 }
-header('Location: propuestas.php');
-exit;
+//header('Location: propuestas.php');
+//exit();
+?>
