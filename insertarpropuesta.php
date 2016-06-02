@@ -72,8 +72,6 @@ if (mysqli_query($mysqli, $query)== FALSE)   {
      echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
 }
 mysqli_close($mysqli);
-
-header('Location: propuestas.php'); 
   exit();
 
 ?>
