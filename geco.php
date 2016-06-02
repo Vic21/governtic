@@ -47,8 +47,6 @@
         <div>
             <!--BEGIN THEME SETTING-->
             <div id="theme-setting">
-                <a href="#" data-toggle="dropdown" data-step="1" data-intro="&lt;b&gt;Many styles&lt;/b&gt; and &lt;b&gt;colors&lt;/b&gt; be created for you. Let choose one and enjoy it!"
-                   data-position="left" class="btn-theme-setting"><i class="fa fa-cog"></i></a>
                 <div class="content-theme-setting">
                     <select id="list-style" class="form-control">
                         <option value="style1">Flat Squared style</option>
@@ -125,7 +123,7 @@
                         <ul id="side-menu" class="nav">
 
                             <div class="clearfix"></div>
-                            <li class="active">
+                            <li>
                                 <a href="index.php">
                                     <i class="fa fa-tachometer fa-fw">
                                         <div class="icon-bg bg-orange"></div>
@@ -171,10 +169,10 @@
 
                             </li>
                             <!--    <li><a href="evaluaciones.php"><i class="fa fa-database fa-fw">
-                            <div class="icon-bg bg-red"></div>
-                        </i><span class="menu-title">Evaluaciones</span></a> -->
+                             <div class="icon-bg bg-red"></div>
+                         </i><span class="menu-title">Evaluaciones</span></a> -->
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="geco.php">
                                     <i class="fa fa-file-o fa-fw">
                                         <div class="icon-bg bg-yellow"></div>
@@ -183,8 +181,8 @@
 
                             </li>
                             <!--       <li><a href="estadisticas.php"><i class="fa fa-bar-chart-o fa-fw">
-                              <div class="icon-bg bg-orange"></div>
-                          </i><span class="menu-title">Estadísticas</span></a> -->
+                                  <div class="icon-bg bg-orange"></div>
+                              </i><span class="menu-title">Estadísticas</span></a> -->
                     </div>
                 </nav>
                 <!--END SIDEBAR MENU-->
