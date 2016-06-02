@@ -248,7 +248,7 @@
                                         <div class="portlet-header">
                                             <div class="caption">Gestión económica</div>
                                         <div style="overflow: hidden;" class="portlet-body">
-                        
+                                                
                                                 <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 mysqli_set_charset($mysqli, "utf8");
@@ -280,6 +280,11 @@
                                                 array_push($nombre,"Presupuesto TIC");
                                                 //$arrayCostesObj =  array_values($arrayCostesObj);
                                                 //$nombre = array_values($nombre);
+                                                $umbralesSelect = $mysqli->query("SELECT * FROM metricas WHERE id = 99");
+                                                $filaUmbrales = $umbralesSelect->fetch_row();
+                                                $umbralOptimo = (int)$filaUmbrales[2];
+                                                $umbralMedio = (int)$filaUmbrales[3];
+                                                $colores = 0;
                                                 ?>
 
 
