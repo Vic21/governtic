@@ -6,7 +6,6 @@ $idProyecto = $_GET['project-id'];
 echo $idProyecto;
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -228,14 +227,50 @@ echo $idProyecto;
                                                                                 case 3:
                                                                                     $respu = "SELECT * FROM estadisticascaducidad WHERE TRUE";
                                                                                     break;
+                                                                                case 4:
+                                                                                    $respu = "SELECT * FROM estadisticasmarcapropia WHERE TRUE";
+                                                                                    break;
                                                                     }
 
 
                                                                     $respu = $mysqli->query($respu);
 
                                                                     $umbrales = $mysqli->query("SELECT * FROM metricas WHERE idProyecto=".$idProyecto.";");
+                                                                    $umbralesmedia = $mysqli->query("SELECT * FROM metricas WHERE idProyecto=99;");
+
+                                                                    $numeroeva = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto.";";
+                                                                    $resulteva = $mysqli->query($numeroeva);
+                                                                    /* array numérico */
+                                                                    $roweva = $resulteva->fetch_array(MYSQLI_NUM);
 
 
+                                                                     switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticastiendaonline WHERE TRUE;";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios)FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                                case 4:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticasmarcapropia WHERE TRUE";
+                                                                                    break;
+                                                                    }
+                                                             
+                                                                    $resulttablas = $mysqli->query($numerometrica);
+                                                                    /* array numérico */
+                                                                    $rowtablas = $resulttablas->fetch_array(MYSQLI_NUM);
+
+
+
+                                                                  
+                                                                 
+
+
+
+                                                                    //$neva = array();
 
                                                                     $fecha = array();
                                                                     $fechaest = array();
@@ -245,6 +280,9 @@ echo $idProyecto;
 
                                                                     $umbralOptimo = array();
                                                                     $umbralMedio = array();
+
+                                                                    $umbralOptimom = array();
+                                                                    $umbralMediom = array();
 
 
                                                                     $responsabilidad = array();
@@ -291,6 +329,39 @@ echo $idProyecto;
                                                                      }
 
 
+                                                                     while($row4 = $umbralesmedia->fetch_row()){
+                                                                        array_push($umbralOptimom, $row4[2]);
+                                                                        array_push($umbralMediom, $row4[3]);
+
+                                                                     }
+                                                                     // while($roweva = $resulteva->fetch_row()){
+                                                                     //    array_push($neva, $roweva[0]);
+
+                                                                     // }
+
+
+
+                                                                     $medias = $mysqli->query("SELECT (responsabilidad + estrategia + adquisicion + rendimiento + conformidad + conductaHumana)/6.0 FROM evaluaciones WHERE idProyecto=".$idProyecto.";");
+
+                                                                     $media = array();
+
+                                                                      while($row4 = $medias->fetch_row()){
+                                                                        array_push($media, $row4[0]);
+
+                                                                     }
+
+
+                                                                     $estadisticasalert = $mysqli->query("SELECT usuarios FROM estadisticastiendaonline WHERE usuarios='763';");
+
+                                                                     $estaalert = array();
+
+                                                                      while($row5 = $estadisticasalert->fetch_row()){
+                                                                        array_push($estaalert, $row5[0]);
+
+                                                                     }
+
+
+
 
 
 
@@ -317,7 +388,8 @@ echo $idProyecto;
                                                                     <div>
                                                                     <div class="panel panel-red">
                                                                     <div class="panel-heading">
-                                                                    Alertas
+                                                                    <?php  echo $umbralOptimo[0]; echo $metrica1[11] ?>
+
                                                                     </div>
 
 
@@ -326,74 +398,175 @@ echo $idProyecto;
 
                                                                     <div class="row">                                         
 
+
+
+
                                                                      <div class="col-md-4">
 
-                                                                        <div class="alert alert-danger">
-                                                                        <strong>
-                                                                                
-                                                                           <!--  <?php
-                                                                        switch ($idProyecto) {
-                                                                                case 1:
-                                                                                    printf("Usuarios por mes.");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    printf("Precios controlados por mes.");
-                                                                                    break;
-                                                                                case 3:
-                                                                                    printf("Totales en kg de desperdicios por mes.");
-                                                                                    break;
-                                                                            }
-                                                                            
-                                                                            ?> -->
+                                                                       
+
+
+                                                                               <?php
+                                                                 
+
+                                                                  
+                                                                    if($metrica1[11]<$umbralMedio[0]){
+                                                                        
+                                                                    $out123.='<div class="col-md-12">';
+                                                                    $out123.='<div class="alert alert-danger"><strong>El último valor evaluado es: ';
+                                                                    $out123.= $metrica1[11];
+                                                                    $out123.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                    $out123.='<center></center>';
+                                                                    $out123.='</div>';
+
+
+                                                                    }elseif ($metrica1[11]<$umbralOptimo[0]&&$metrica1[11]>=$umbralMedio[0]) {
+                                                                        $out123.='<div class="col-md-12">';
+                                                                        $out123.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out123.= $metrica1[11];
+                                                                        $out123.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out123.='<center></center>';
+                                                                        $out123.='</div>';
+                                                                    } elseif ($metrica1[11]>=$umbralOptimo[0]) {
+                                                                        $out123.='<div class="col-md-12">';
+                                                                        $out123.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out123.= $metrica1[11];
+                                                                        $out123.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                        $out123.='<center></center>';
+                                                                        $out123.='</div>';
+                                                                    }
+                                                                    
+
+                                                                
+                                                                        
+
+                                                                    echo $out123;
+                                                                    ?>
+
+
+                                                                   
+                                                                         
+
+                                                                    </div>
 
 
 
-                                                                        </strong>
-                                                                        <br><center><div id="chartContainer" style="height: 200px; width: 80%;"></center></br>
-                                                                        <center><b>Fecha: <?php echo $fecha[0]; ?></b></center>
-                                                                        </div>
+
+
+
+
+
+
+
+                                                                    
+
+
+
+
+
+
+
+
+
+                                                                     <div class="col-md-4">
+
+                                                                       
+
+
+                                                                               <?php
+                                                                 
+
+                                                                  
+                                                                    if($metrica2[11]<$umbralMedio[0]){
+                                                                        
+                                                                    $out1234.='<div class="col-md-12">';
+                                                                    $out1234.='<div class="alert alert-danger"><strong>El último valor evaluado es: ';
+                                                                    $out1234.= $metrica2[11];
+                                                                    $out1234.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                    $out1234.='<center></center>';
+                                                                    $out1234.='</div>';
+
+
+                                                                    }elseif ($metrica2[11]<$umbralOptimo[0]&&$metrica2[11]>=$umbralMedio[0]) {
+                                                                        $out1234.='<div class="col-md-12">';
+                                                                        $out1234.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out1234.= $metrica2[11];
+                                                                        $out1234.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out1234.='<center></center>';
+                                                                        $out1234.='</div>';
+                                                                    } elseif ($metrica2[11]>=$umbralOptimo[0]) {
+                                                                        $out1234.='<div class="col-md-12">';
+                                                                        $out1234.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out1234.= $metrica2[11];
+                                                                        $out1234.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                        $out1234.='<center></center>';
+                                                                        $out1234.='</div>';
+                                                                    }
+                                                                    
+
+                                                                   
+
+                                                                        
+
+                                                                    echo $out1234;
+                                                                    ?>
                                                                          
 
                                                                     </div>
 
                                                                     <div class="col-md-4">
 
-                                                                        <div class="alert alert-warning">
-                                                                        <strong>
-                                                                            
+                                                                         <?php
+                                                                  $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                  mysqli_set_charset($mysqli, "utf8");
+                                                                  //$res = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
-                                                                             <?php
-                                                                        switch ($idProyecto) {
-                                                                                case 1:
-                                                                                    printf("Ventas por mes.");
-                                                                                    break;
-                                                                                case 2:
-                                                                                    printf("Ventas globales por mes.");
-                                                                                    break;
-                                                                                case 3:
-                                                                                    printf("Porcentaje de articulos controlados.");
-                                                                                    break;
-                                                                            }
-                                                                            
-                                                                            ?>
+                                                                   $numeroeva = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto.";";
+                                                                    $resulteva = $mysqli->query($numeroeva);
 
 
+                                                                    /* array numérico */
+                                                                    $roweva = $resulteva->fetch_array(MYSQLI_NUM);
 
 
-                                                                        </strong>
-                                                                        <br><center> Está dentro del umbral estipulado.</center></br></div>
-<!--                                                                         <center><?php echo $fecha[1]; ?></center> 
- -->
+                                                                  
+                                                                    if($media[$roweva[0]-1]>=$umbralOptimom[0]){
+                                                                        
+                                                                    $out12.='<div class="col-md-12">';
+                                                                    $out12.='<div class="alert alert-danger"><strong>La última media evaluada es: ';
+                                                                    $out12.= $media[$roweva[0]-1];
+                                                                    $out12.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                    $out12.='<center></center>';
+                                                                    $out12.='</div>';
+
+
+                                                                    }elseif ($media[$roweva[0]-1]<$umbralOptimom[0]&&$media[$roweva[0]-1]>=$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-12">';
+                                                                        $out12.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out12.= $media[$roweva[0]-1];
+                                                                        $out12.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    } elseif ($media[$roweva[0]-1]<$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-12">';
+                                                                        $out12.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out12.= $media[$roweva[0]-1];
+                                                                        $out12.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    }
+                                                                    
+
+                                                                   
+
+                                                                        
+
+                                                                    echo $out12;
+                                                                    ?>
+ 
                                                                     </div>
 
-                                                                    <div class="col-md-4">
-                                            
-                                                                        <div class="alert alert-success"><strong>Evaluaciones</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>
-<!--                                                                         <center><?php echo $fecha[2]; ?></center> 
- -->
-                                                                    </div>
-
-
+                                                          
 
 
 
@@ -472,7 +645,7 @@ echo $idProyecto;
                                                                     $out.='</div>';
 
                                                                     $out.='<div class="col-md-12">';
-                                                                    $out.='<b>Coste inicial: </b> ';
+                                                                    $out.='<b>Coste: </b> ';
                                                                     $out.=$row[5];
                                                                     $out.='€';
                                                                     $out.='</div><br/>';
@@ -775,86 +948,63 @@ echo $idProyecto;
 
 
                                                              
-                                                                     <div class="col-md-4">
+                                                                 
 
-                                                                        <div class="alert alert-danger"><strong>La media es: !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>
-                                                                        <center><?php echo $fecha[0]; ?></center> 
+                                                                  
+                                                                 <?php
+                                                                  $mysqli1 = mysqli_connect("localhost","root","root", "test");
+                                                                  mysqli_set_charset($mysqli1, "utf8");
+                                                                  //$res = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
 
-                                                                    </div>
-
-                                                                    <div class="col-md-4">
-
-                                                                        <div class="alert alert-warning"><strong>La media es: !</strong><br><center> Está dentro del umbral estipulado.</center></br></div>
-                                                                        <center><?php echo $fecha[1]; ?></center> 
-
-                                                                    </div>
-
-                                                                    <div class="col-md-4">
-                                            
-                                                                        <div class="alert alert-success"><strong>La media es: !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>
-                                                                        <center><?php echo $fecha[2]; ?></center> 
-
-                                                                    </div>
+                                                                   $numeroeva1 = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto.";";
+                                                                    $resulteva1 = $mysqli->query($numeroeva1);
 
 
+                                                                    /* array numérico */
+                                                                    $roweva1 = $resulteva1->fetch_array(MYSQLI_NUM);
 
-                                                                    <!-- <div class="col-md-4">
-                                                                         <center><?php echo $fecha[0]; ?></center> 
-                                                                      <canvas id="myCanvas" width="578" height="200"></canvas>
-                                                                        <script>
-                                                                          var canvas = document.getElementById('myCanvas');
-                                                                          var context = canvas.getContext('2d');
 
-                                                                          context.beginPath();
-                                                                          context.rect(188, 50, 200, 100);
-                                                                          context.fillStyle = 'red';
-                                                                          context.fill();
-                                                                          context.lineWidth = 7;
-                                                                          context.strokeStyle = 'black';
-                                                                          context.stroke();
-                                                                        </script>
+                                                                    $i=0;
+                                                                    $contadores=0;
+                                                                  while($i<$roweva1[0]){
+
+                                                                    if($media[$contadores]>=$umbralOptimom[0]){
+                                                                        
+                                                                    $out12.='<div class="col-md-4">';
+                                                                    $out12.='<div class="alert alert-danger"><strong>La media es: ';
+                                                                    $out12.= $media[$contadores];
+                                                                    $out12.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                    $out12.='<center></center>';
+                                                                    $out12.='</div>';
+
+
+                                                                    }elseif ($media[$contadores]<$umbralOptimom[0]&&$media[$contadores]>=$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-4">';
+                                                                        $out12.='<div class="alert alert-warning"><strong>La media es: ';
+                                                                        $out12.= $media[$contadores];
+                                                                        $out12.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    } elseif ($media[$contadores]<$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-4">';
+                                                                        $out12.='<div class="alert alert-success"><strong>La media es: ';
+                                                                        $out12.= $media[$contadores];
+                                                                        $out12.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    }
+                                                                    
+
                                                                    
-                                                                    </div>
 
-                                                                     <div class="col-md-4">
-                                                                        <center><?php echo $fecha[1]; ?></center>  
-                                                                     <canvas id="myCanvas2" width="578" height="200"></canvas>
-                                                                        <script>
-                                                                          var canvas2 = document.getElementById('myCanvas2');
-                                                                          var context1 = canvas2.getContext('2d');
+                                                                    $i++;
+                                                                    $contadores++;
 
-                                                                          context1.beginPath();
-                                                                          context1.rect(188, 50, 200, 100);
-                                                                          context1.fillStyle = 'yellow';
-                                                                          context1.font = "10px Comic Sans MS";
-                                                                          context1.textStyle = "red";
-                                                                          context1.textAlign = "center";
-                                                                          context1.fillText("Hello", canvas2.width/2, canvas2.height/2); 
-                                                                          context1.fill();
-                                                                          context1.lineWidth = 7;
-                                                                          context1.strokeStyle = 'black';
-                                                                          context1.stroke();
-                                                                        </script> 
-                                                                   
-                                                                    </div>
+                                                                    }
+                                                                        
 
-                                                                     <div class="col-md-4">
-                                                                         <center><?php echo $fecha[2]; ?></center> 
-                                                                      <canvas id="myCanvas3" width="578" height="200"></canvas>
-                                                                        <script>
-                                                                          var canvas3 = document.getElementById('myCanvas3');
-                                                                          var context2 = canvas3.getContext('2d');
-
-                                                                          context2.beginPath();
-                                                                          context2.rect(188, 50, 200, 100);
-                                                                          context2.fillStyle = 'green';
-                                                                          context2.fill();
-                                                                          context2.lineWidth = 7;
-                                                                          context2.strokeStyle = 'black';
-                                                                          context2.stroke();
-                                                                        </script>
-                                                                   
-                                                                    </div> -->
+                                                                    echo $out12;
+                                                                    ?>
 
 
 
@@ -862,7 +1012,7 @@ echo $idProyecto;
 
 
                                                                         
-                                                                    </div>
+                                                                   </div>
 
 
                                                                     </div>
@@ -879,7 +1029,6 @@ echo $idProyecto;
                                                                     <fieldset>
 
 
-                                                                    <!-- Form Name -->
                                                                     <legend>Modificar los umbrales</legend>
 
                                                                    
@@ -972,6 +1121,10 @@ echo $idProyecto;
                                                                                 case 3:
                                                                                     printf("'Totales en kg de desperdicios por mes.'");
                                                                                     break;
+                                                                                case 4;
+                                                                                    printf("'Sustitución articulos marca propia.'");
+                                                                                    break;     
+
                                                                             }
                                                                             
                                                                             ?>
@@ -996,6 +1149,9 @@ echo $idProyecto;
                                                                                     break;
                                                                                 case 3:
                                                                                     $query = "SELECT COUNT(fecha) FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                                case 4:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticasmarcapropia WHERE TRUE";
                                                                                     break;
                                                                             }
                                                                             
@@ -1048,6 +1204,9 @@ echo $idProyecto;
                                                                                     break;
                                                                                 case 3:
                                                                                     printf("'Totales en kg.'");
+                                                                                    break;
+                                                                                case 4:
+                                                                                    printf("'Articulos totales.'");
                                                                                     break;
                                                                             }
                                                                             
@@ -1151,6 +1310,9 @@ echo $idProyecto;
                                                                                 case 3:
                                                                                     printf("'Porcentaje de articulos controlados.'");
                                                                                     break;
+                                                                                case 4:
+                                                                                    printf("'Augmento de unidades vendidas.'");
+                                                                                    break;
                                                                             }
                                                                             
                                                                             ?>
@@ -1175,6 +1337,9 @@ echo $idProyecto;
                                                                                     break;
                                                                                 case 3:
                                                                                     $query = "SELECT COUNT(fecha) FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                                case 4:
+                                                                                    $query = "SELECT COUNT(fecha) FROM estadisticasmarcapropia WHERE TRUE";
                                                                                     break;
                                                                             }
                                                                             
@@ -1228,6 +1393,10 @@ echo $idProyecto;
                                                                                 case 3:
                                                                                     printf("'Porcentaje de articulos.'");
                                                                                     break;
+                                                                                case 4:
+                                                                                    printf("'Total de unidades.'");
+                                                                                    break;
+
                                                                             }
                                                                             
                                                                             ?>

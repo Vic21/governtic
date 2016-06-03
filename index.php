@@ -1,7 +1,7 @@
     <?php 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    //ini_set('display_errors', 1);
+    //ini_set('display_startup_errors', 1);
+    //error_reporting(E_ALL);
     ?>
 
     <!DOCTYPE html>
@@ -224,6 +224,177 @@
                     </div>
                     <!--END TITLE & BREADCRUMB PAGE-->
                     <!--BEGIN CONTENT-->
+                    <?php 
+                    $idProyecto=1;
+
+
+                                                                     $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                     mysqli_set_charset($mysqli, "utf8");
+                                                                /* verificar la conexión */
+                                                                if (mysqli_connect_errno()) {
+                                                                    printf("Falló la conexión failed: %s\n", $mysqli->connect_error);
+                                                                    exit();
+                                                                }
+
+
+
+                                                                    $res = $mysqli->query("SELECT * FROM evaluaciones WHERE idProyecto=".$idProyecto.";");
+                                                                    $resp = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
+
+                                                                    //Carga la tabla necesária segun el proyecto
+                                                                        switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $respu = "SELECT * FROM estadisticastiendaonline WHERE TRUE;";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $respu = "SELECT * FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $respu = "SELECT * FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                                case 4:
+                                                                                    $respu = "SELECT * FROM estadisticasmarcapropia WHERE TRUE";
+                                                                                    break;
+                                                                    }
+
+
+                                                                    $respu = $mysqli->query($respu);
+
+                                                                    $umbrales = $mysqli->query("SELECT * FROM metricas WHERE idProyecto=".$idProyecto.";");
+                                                                    $umbralesmedia = $mysqli->query("SELECT * FROM metricas WHERE idProyecto=99;");
+
+                                                                    $numeroeva = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto.";";
+                                                                    $resulteva = $mysqli->query($numeroeva);
+                                                                    /* array numérico */
+                                                                    $roweva = $resulteva->fetch_array(MYSQLI_NUM);
+
+
+                                                                     switch ($idProyecto) {
+                                                                                case 1:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticastiendaonline WHERE TRUE;";
+                                                                                    break;
+                                                                                case 2:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticascompetencia WHERE TRUE";
+                                                                                    break;
+                                                                                case 3:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios)FROM estadisticascaducidad WHERE TRUE";
+                                                                                    break;
+                                                                                case 4:
+                                                                                    $numerometrica = "SELECT COUNT(usuarios) FROM estadisticasmarcapropia WHERE TRUE";
+                                                                                    break;
+                                                                    }
+                                                             
+                                                                    $resulttablas = $mysqli->query($numerometrica);
+                                                                    /* array numérico */
+                                                                    $rowtablas = $resulttablas->fetch_array(MYSQLI_NUM);
+
+
+
+                                                                  
+                                                                 
+
+
+
+                                                                    //$neva = array();
+
+                                                                    $fecha = array();
+                                                                    $fechaest = array();
+
+                                                                    $metrica1 = array();
+                                                                    $metrica2 = array();
+
+                                                                    $umbralOptimo = array();
+                                                                    $umbralMedio = array();
+
+                                                                    $umbralOptimom = array();
+                                                                    $umbralMediom = array();
+
+
+                                                                    $responsabilidad = array();
+                                                                    $estrategia = array();
+                                                                    $adquision = array();
+                                                                    $rendimiento = array();
+                                                                    $conformidad = array();
+                                                                    $conductaHumana = array();
+                                                                    
+                                                                    $nombre = array();
+
+                                                                    while($row = $res->fetch_row()){
+                                                                    array_push($fecha, $row[1]);
+
+                                                                    array_push($responsabilidad, $row[2]);
+                                                                    array_push($estrategia, $row[3]);
+                                                                    array_push($adquision, $row[4]);
+                                                                    array_push($rendimiento, $row[5]);
+                                                                    array_push($conformidad, $row[6]);
+                                                                    array_push($conductaHumana, $row[7]);
+
+
+                                                                    }
+
+
+                                                                    while($row1 = $resp->fetch_row()){
+                                                                        array_push($nombre, $row1[1]);
+
+                                                                     }
+
+
+                                                                    while($row2 = $respu->fetch_row()){
+                                                                        array_push($fechaest, $row2[0]);
+                                                                        array_push($metrica1, $row2[1]);
+                                                                        array_push($metrica2, $row2[2]);
+
+                                                                     }
+
+
+                                                                    while($row3 = $umbrales->fetch_row()){
+                                                                        array_push($umbralOptimo, $row3[2]);
+                                                                        array_push($umbralMedio, $row3[3]);
+
+                                                                     }
+
+
+                                                                     while($row4 = $umbralesmedia->fetch_row()){
+                                                                        array_push($umbralOptimom, $row4[2]);
+                                                                        array_push($umbralMediom, $row4[3]);
+
+                                                                     }
+                                                                     // while($roweva = $resulteva->fetch_row()){
+                                                                     //    array_push($neva, $roweva[0]);
+
+                                                                     // }
+
+
+
+                                                                     $medias = $mysqli->query("SELECT (responsabilidad + estrategia + adquisicion + rendimiento + conformidad + conductaHumana)/6.0 FROM evaluaciones WHERE idProyecto=".$idProyecto.";");
+
+                                                                     $media = array();
+
+                                                                      while($row4 = $medias->fetch_row()){
+                                                                        array_push($media, $row4[0]);
+
+                                                                     }
+
+
+                                                                     $estadisticasalert = $mysqli->query("SELECT usuarios FROM estadisticastiendaonline WHERE usuarios='763';");
+
+                                                                     $estaalert = array();
+
+                                                                      while($row5 = $estadisticasalert->fetch_row()){
+                                                                        array_push($estaalert, $row5[0]);
+
+                                                                     }
+
+
+
+
+
+
+                                                                /* cerrar la conexión */
+                                                                    $mysqli->close();
+
+                                                                    ?>
+
                     <div class="page-content">
                         <div id="tab-general">
                             <div id="sum_box" class="row mbl">
@@ -233,98 +404,228 @@
                                         <div class="portlet-header">
                                             <div class="caption">Panel de alertas</div>
                                         <div style="overflow: hidden;" class="portlet-body">
-                                            <?php
-                                                $mysqli = mysqli_connect("localhost","root","root", "test");
-                                                mysqli_set_charset($mysqli, "utf8");
-                                                $res = $mysqli->query("SELECT * FROM datos WHERE TRUE;");
-                                                $out ='<table id="example" class="table table-striped table-bordered">';
-                                                $out.='<tr>';
-                                                $out.='<th>';
-                                                $out.='ID';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Título';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Prioridad';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                $out.='Descripción';
-                                                $out.='</th>';
-                                                $out.='<th>'; 
-                                                $out.='Precio';
-                                                $out.='</th>';
-                                                $out.= '<th>';
-                                                $out.='Acción';
-                                                $out.='</th>';
-                                                $out.='<th>';
-                                                while($row = $res->fetch_row()){
-                                                    $out.='<tr  data-price="'.$row[4].'">';
-                                                    $out.='<td>';
-                                                    $out.=$row[0];
-                                                    $out.='</td>'; 
-                                                    $out.='<td>';
-                                                    $out.=$row[1];
-                                                    $out.='</td>';
-                                                    switch ($row[2]) {
-                                                        case "Alta":
-                                                            $out.='<td align="center" class="danger">';
-                                                            break;
-                                                        case "Media":
-                                                            $out.='<td align="center" class="warning">';
-                                                            break;
-                                                        case "Baja":
-                                                            $out.='<td align="center" class="success">';
-                                                            break;
-                                                    }
-                                                    $out.=$row[2];
-                                                    $out.='</td>';
-                                                    $out.='<td>';
-                                                    $out.=$row[3];
-                                                    $out.='</td>';
-                                                    $out.='<td class="price">';
-                                                    $out.=$row[4];
-                                                    $out.='</td>';   
-                                                    $out.='<td>';
-                                                    $out.='
-                                                    <div class="todo-actions pull-right clearfix">
-                                                        <button onclick="myFunction(this)">Modificar presupuesto</button><p id="demo"></p>
+                                           
 
-                                                        <a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit">
-                                                        <i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o">
-                                                        </i></a>
-                                                    </div>';
-                                                    //$out.='</td>';
-                                                    $out.='</tr>';
-                                                    
-                                                }
-                                                $out.='</table>';
-                                                echo $out;
 
-                                                  // echo "<script>
-                                                  //   $(function() {
-                                                  //   $('#example').DataTable();
-                                                  //   } );
-                                                  // </script>"
-                                                  
-                                                ?> 
+                                        <div class="col-lg-12">
+                                                     <div>
+                                                                    
+                                                                    <div class="panel panel-grey">
+                                                                    <div class="panel-heading">
+                                                                    Alertas
+                                                                    </div>
 
-                                                  <script>
-                                                    function myFunction(element) {
-                                                        var price = $(element).parents("tr").attr("data-price");
-                                            
-                                                    var newPrice = prompt("Introduce el nuevo presupuesto", price);
-    
-                                                    if (newPrice != null) {
-                                                        //document.getElementById("demo").innerHTML = "Tu presupuesto nuevo es " + person + "! ";
-                                                        $(element).parents("tr").attr("data-price", newPrice);
-                                                        $(element).parents("tr").find("td.price").text(newPrice);
-                                                        }
+                                                                    <div class="form-body pal">
+
+
+                                                                    <div class="row">                                             
+
+                                                                    <div class="col-md-12">
+
+                                                                    
 
 
 
-                                                    }
-                                                </script>
+
+
+                                                                    <div class="col-md-4">
+
+
+                                                                        <?php
+                                                                 
+
+                                                                  
+                                                                    if($metrica1[11]<$umbralMedio[0]){
+                                                                        
+                                                                    $out123.='<div class="col-md-12">';
+                                                                    $out123.='<div class="alert alert-danger"><strong>El último valor evaluado es: ';
+                                                                    $out123.= $metrica1[11];
+                                                                    $out123.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                    $out123.='<center></center>';
+                                                                    $out123.='</div>';
+
+
+                                                                    }elseif ($metrica1[11]<$umbralOptimo[0]&&$metrica1[11]>=$umbralMedio[0]) {
+                                                                        $out123.='<div class="col-md-12">';
+                                                                        $out123.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out123.= $metrica1[11];
+                                                                        $out123.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out123.='<center></center>';
+                                                                        $out123.='</div>';
+                                                                    } elseif ($metrica1[11]>=$umbralOptimo[0]) {
+                                                                        $out123.='<div class="col-md-12">';
+                                                                        $out123.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out123.= $metrica1[11];
+                                                                        $out123.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                        $out123.='<center></center>';
+                                                                        $out123.='</div>';
+                                                                    }
+                                                                    
+
+                                                                
+                                                                        
+
+                                                                    echo $out123;
+                                                                    ?>
+
+
+                                                                   
+                                                                         
+
+                                                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                                                    
+
+
+
+
+
+
+
+
+
+                                                                     <div class="col-md-4">
+
+                                                                       
+
+
+                                                                               <?php
+                                                                 
+
+                                                                  
+                                                                    if($metrica2[11]<$umbralMedio[0]){
+                                                                        
+                                                                    $out1234.='<div class="col-md-12">';
+                                                                    $out1234.='<div class="alert alert-danger"><strong>El último valor evaluado es: ';
+                                                                    $out1234.= $metrica2[11];
+                                                                    $out1234.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                    $out1234.='<center></center>';
+                                                                    $out1234.='</div>';
+
+
+                                                                    }elseif ($metrica2[11]<$umbralOptimo[0]&&$metrica2[11]>=$umbralMedio[0]) {
+                                                                        $out1234.='<div class="col-md-12">';
+                                                                        $out1234.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out1234.= $metrica2[11];
+                                                                        $out1234.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out1234.='<center></center>';
+                                                                        $out1234.='</div>';
+                                                                    } elseif ($metrica2[11]>=$umbralOptimo[0]) {
+                                                                        $out1234.='<div class="col-md-12">';
+                                                                        $out1234.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out1234.= $metrica2[11];
+                                                                        $out1234.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                        $out1234.='<center></center>';
+                                                                        $out1234.='</div>';
+                                                                    }
+                                                                    
+
+                                                                   
+
+                                                                        
+
+                                                                    echo $out1234;
+                                                                    ?>
+                                                                         
+
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+
+                                                                         <?php
+                                                                  $mysqli = mysqli_connect("localhost","root","root", "test");
+                                                                  mysqli_set_charset($mysqli, "utf8");
+                                                                  //$res = $mysqli->query("SELECT * FROM proyectos WHERE id=".$idProyecto.";");
+
+                                                                   $numeroeva = "SELECT COUNT(idProyecto) FROM evaluaciones WHERE idProyecto=".$idProyecto.";";
+                                                                    $resulteva = $mysqli->query($numeroeva);
+
+
+                                                                    /* array numérico */
+                                                                    $roweva = $resulteva->fetch_array(MYSQLI_NUM);
+
+
+                                                                  
+                                                                    if($media[$roweva[0]-1]>=$umbralOptimom[0]){
+                                                                        
+                                                                    $out12.='<div class="col-md-12">';
+                                                                    $out12.='<div class="alert alert-danger"><strong>La última media evaluada es: ';
+                                                                    $out12.= $media[$roweva[0]-1];
+                                                                    $out12.=' !</strong><br><center> Está por encima del umbral estipulado.</center></br></div>';
+                                                                    $out12.='<center></center>';
+                                                                    $out12.='</div>';
+
+
+                                                                    }elseif ($media[$roweva[0]-1]<$umbralOptimom[0]&&$media[$roweva[0]-1]>=$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-12">';
+                                                                        $out12.='<div class="alert alert-warning"><strong>La última media evaluada es: ';
+                                                                        $out12.= $media[$roweva[0]-1];
+                                                                        $out12.=' !</strong><br><center> Está en medio del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    } elseif ($media[$roweva[0]-1]<$umbralMediom[0]) {
+                                                                        $out12.='<div class="col-md-12">';
+                                                                        $out12.='<div class="alert alert-success"><strong>La última media evaluada es: ';
+                                                                        $out12.= $media[$roweva[0]-1];
+                                                                        $out12.=' !</strong><br><center> Está por debajo del umbral estipulado.</center></br></div>';
+                                                                        $out12.='<center></center>';
+                                                                        $out12.='</div>';
+                                                                    }
+                                                                    
+
+                                                                   
+
+                                                                        
+
+                                                                    echo $out12;
+                                                                    ?>
+ 
+                                                                    </div>
+
+                                                          
+
+
+
+                                                                    </div>
+                                                                    </div>
+
+
+
+
+
+
+
+
+                                                                    </div>
+
+                                                                   
+
+
+
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
                                         </div>
