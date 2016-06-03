@@ -3,7 +3,7 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 $idProyecto = $_GET['project-id'];
-echo $idProyecto;
+//echo $idProyecto;
 
 
 ?>
@@ -153,7 +153,7 @@ echo $idProyecto;
                     </i><span class="menu-title">Evaluaciones</span></a>
                     
                 </li> -->
-                <li><a href="gestion.php"><i class="fa fa-file-o fa-fw">
+                <li><a href="geco.php"><i class="fa fa-file-o fa-fw">
                     <div class="icon-bg bg-yellow"></div>
                 </i><span class="menu-title">Gestión Económica</span></a>
                 
@@ -388,7 +388,7 @@ echo $idProyecto;
                                                                     <div>
                                                                     <div class="panel panel-red">
                                                                     <div class="panel-heading">
-                                                                    <?php  echo $umbralOptimo[0]; echo $metrica1[11] ?>
+                                                                    Alertas
 
                                                                     </div>
 
@@ -650,10 +650,10 @@ echo $idProyecto;
                                                                     $out.='€';
                                                                     $out.='</div><br/>';
 
-                                                                    $out.='<div class="col-md-12">';
-                                                                    $out.='<b>Estado: </b> ';
-                                                                    $out.=$row[2];
-                                                                    $out.='</div><br/>';
+                                                                    // $out.='<div class="col-md-12">';
+                                                                    // $out.='<b>Estado: </b> ';
+                                                                    // $out.=$row[2];
+                                                                    // $out.='</div><br/>';
 
                                                                     $out.='<br/>';
                                                                     $out.='<br/>';

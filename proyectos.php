@@ -253,7 +253,7 @@ error_reporting(E_ALL);
                                                                         $out.='</th>';
 
                                                                         $out.='<th>';
-                                                                        $out.='Descripción';
+                                                                        $out.='Prioridad';
                                                                         $out.='</th>';
 
                                                                         $out.='<th>';
@@ -261,7 +261,7 @@ error_reporting(E_ALL);
                                                                         $out.='</th>';
 
                                                                         $out.='<th>'; 
-                                                                        $out.='Coste Mes';
+                                                                        $out.='Coste';
                                                                         $out.='</th>';
 
                                                                         $out.= '<th>';

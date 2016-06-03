@@ -419,7 +419,7 @@
     var item2 = item[0].childNodes[0].firstChild.data;
     $.post("borrarprincipio.php",{item2:item2}, function (data ,status) {
         if (data == -1) {
-            window.alert("El objetivo no se puede borrar porque está asignado a un proyecto");   
+            window.alert("El principio no se puede borrar porque está asignado a un proyecto");   
         }
         window.location = "principios.php";
     });      // Outputs the answer

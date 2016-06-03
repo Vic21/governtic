@@ -312,7 +312,7 @@
 
                                             <div style="overflow: hidden;" class="portlet-body">
 
-                                                <?php
+                                            <?php
                                                 $mysqli = mysqli_connect("localhost","root","root", "test");
                                                 mysqli_set_charset($mysqli, "utf8");
                                                 $res = $mysqli->query("SELECT * FROM objetivos WHERE TRUE");
@@ -375,8 +375,8 @@
                                                 }else{
                                                     array_push($colores2, "red");
                                                 }
-                                                echo "<p>COLORES = ".json_encode($colores)."<p>";
-                                                echo "<p>ARRAY COSTES = ".json_encode($arrayCostesObj)."</p>";
+                                                //echo "<p>COLORES = ".json_encode($colores)."<p>";
+                                                //echo "<p>ARRAY COSTES = ".json_encode($arrayCostesObj)."</p>";
 
                                                 $nombre2 = array();
                                                 array_push($nombre2,"Gastos TIC");
@@ -386,10 +386,9 @@
                                                 array_push($costeGen , $intPresTIC);
                                                 array_push($costeGen, $gastadoTIC);
 
-                                                echo "<p>ARRAY COSTES GENERALES = ".json_encode($costeGen)."</p>";
-                                                echo "<p>ARRAY COLORES 2 = ".json_encode($colores2)."</p>";
-                                                ?>
-
+                                                //echo "<p>ARRAY COSTES GENERALES = ".json_encode($costeGen)."</p>";
+                                                //echo "<p>ARRAY COLORES 2 = ".json_encode($colores2)."</p>";
+                                                ?> 
 
 
                                                 <script type="text/javascript">
